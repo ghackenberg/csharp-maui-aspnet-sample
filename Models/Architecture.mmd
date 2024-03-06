@@ -1,0 +1,14 @@
+classDiagram
+    direction LR
+
+    class CustomApp
+    class CustomApi
+    class CustomLib
+
+    <<Maui>> CustomApp
+    <<Asp>> CustomApi
+    <<Lib>> CustomLib
+
+    CustomApp ..> CustomLib : using
+    CustomApp --> CustomApi : http
+    CustomApi ..> CustomLib : using

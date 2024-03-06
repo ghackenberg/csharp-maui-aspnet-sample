@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="CustomApp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pages="clr-namespace:CustomApp.Pages"
+    xmlns:views="clr-namespace:CustomApp.Views"
+    FlyoutBackgroundColor="LightBlue"
+    FlyoutBehavior="Locked"
+    Title="CustomApp">
+
+    <Shell.FlyoutHeader>
+        <views:ShellFlyoutHeader />
+    </Shell.FlyoutHeader>
+
+    <FlyoutItem Title="Page A" Icon="tab.png" Route="a">
+        <ShellContent ContentTemplate="{DataTemplate pages:PageA}" />
+    </FlyoutItem>
+    <FlyoutItem Title="Page B" Icon="tab.png" Route="b">
+        <ShellContent ContentTemplate="{DataTemplate pages:PageB}" />
+    </FlyoutItem>
+    <FlyoutItem Title="Page C" Icon="tab.png" Route="c">
+        <ShellContent ContentTemplate="{DataTemplate pages:PageC}" />
+    </FlyoutItem>
+
+    <Shell.FlyoutFooter>
+        <views:ShellFlyoutFooter />
+    </Shell.FlyoutFooter>
+
+</Shell>
