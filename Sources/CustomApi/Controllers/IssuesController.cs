@@ -1,4 +1,5 @@
-﻿using CustomLib.Interfaces;
+﻿using CustomApi.Managers;
+using CustomLib.Interfaces;
 using CustomLib.Models.Issues;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,27 +12,31 @@ namespace CustomApi.Controllers
         [HttpGet]
         public async Task<List<IssueGet>?> List()
         {
-            return new List<IssueGet>();
+            return await IssuesManager.Instance.List();
         }
+
         [HttpPost]
         public async Task<IssueGet?> Post(IssuePost data)
         {
-            return new IssueGet();
+            return await IssuesManager.Instance.Post(data);
         }
+
         [HttpGet("{id}")]
         public async Task<IssueGet?> Get(string id)
         {
-            return new IssueGet();
+            return await IssuesManager.Instance.Get(id);
         }
+
         [HttpPut("{id}")]
         public async Task<IssueGet?> Put(string id, IssuePut data)
         {
-            return new IssueGet();
+            return await IssuesManager.Instance.Put(id, data);
         }
+
         [HttpDelete("{id}")]
         public async Task<IssueGet?> Delete(string id)
         {
-            return new IssueGet();
+            return await IssuesManager.Instance.Delete(id);
         }
     }
 }

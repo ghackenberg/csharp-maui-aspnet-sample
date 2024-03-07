@@ -1,4 +1,5 @@
-﻿using CustomLib.Interfaces;
+﻿using CustomLib.Exceptions;
+using CustomLib.Interfaces;
 using System.Text;
 using System.Text.Json;
 
@@ -31,7 +32,7 @@ namespace CustomLib.Clients
 
             if (!response.IsSuccessStatusCode)
             {
-                throw new Exception("Could not list");
+                throw new HttpException(response.StatusCode, await response.Content.ReadAsStringAsync());
             }
 
             var content = await response.Content.ReadAsStringAsync();
@@ -49,7 +50,7 @@ namespace CustomLib.Clients
 
             if (!response.IsSuccessStatusCode)
             {
-                throw new Exception($"Could not post");
+                throw new HttpException(response.StatusCode, await response.Content.ReadAsStringAsync());
             }
 
             var responseContent = await response.Content.ReadAsStringAsync();
@@ -63,7 +64,7 @@ namespace CustomLib.Clients
 
             if (!response.IsSuccessStatusCode)
             {
-                throw new Exception($"Could not get {id}");
+                throw new HttpException(response.StatusCode, await response.Content.ReadAsStringAsync());
             }
 
             var content = await response.Content.ReadAsStringAsync();
@@ -81,7 +82,7 @@ namespace CustomLib.Clients
 
             if (!response.IsSuccessStatusCode)
             {
-                throw new Exception($"Could not put {id}");
+                throw new HttpException(response.StatusCode, await response.Content.ReadAsStringAsync());
             }
 
             var responseContent = await response.Content.ReadAsStringAsync();
@@ -95,7 +96,7 @@ namespace CustomLib.Clients
 
             if (!response.IsSuccessStatusCode)
             {
-                throw new Exception($"Could not delete {id}");
+                throw new HttpException(response.StatusCode, await response.Content.ReadAsStringAsync());
             }
 
             var content = await response.Content.ReadAsStringAsync();

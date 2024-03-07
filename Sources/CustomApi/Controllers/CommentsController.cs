@@ -1,4 +1,5 @@
-﻿using CustomLib.Interfaces;
+﻿using CustomApi.Managers;
+using CustomLib.Interfaces;
 using CustomLib.Models.Comments;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,27 +12,31 @@ namespace CustomApi.Controllers
         [HttpGet]
         public async Task<List<CommentGet>?> List()
         {
-            return new List<CommentGet>();
+            return await CommentsManager.Instance.List();
         }
+
         [HttpPost]
         public async Task<CommentGet?> Post(CommentPost data)
         {
-            return new CommentGet();
+            return await CommentsManager.Instance.Post(data);
         }
+
         [HttpGet("{id}")]
         public async Task<CommentGet?> Get(string id)
         {
-            return new CommentGet();
+            return await CommentsManager.Instance.Get(id);
         }
+
         [HttpPut("{id}")]
         public async Task<CommentGet?> Put(string id, CommentPut data)
         {
-            return new CommentGet();
+            return await CommentsManager.Instance.Put(id, data);
         }
+
         [HttpDelete("{id}")]
         public async Task<CommentGet?> Delete(string id)
         {
-            return new CommentGet();
+            return await CommentsManager.Instance.Delete(id);
         }
     }
 }
