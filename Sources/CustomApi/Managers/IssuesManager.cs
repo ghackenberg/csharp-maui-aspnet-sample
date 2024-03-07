@@ -11,7 +11,9 @@ namespace CustomApi.Managers
 
         private IssuesManager() { }
 
-        private readonly List<IssueGet> _issues = new List<IssueGet>();
+        private readonly List<IssueGet> _list = new List<IssueGet>();
+
+        private readonly Dictionary<string, IssueGet> _dict = new Dictionary<string, IssueGet>();
 
         public async Task<List<IssueGet>?> List()
         {
@@ -19,7 +21,7 @@ namespace CustomApi.Managers
             {
                 var result = new List<IssueGet>();
 
-                foreach (var issue in _issues)
+                foreach (var issue in _list)
                 {
                     if (issue.DeletedAt == null)
                     {
@@ -33,16 +35,21 @@ namespace CustomApi.Managers
 
         public async Task<IssueGet?> Post(IssuePost data)
         {
-            return await Task.Run(() =>
+            return await Task.Run(async () =>
             {
+                // Check if user exists
+                await UsersManager.Instance.Get(data.UserId);
+
                 var issue = new IssueGet();
+
                 issue.UserId = data.UserId;
-                issue.IssueId = $"Issue-{_issues.Count}";
+                issue.IssueId = $"Issue-{_list.Count}";
                 issue.CreatedAt = DateTime.Now;
                 issue.UpdatedAt = DateTime.Now;
                 issue.Label = data.Label;
 
-                _issues.Add(issue);
+                _list.Add(issue);
+                _dict.Add(issue.IssueId, issue);
 
                 return issue;
             });
@@ -52,14 +59,19 @@ namespace CustomApi.Managers
         {
             return await Task.Run(() =>
             {
-                foreach (var issue in _issues)
+                if (!_dict.ContainsKey(id))
                 {
-                    if (issue.DeletedAt == null && issue.IssueId.Equals(id))
-                    {
-                        return issue;
-                    }
+                    throw new HttpException(HttpStatusCode.NotFound, "Issue not found");
                 }
-                throw new HttpException(HttpStatusCode.NotFound, "Not found");
+
+                var issue = _dict[id];
+
+                if (issue.DeletedAt != null)
+                {
+                    throw new HttpException(HttpStatusCode.NotFound, "Issue not found");
+                }
+
+                return issue;
             });
         }
 
@@ -67,36 +79,57 @@ namespace CustomApi.Managers
         {
             return await Task.Run(() =>
             {
-                foreach (var issue in _issues)
+                if (!_dict.ContainsKey(id))
                 {
-                    if (issue.DeletedAt == null && issue.IssueId.Equals(id))
-                    {
-                        issue.UpdatedAt = DateTime.Now;
-                        issue.Label = data.Label;
-
-                        return issue;
-                    }
+                    throw new HttpException(HttpStatusCode.NotFound, "Issue not found");
                 }
-                throw new HttpException(HttpStatusCode.NotFound, "Not found");
+
+                var issue = _dict[id];
+
+                if (issue.DeletedAt != null)
+                {
+                    throw new HttpException(HttpStatusCode.NotFound, "Issue not found");
+                }
+
+                issue.UpdatedAt = DateTime.Now;
+                issue.Label = data.Label;
+
+                return issue;
             });
         }
 
         public async Task<IssueGet?> Delete(string id)
         {
-            return await Task.Run(() =>
+            if (!_dict.ContainsKey(id))
             {
-                foreach (var issue in _issues)
-                {
-                    if (issue.DeletedAt == null && issue.IssueId.Equals(id))
-                    {
-                        issue.UpdatedAt = DateTime.Now;
-                        issue.DeletedAt = DateTime.Now;
+                throw new HttpException(HttpStatusCode.NotFound, "Issue not found");
+            }
 
-                        return issue;
-                    }
+            var issue = _dict[id];
+
+            if (issue.DeletedAt != null)
+            {
+                throw new HttpException(HttpStatusCode.NotFound, "Issue not found");
+            }
+
+            issue.UpdatedAt = DateTime.Now;
+            issue.DeletedAt = DateTime.Now;
+
+            // Delete issue comments
+            await CommentsManager.Instance.DeleteByIssueId(id);
+
+            return issue;
+        }
+
+        public async Task DeleteByUserId(string id)
+        {
+            foreach (var issue in _list)
+            {
+                if (issue.DeletedAt == null && issue.UserId.Equals(id))
+                {
+                    await Delete(issue.IssueId);
                 }
-                throw new HttpException(HttpStatusCode.NotFound, "Not found");
-            });
+            }
         }
     }
 }

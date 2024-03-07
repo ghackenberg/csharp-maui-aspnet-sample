@@ -11,7 +11,9 @@ namespace CustomApi.Managers
 
         private CommentsManager() { }
 
-        private readonly List<CommentGet> _comments = new List<CommentGet>();
+        private readonly List<CommentGet> _list = new List<CommentGet>();
+
+        private readonly Dictionary<string, CommentGet> _dict = new Dictionary<string, CommentGet>();
 
         public async Task<List<CommentGet>?> List()
         {
@@ -19,7 +21,7 @@ namespace CustomApi.Managers
             {
                 var result = new List<CommentGet>();
 
-                foreach (var comment in _comments)
+                foreach (var comment in _list)
                 {
                     if (comment.DeletedAt == null)
                     {
@@ -33,18 +35,24 @@ namespace CustomApi.Managers
 
         public async Task<CommentGet?> Post(CommentPost data)
         {
-            return await Task.Run(() =>
+            return await Task.Run(async () =>
             {
+                // Check if user exists
+                await UsersManager.Instance.Get(data.UserId);
+                // Check if issue exists
+                await IssuesManager.Instance.Get(data.IssueId);
+
                 var comment = new CommentGet();
 
                 comment.UserId = data.UserId;
                 comment.IssueId = data.IssueId;
-                comment.CommentId = $"Comment-{_comments.Count}";
+                comment.CommentId = $"Comment-{_list.Count}";
                 comment.CreatedAt = DateTime.Now;
                 comment.UpdatedAt = DateTime.Now;
                 comment.Text = data.Text;
 
-                _comments.Add(comment);
+                _list.Add(comment);
+                _dict.Add(comment.CommentId, comment);
 
                 return comment;
             });
@@ -54,14 +62,19 @@ namespace CustomApi.Managers
         {
             return await Task.Run(() =>
             {
-                foreach (var comment in _comments)
+                if (!_dict.ContainsKey(id))
                 {
-                    if (comment.DeletedAt == null && comment.CommentId.Equals(id))
-                    {
-                        return comment;
-                    }
+                    throw new HttpException(HttpStatusCode.NotFound, "Comment not found");
                 }
-                throw new HttpException(HttpStatusCode.NotFound, "Not found");
+
+                var comment = _dict[id];
+
+                if (comment.DeletedAt != null)
+                {
+                    throw new HttpException(HttpStatusCode.NotFound, "Comment not found");
+                }
+
+                return comment;
             });
         }
 
@@ -69,17 +82,22 @@ namespace CustomApi.Managers
         {
             return await Task.Run(() =>
             {
-                foreach (var comment in _comments)
+                if (!_dict.ContainsKey(id))
                 {
-                    if (comment.DeletedAt == null && comment.CommentId.Equals(id))
-                    {
-                        comment.UpdatedAt = DateTime.Now;
-                        comment.Text = data.Text;
-
-                        return comment;
-                    }
+                    throw new HttpException(HttpStatusCode.NotFound, "Comment not found");
                 }
-                throw new HttpException(HttpStatusCode.NotFound, "Not found");
+
+                var comment = _dict[id];
+
+                if (comment.DeletedAt != null)
+                {
+                    throw new HttpException(HttpStatusCode.NotFound, "Comment not found");
+                }
+
+                comment.UpdatedAt = DateTime.Now;
+                comment.Text = data.Text;
+
+                return comment;
             });
         }
 
@@ -87,18 +105,45 @@ namespace CustomApi.Managers
         {
             return await Task.Run(() =>
             {
-                foreach (var comment in _comments)
+                if (!_dict.ContainsKey(id))
                 {
-                    if (comment.DeletedAt == null && comment.CommentId.Equals(id))
-                    {
-                        comment.UpdatedAt = DateTime.Now;
-                        comment.DeletedAt = DateTime.Now;
-
-                        return comment;
-                    }
+                    throw new HttpException(HttpStatusCode.NotFound, "Comment not found");
                 }
-                throw new HttpException(HttpStatusCode.NotFound, "Not found");
+
+                var comment = _dict[id];
+
+                if (comment.DeletedAt != null)
+                {
+                    throw new HttpException(HttpStatusCode.NotFound, "Comment not found");
+                }
+
+                comment.UpdatedAt = DateTime.Now;
+                comment.DeletedAt = DateTime.Now;
+
+                return comment;
             });
+        }
+
+        public async Task DeleteByUserId(string id)
+        {
+            foreach (var comment in _list)
+            {
+                if (comment.DeletedAt == null && comment.UserId.Equals(id))
+                {
+                    await Delete(comment.CommentId);
+                }
+            }
+        }
+
+        public async Task DeleteByIssueId(string id)
+        {
+            foreach (var comment in _list)
+            {
+                if (comment.DeletedAt == null && comment.IssueId.Equals(id))
+                {
+                    await Delete(comment.CommentId);
+                }
+            }
         }
     }
 }

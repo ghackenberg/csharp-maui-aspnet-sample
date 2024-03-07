@@ -11,7 +11,9 @@ namespace CustomApi.Managers
 
         private UsersManager() { }
 
-        private readonly List<UserGet> _users = new List<UserGet>();
+        private readonly List<UserGet> _list = new List<UserGet>();
+
+        private readonly Dictionary<string, UserGet> _dict = new Dictionary<string, UserGet>();
 
         public async Task<List<UserGet>?> List()
         {
@@ -19,7 +21,7 @@ namespace CustomApi.Managers
             {
                 var result = new List<UserGet>();
 
-                foreach (var user in _users)
+                foreach (var user in _list)
                 {
                     if (user.DeletedAt == null)
                     {
@@ -36,13 +38,15 @@ namespace CustomApi.Managers
             return await Task.Run(() =>
             {
                 var user = new UserGet();
-                user.UserId = $"User-{_users.Count}";
+
+                user.UserId = $"User-{_list.Count}";
                 user.CreatedAt = DateTime.Now;
                 user.UpdatedAt = DateTime.Now;
                 user.FirstName = data.FirstName;
                 user.LastName = data.LastName;
 
-                _users.Add(user);
+                _list.Add(user);
+                _dict.Add(user.UserId, user);
 
                 return user;
             });
@@ -52,14 +56,19 @@ namespace CustomApi.Managers
         {
             return await Task.Run(() =>
             {
-                foreach (var user in _users)
+                if (!_dict.ContainsKey(id))
                 {
-                    if (user.DeletedAt == null && user.UserId.Equals(id))
-                    {
-                        return user;
-                    }
+                    throw new HttpException(HttpStatusCode.NotFound, "User not found");
                 }
-                throw new HttpException(HttpStatusCode.NotFound, "Not found");
+
+                var user = _dict[id];
+
+                if (user.DeletedAt != null)
+                {
+                    throw new HttpException(HttpStatusCode.NotFound, "User not found");
+                }
+                
+                return user;
             });
         }
 
@@ -67,37 +76,49 @@ namespace CustomApi.Managers
         {
             return await Task.Run(() =>
             {
-                foreach (var user in _users)
+                if (!_dict.ContainsKey(id))
                 {
-                    if (user.DeletedAt == null && user.UserId.Equals(id))
-                    {
-                        user.UpdatedAt = DateTime.Now;
-                        user.FirstName = data.FirstName;
-                        user.LastName = data.LastName;
-
-                        return user;
-                    }
+                    throw new HttpException(HttpStatusCode.NotFound, "User not found");
                 }
-                throw new HttpException(HttpStatusCode.NotFound, "Not found");
+
+                var user = _dict[id];
+
+                if (user.DeletedAt != null)
+                {
+                    throw new HttpException(HttpStatusCode.NotFound, "User not found");
+                }
+
+                user.UpdatedAt = DateTime.Now;
+                user.FirstName = data.FirstName;
+                user.LastName = data.LastName;
+
+                return user;
             });
         }
 
         public async Task<UserGet?> Delete(string id)
         {
-            return await Task.Run(() =>
+            if (!_dict.ContainsKey(id))
             {
-                foreach (var user in _users)
-                {
-                    if (user.DeletedAt == null && user.UserId.Equals(id))
-                    {
-                        user.UpdatedAt = DateTime.Now;
-                        user.DeletedAt = DateTime.Now;
+                throw new HttpException(HttpStatusCode.NotFound, "User not found");
+            }
 
-                        return user;
-                    }
-                }
-                throw new HttpException(HttpStatusCode.NotFound, "Not found");
-            });
+            var user = _dict[id];
+
+            if (user.DeletedAt != null)
+            {
+                throw new HttpException(HttpStatusCode.NotFound, "User not found");
+            }
+
+            user.UpdatedAt = DateTime.Now;
+            user.DeletedAt = DateTime.Now;
+
+            // Delete user issues
+            await IssuesManager.Instance.DeleteByUserId(id);
+            // Delete user comments
+            await CommentsManager.Instance.DeleteByUserId(id);
+
+            return user;
         }
     }
 }
