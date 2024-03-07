@@ -1,8 +1,7 @@
-﻿namespace CustomLib
+﻿namespace CustomLib.Models.Users
 {
-    class UserDTO
+    public class UserPut
     {
-        public string UserId { get; set; } = "";
         public string FirstName { get; set; } = "";
         public string LastName { get; set; } = "";
     }
