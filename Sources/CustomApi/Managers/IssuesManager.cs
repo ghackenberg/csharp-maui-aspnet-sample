@@ -43,7 +43,7 @@ namespace CustomApi.Managers
                 var issue = new IssueGet();
 
                 issue.UserId = data.UserId;
-                issue.IssueId = $"Issue-{_list.Count}";
+                issue.IssueId = Guid.NewGuid().ToString();
                 issue.CreatedAt = DateTime.Now;
                 issue.UpdatedAt = DateTime.Now;
                 issue.Label = data.Label;

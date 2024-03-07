@@ -39,7 +39,7 @@ namespace CustomApi.Managers
             {
                 var user = new UserGet();
 
-                user.UserId = $"User-{_list.Count}";
+                user.UserId = Guid.NewGuid().ToString();
                 user.CreatedAt = DateTime.Now;
                 user.UpdatedAt = DateTime.Now;
                 user.FirstName = data.FirstName;

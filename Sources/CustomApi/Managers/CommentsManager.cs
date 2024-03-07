@@ -46,7 +46,7 @@ namespace CustomApi.Managers
 
                 comment.UserId = data.UserId;
                 comment.IssueId = data.IssueId;
-                comment.CommentId = $"Comment-{_list.Count}";
+                comment.CommentId = Guid.NewGuid().ToString();
                 comment.CreatedAt = DateTime.Now;
                 comment.UpdatedAt = DateTime.Now;
                 comment.Text = data.Text;
