@@ -6,16 +6,16 @@ namespace CustomLib.Clients
     /// <summary>
     /// A singleton for calling comment CRUD operations via HTTP.
     /// </summary>
-    public class CommentClient : AbstractClient<CommentGet, CommentPost, CommentPut>, CommentsInterface
+    public class CommentsClient : AbstractClient<CommentGet, CommentPost, CommentPut>, CommentsInterface
     {
         /// <summary>
         /// The singleton instance.
         /// </summary>
-        public static readonly CommentClient Instance = new CommentClient();
+        public static readonly CommentsClient Instance = new CommentsClient();
 
         /// <summary>
         /// The private constructor preventing other singleton instances.
         /// </summary>
-        private CommentClient() : base("comments") { }
+        private CommentsClient() : base("comments") { }
     }
 }

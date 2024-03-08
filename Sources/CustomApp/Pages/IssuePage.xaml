@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:CustomApp.Models.Pages"
+             x:Class="CustomApp.Pages.IssuePage"
+             Title="Issue Page">
+    <ContentPage.BindingContext>
+        <models:IssuePageModel />
+    </ContentPage.BindingContext>
+    <StackLayout Spacing="20"
+                 Margin="20">
+        <Label Text="Coming soon"
+               HorizontalOptions="Center"
+               VerticalOptions="CenterAndExpand"/>
+        <StackLayout Spacing="20"
+                     Orientation="Horizontal">
+            <Label Text="Comment:"
+                   VerticalOptions="Center"/>
+            <Picker VerticalOptions="Center">
+                <Picker.Items>
+                    <x:String>User 1</x:String>
+                    <x:String>User 2</x:String>
+                    <x:String>User 3</x:String>
+                </Picker.Items>
+            </Picker>
+            <Entry Placeholder="Enter comment"
+                   HorizontalOptions="FillAndExpand"
+                   VerticalOptions="Center"/>
+            <Button Text="Save"
+                    VerticalOptions="Center"/>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

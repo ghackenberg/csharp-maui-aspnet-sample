@@ -1,9 +1,9 @@
 namespace CustomApp.Pages;
 
-public partial class PageD : ContentPage
+public partial class UserPage : ContentPage
 {
 
-	public PageD()
+	public UserPage()
 	{
 		InitializeComponent();
 	}

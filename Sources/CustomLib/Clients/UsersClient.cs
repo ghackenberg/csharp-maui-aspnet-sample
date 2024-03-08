@@ -1,21 +1,21 @@
 ﻿using CustomLib.Interfaces;
-using CustomLib.Models.Issues;
+using CustomLib.Models.Users;
 
 namespace CustomLib.Clients
 {
     /// <summary>
-    /// A singleton for callding issue CRUD operations via HTTP.
+    /// A singleton for calling user CRUD operations via HTTP.
     /// </summary>
-    public class IssueClient : AbstractClient<IssueGet, IssuePost, IssuePut>, IssuesInterface
+    public class UsersClient : AbstractClient<UserGet, UserPost, UserPut>, UsersInterface
     {
         /// <summary>
         /// The singleton instance.
         /// </summary>
-        public static readonly IssueClient Instance = new IssueClient();
+        public static readonly UsersClient Instance = new UsersClient();
 
         /// <summary>
         /// The private constructor preventing other singleton instances.
         /// </summary>
-        private IssueClient() : base("issues") { }
+        public UsersClient() : base("users") { }
     }
 }

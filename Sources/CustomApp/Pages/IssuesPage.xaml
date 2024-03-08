@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:CustomApp.Models.Pages"
+             x:Class="CustomApp.Pages.IssuesPage"
+             Title="Issues Page">
+    <ContentPage.BindingContext>
+        <models:IssuesPageModel />
+    </ContentPage.BindingContext>
+    <Grid>
+        <ContentView IsVisible="{Binding Path=Load}">
+            <StackLayout Spacing="20" Margin="20">
+                <ActivityIndicator HorizontalOptions="Center"
+                                   VerticalOptions="CenterAndExpand"
+                                   IsRunning="True"/>
+            </StackLayout>
+        </ContentView>
+        <Grid IsVisible="{Binding Path=Done}">
+            <ContentView IsVisible="{Binding Path=Error}">
+                <StackLayout Spacing="20" Margin="20">
+                    <Label Text="Error"
+                           TextColor="Red"
+                           HorizontalOptions="Center"
+                           VerticalOptions="CenterAndExpand"/>
+                </StackLayout>
+            </ContentView>
+            <ContentView IsVisible="{Binding Path=Success}">
+                <StackLayout Spacing="20" Margin="20">
+                    <Label Text="Coming soon"
+                           HorizontalOptions="Center"
+                           VerticalOptions="CenterAndExpand"/>
+                    <Label Text="{Binding Path=Count}"
+                           HorizontalOptions="Center"
+                           VerticalOptions="CenterAndExpand"/>
+                    <Button Text="Add issue"
+                            Clicked="OnClicked"/>
+                </StackLayout>
+            </ContentView>
+        </Grid>
+    </Grid>
+</ContentPage>

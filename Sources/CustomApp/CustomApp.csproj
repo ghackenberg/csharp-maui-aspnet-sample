@@ -67,16 +67,35 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Pages\PageA.xaml">
+	  <ProjectReference Include="..\CustomLib\CustomLib.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Pages\IssuesPage.xaml.cs">
+	    <DependentUpon>IssuesPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\IssuePage.xaml.cs">
+	    <DependentUpon>IssuePage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\UserPage.xaml.cs">
+	    <DependentUpon>UserPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\UsersPage.xaml.cs">
+	    <DependentUpon>UsersPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Pages\UsersPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\PageB.xaml">
+	  <MauiXaml Update="Pages\IssuesPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\PageC.xaml">
+	  <MauiXaml Update="Pages\IssuePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\PageD.xaml">
+	  <MauiXaml Update="Pages\UserPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\ShellFlyoutFooter.xaml">

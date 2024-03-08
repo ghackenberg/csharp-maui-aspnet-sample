@@ -13,14 +13,11 @@
         <views:ShellFlyoutHeader />
     </Shell.FlyoutHeader>
 
-    <FlyoutItem Title="Page A" Icon="tab.png" Route="a">
-        <ShellContent ContentTemplate="{DataTemplate pages:PageA}" />
+    <FlyoutItem Title="Users" Icon="user.png" Route="users">
+        <ShellContent ContentTemplate="{DataTemplate pages:UsersPage}" />
     </FlyoutItem>
-    <FlyoutItem Title="Page B" Icon="tab.png" Route="b">
-        <ShellContent ContentTemplate="{DataTemplate pages:PageB}" />
-    </FlyoutItem>
-    <FlyoutItem Title="Page C" Icon="tab.png" Route="c">
-        <ShellContent ContentTemplate="{DataTemplate pages:PageC}" />
+    <FlyoutItem Title="Issues" Icon="issue.png" Route="issues">
+        <ShellContent ContentTemplate="{DataTemplate pages:IssuesPage}" />
     </FlyoutItem>
 
     <Shell.FlyoutFooter>

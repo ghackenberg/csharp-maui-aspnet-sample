@@ -8,7 +8,8 @@ namespace CustomApp
         {
             InitializeComponent();
 
-            Routing.RegisterRoute("b/d", typeof(PageD));
+            Routing.RegisterRoute("users/user", typeof(UserPage));
+            Routing.RegisterRoute("issues/issue", typeof(IssuePage));
         }
     }
 }
