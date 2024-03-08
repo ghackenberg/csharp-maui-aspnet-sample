@@ -1,7 +1,6 @@
-﻿using CustomLib.Exceptions;
+﻿using CustomLib.Exceptions.Http;
 using CustomLib.Interfaces;
 using CustomLib.Models.Issues;
-using System.Net;
 
 namespace CustomApi.Managers
 {
@@ -33,7 +32,7 @@ namespace CustomApi.Managers
         /// List all issues, which have been created and not deleted.
         /// </summary>
         /// <returns>The issue objects.</returns>
-        public async Task<List<IssueGet>?> List()
+        public async Task<List<IssueGet>> List()
         {
             return await Task.Run(() =>
             {
@@ -56,7 +55,7 @@ namespace CustomApi.Managers
         /// </summary>
         /// <param name="data">The new issue data.</param>
         /// <returns>The new issue object.</returns>
-        public async Task<IssueGet?> Post(IssuePost data)
+        public async Task<IssueGet> Post(IssuePost data)
         {
             return await Task.Run(async () =>
             {
@@ -90,8 +89,8 @@ namespace CustomApi.Managers
         /// </summary>
         /// <param name="id">The existing issue id.</param>
         /// <returns>The existing user object.</returns>
-        /// <exception cref="HttpException">Issue ID not found.</exception>
-        public async Task<IssueGet?> Get(string id)
+        /// <exception cref="HttpNotFoundException">Issue ID not found.</exception>
+        public async Task<IssueGet> Get(string id)
         {
             return await Task.Run(() =>
             {
@@ -99,14 +98,14 @@ namespace CustomApi.Managers
 
                 if (!_dict.ContainsKey(id))
                 {
-                    throw new HttpException(HttpStatusCode.NotFound, "Issue not found");
+                    throw new HttpNotFoundException();
                 }
 
                 var issue = _dict[id];
 
                 if (issue.DeletedAt != null)
                 {
-                    throw new HttpException(HttpStatusCode.NotFound, "Issue not found");
+                    throw new HttpNotFoundException();
                 }
 
                 // Return issue
@@ -121,8 +120,8 @@ namespace CustomApi.Managers
         /// <param name="id">The existing issue ID.</param>
         /// <param name="data">The updated issue data.</param>
         /// <returns>The updated issue object.</returns>
-        /// <exception cref="HttpException">Issue ID not found.</exception>
-        public async Task<IssueGet?> Put(string id, IssuePut data)
+        /// <exception cref="HttpNotFoundException">Issue ID not found.</exception>
+        public async Task<IssueGet> Put(string id, IssuePut data)
         {
             return await Task.Run(() =>
             {
@@ -130,14 +129,14 @@ namespace CustomApi.Managers
 
                 if (!_dict.ContainsKey(id))
                 {
-                    throw new HttpException(HttpStatusCode.NotFound, "Issue not found");
+                    throw new HttpNotFoundException();
                 }
 
                 var issue = _dict[id];
 
                 if (issue.DeletedAt != null)
                 {
-                    throw new HttpException(HttpStatusCode.NotFound, "Issue not found");
+                    throw new HttpNotFoundException();
                 }
 
                 // Update issue
@@ -156,21 +155,21 @@ namespace CustomApi.Managers
         /// </summary>
         /// <param name="id">The existing issue ID.</param>
         /// <returns>The deleted issue object.</returns>
-        /// <exception cref="HttpException">Issue ID not found.</exception>
-        public async Task<IssueGet?> Delete(string id)
+        /// <exception cref="HttpNotFoundException">Issue ID not found.</exception>
+        public async Task<IssueGet> Delete(string id)
         {
             // Check issue
             
             if (!_dict.ContainsKey(id))
             {
-                throw new HttpException(HttpStatusCode.NotFound, "Issue not found");
+                throw new HttpNotFoundException();
             }
 
             var issue = _dict[id];
 
             if (issue.DeletedAt != null)
             {
-                throw new HttpException(HttpStatusCode.NotFound, "Issue not found");
+                throw new HttpNotFoundException();
             }
 
             // Delete issue

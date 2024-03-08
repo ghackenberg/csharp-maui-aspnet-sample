@@ -1,7 +1,6 @@
-﻿using CustomLib.Exceptions;
+﻿using CustomLib.Exceptions.Http;
 using CustomLib.Interfaces;
 using CustomLib.Models.Comments;
-using System.Net;
 
 namespace CustomApi.Managers
 {
@@ -33,7 +32,7 @@ namespace CustomApi.Managers
         /// List all comments, which have been created and not deleted.
         /// </summary>
         /// <returns>The comment objects.</returns>
-        public async Task<List<CommentGet>?> List()
+        public async Task<List<CommentGet>> List()
         {
             return await Task.Run(() =>
             {
@@ -56,7 +55,7 @@ namespace CustomApi.Managers
         /// </summary>
         /// <param name="data">The new comment data.</param>
         /// <returns>The new comment object.</returns>
-        public async Task<CommentGet?> Post(CommentPost data)
+        public async Task<CommentGet> Post(CommentPost data)
         {
             return await Task.Run(async () =>
             {
@@ -92,8 +91,8 @@ namespace CustomApi.Managers
         /// </summary>
         /// <param name="id">The existing comment ID.</param>
         /// <returns>The existing comment object.</returns>
-        /// <exception cref="HttpException">Comment ID not found.</exception>
-        public async Task<CommentGet?> Get(string id)
+        /// <exception cref="HttpNotFoundException">Comment ID not found.</exception>
+        public async Task<CommentGet> Get(string id)
         {
             return await Task.Run(() =>
             {
@@ -101,14 +100,14 @@ namespace CustomApi.Managers
 
                 if (!_dict.ContainsKey(id))
                 {
-                    throw new HttpException(HttpStatusCode.NotFound, "Comment not found");
+                    throw new HttpNotFoundException();
                 }
 
                 var comment = _dict[id];
 
                 if (comment.DeletedAt != null)
                 {
-                    throw new HttpException(HttpStatusCode.NotFound, "Comment not found");
+                    throw new HttpNotFoundException();
                 }
 
                 // Return comment
@@ -123,8 +122,8 @@ namespace CustomApi.Managers
         /// <param name="id">The existing comment ID.</param>
         /// <param name="data">The updated comment data.</param>
         /// <returns>The updated comment object.</returns>
-        /// <exception cref="HttpException">Comment ID not found.</exception>
-        public async Task<CommentGet?> Put(string id, CommentPut data)
+        /// <exception cref="HttpNotFoundException">Comment ID not found.</exception>
+        public async Task<CommentGet> Put(string id, CommentPut data)
         {
             return await Task.Run(() =>
             {
@@ -132,14 +131,14 @@ namespace CustomApi.Managers
 
                 if (!_dict.ContainsKey(id))
                 {
-                    throw new HttpException(HttpStatusCode.NotFound, "Comment not found");
+                    throw new HttpNotFoundException();
                 }
 
                 var comment = _dict[id];
 
                 if (comment.DeletedAt != null)
                 {
-                    throw new HttpException(HttpStatusCode.NotFound, "Comment not found");
+                    throw new HttpNotFoundException();
                 }
 
                 // Update comment
@@ -158,8 +157,8 @@ namespace CustomApi.Managers
         /// </summary>
         /// <param name="id">The exsting comment ID.</param>
         /// <returns>The deleted comment object.</returns>
-        /// <exception cref="HttpException">Comment ID not found.</exception>
-        public async Task<CommentGet?> Delete(string id)
+        /// <exception cref="HttpNotFoundException">Comment ID not found.</exception>
+        public async Task<CommentGet> Delete(string id)
         {
             return await Task.Run(() =>
             {
@@ -167,14 +166,14 @@ namespace CustomApi.Managers
 
                 if (!_dict.ContainsKey(id))
                 {
-                    throw new HttpException(HttpStatusCode.NotFound, "Comment not found");
+                    throw new HttpNotFoundException();
                 }
 
                 var comment = _dict[id];
 
                 if (comment.DeletedAt != null)
                 {
-                    throw new HttpException(HttpStatusCode.NotFound, "Comment not found");
+                    throw new HttpNotFoundException();
                 }
 
                 // Delete comment

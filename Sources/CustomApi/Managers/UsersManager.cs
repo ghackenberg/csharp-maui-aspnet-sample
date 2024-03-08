@@ -1,7 +1,6 @@
-﻿using CustomLib.Exceptions;
+﻿using CustomLib.Exceptions.Http;
 using CustomLib.Interfaces;
 using CustomLib.Models.Users;
-using System.Net;
 
 namespace CustomApi.Managers
 {
@@ -33,7 +32,7 @@ namespace CustomApi.Managers
         /// List all users, which have been created and not deleted.
         /// </summary>
         /// <returns>The user objects.</returns>
-        public async Task<List<UserGet>?> List()
+        public async Task<List<UserGet>> List()
         {
             return await Task.Run(() =>
             {
@@ -56,7 +55,7 @@ namespace CustomApi.Managers
         /// </summary>
         /// <param name="data">The new user data.</param>
         /// <returns>The new user object.</returns>
-        public async Task<UserGet?> Post(UserPost data)
+        public async Task<UserGet> Post(UserPost data)
         {
             return await Task.Run(() =>
             {
@@ -86,8 +85,8 @@ namespace CustomApi.Managers
         /// </summary>
         /// <param name="id">The existing user ID.</param>
         /// <returns>The existing user object.</returns>
-        /// <exception cref="HttpException">User ID not found.</exception>
-        public async Task<UserGet?> Get(string id)
+        /// <exception cref="HttpNotFoundException">User ID not found.</exception>
+        public async Task<UserGet> Get(string id)
         {
             return await Task.Run(() =>
             {
@@ -95,14 +94,14 @@ namespace CustomApi.Managers
 
                 if (!_dict.ContainsKey(id))
                 {
-                    throw new HttpException(HttpStatusCode.NotFound, "User not found");
+                    throw new HttpNotFoundException();
                 }
 
                 var user = _dict[id];
 
                 if (user.DeletedAt != null)
                 {
-                    throw new HttpException(HttpStatusCode.NotFound, "User not found");
+                    throw new HttpNotFoundException();
                 }
 
                 // Return user
@@ -117,8 +116,8 @@ namespace CustomApi.Managers
         /// <param name="id">The existing user ID.</param>
         /// <param name="data">The updated user data.</param>
         /// <returns>The updated user object.</returns>
-        /// <exception cref="HttpException">User ID not found.</exception>
-        public async Task<UserGet?> Put(string id, UserPut data)
+        /// <exception cref="HttpNotFoundException">User ID not found.</exception>
+        public async Task<UserGet> Put(string id, UserPut data)
         {
             return await Task.Run(() =>
             {
@@ -126,14 +125,14 @@ namespace CustomApi.Managers
 
                 if (!_dict.ContainsKey(id))
                 {
-                    throw new HttpException(HttpStatusCode.NotFound, "User not found");
+                    throw new HttpNotFoundException();
                 }
 
                 var user = _dict[id];
 
                 if (user.DeletedAt != null)
                 {
-                    throw new HttpException(HttpStatusCode.NotFound, "User not found");
+                    throw new HttpNotFoundException();
                 }
 
                 // Update user
@@ -153,21 +152,21 @@ namespace CustomApi.Managers
         /// </summary>
         /// <param name="id">The existing user ID.</param>
         /// <returns>The deleted user object.</returns>
-        /// <exception cref="HttpException">User ID not found.</exception>
-        public async Task<UserGet?> Delete(string id)
+        /// <exception cref="HttpNotFoundException">User ID not found.</exception>
+        public async Task<UserGet> Delete(string id)
         {
             // Check user
 
             if (!_dict.ContainsKey(id))
             {
-                throw new HttpException(HttpStatusCode.NotFound, "User not found");
+                throw new HttpNotFoundException();
             }
 
             var user = _dict[id];
 
             if (user.DeletedAt != null)
             {
-                throw new HttpException(HttpStatusCode.NotFound, "User not found");
+                throw new HttpNotFoundException();
             }
 
             // Delete user
