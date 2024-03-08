@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CustomApi.Controllers
 {
+    /// <summary>
+    /// Provides HTTP bindings for comment CRUD operations.
+    /// </summary>
     [Route("api/comments")]
     [ApiController]
     public class CommentsController : ControllerBase, CommentsInterface

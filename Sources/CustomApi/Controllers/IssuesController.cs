@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CustomApi.Controllers
 {
+    /// <summary>
+    /// Provides HTTP bindings for issue CRUD operations.
+    /// </summary>
     [Route("api/issues")]
     [ApiController]
     public class IssuesController : ControllerBase, IssuesInterface

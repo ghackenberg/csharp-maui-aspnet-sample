@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CustomApi.Controllers
 {
+    /// <summary>
+    /// Provides HTTP bindings for user CRUD operations.
+    /// </summary>
     [Route("api/users")]
     [ApiController]
     public class UsersController : ControllerBase
