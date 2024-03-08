@@ -91,7 +91,7 @@ namespace CustomApi.Managers
         /// </summary>
         /// <param name="id">The existing comment ID.</param>
         /// <returns>The existing comment object.</returns>
-        /// <exception cref="HttpNotFoundException">Comment ID not found.</exception>
+        /// <exception cref="NotFoundException">Comment ID not found.</exception>
         public async Task<CommentGet> Get(string id)
         {
             return await Task.Run(() =>
@@ -100,14 +100,14 @@ namespace CustomApi.Managers
 
                 if (!_dict.ContainsKey(id))
                 {
-                    throw new HttpNotFoundException();
+                    throw new NotFoundException();
                 }
 
                 var comment = _dict[id];
 
                 if (comment.DeletedAt != null)
                 {
-                    throw new HttpNotFoundException();
+                    throw new NotFoundException();
                 }
 
                 // Return comment
@@ -122,7 +122,7 @@ namespace CustomApi.Managers
         /// <param name="id">The existing comment ID.</param>
         /// <param name="data">The updated comment data.</param>
         /// <returns>The updated comment object.</returns>
-        /// <exception cref="HttpNotFoundException">Comment ID not found.</exception>
+        /// <exception cref="NotFoundException">Comment ID not found.</exception>
         public async Task<CommentGet> Put(string id, CommentPut data)
         {
             return await Task.Run(() =>
@@ -131,14 +131,14 @@ namespace CustomApi.Managers
 
                 if (!_dict.ContainsKey(id))
                 {
-                    throw new HttpNotFoundException();
+                    throw new NotFoundException();
                 }
 
                 var comment = _dict[id];
 
                 if (comment.DeletedAt != null)
                 {
-                    throw new HttpNotFoundException();
+                    throw new NotFoundException();
                 }
 
                 // Update comment
@@ -157,7 +157,7 @@ namespace CustomApi.Managers
         /// </summary>
         /// <param name="id">The exsting comment ID.</param>
         /// <returns>The deleted comment object.</returns>
-        /// <exception cref="HttpNotFoundException">Comment ID not found.</exception>
+        /// <exception cref="NotFoundException">Comment ID not found.</exception>
         public async Task<CommentGet> Delete(string id)
         {
             return await Task.Run(() =>
@@ -166,14 +166,14 @@ namespace CustomApi.Managers
 
                 if (!_dict.ContainsKey(id))
                 {
-                    throw new HttpNotFoundException();
+                    throw new NotFoundException();
                 }
 
                 var comment = _dict[id];
 
                 if (comment.DeletedAt != null)
                 {
-                    throw new HttpNotFoundException();
+                    throw new NotFoundException();
                 }
 
                 // Delete comment

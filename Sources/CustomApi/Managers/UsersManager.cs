@@ -85,7 +85,7 @@ namespace CustomApi.Managers
         /// </summary>
         /// <param name="id">The existing user ID.</param>
         /// <returns>The existing user object.</returns>
-        /// <exception cref="HttpNotFoundException">User ID not found.</exception>
+        /// <exception cref="NotFoundException">User ID not found.</exception>
         public async Task<UserGet> Get(string id)
         {
             return await Task.Run(() =>
@@ -94,14 +94,14 @@ namespace CustomApi.Managers
 
                 if (!_dict.ContainsKey(id))
                 {
-                    throw new HttpNotFoundException();
+                    throw new NotFoundException();
                 }
 
                 var user = _dict[id];
 
                 if (user.DeletedAt != null)
                 {
-                    throw new HttpNotFoundException();
+                    throw new NotFoundException();
                 }
 
                 // Return user
@@ -116,7 +116,7 @@ namespace CustomApi.Managers
         /// <param name="id">The existing user ID.</param>
         /// <param name="data">The updated user data.</param>
         /// <returns>The updated user object.</returns>
-        /// <exception cref="HttpNotFoundException">User ID not found.</exception>
+        /// <exception cref="NotFoundException">User ID not found.</exception>
         public async Task<UserGet> Put(string id, UserPut data)
         {
             return await Task.Run(() =>
@@ -125,14 +125,14 @@ namespace CustomApi.Managers
 
                 if (!_dict.ContainsKey(id))
                 {
-                    throw new HttpNotFoundException();
+                    throw new NotFoundException();
                 }
 
                 var user = _dict[id];
 
                 if (user.DeletedAt != null)
                 {
-                    throw new HttpNotFoundException();
+                    throw new NotFoundException();
                 }
 
                 // Update user
@@ -152,21 +152,21 @@ namespace CustomApi.Managers
         /// </summary>
         /// <param name="id">The existing user ID.</param>
         /// <returns>The deleted user object.</returns>
-        /// <exception cref="HttpNotFoundException">User ID not found.</exception>
+        /// <exception cref="NotFoundException">User ID not found.</exception>
         public async Task<UserGet> Delete(string id)
         {
             // Check user
 
             if (!_dict.ContainsKey(id))
             {
-                throw new HttpNotFoundException();
+                throw new NotFoundException();
             }
 
             var user = _dict[id];
 
             if (user.DeletedAt != null)
             {
-                throw new HttpNotFoundException();
+                throw new NotFoundException();
             }
 
             // Delete user

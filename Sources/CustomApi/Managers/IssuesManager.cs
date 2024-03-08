@@ -89,7 +89,7 @@ namespace CustomApi.Managers
         /// </summary>
         /// <param name="id">The existing issue id.</param>
         /// <returns>The existing user object.</returns>
-        /// <exception cref="HttpNotFoundException">Issue ID not found.</exception>
+        /// <exception cref="NotFoundException">Issue ID not found.</exception>
         public async Task<IssueGet> Get(string id)
         {
             return await Task.Run(() =>
@@ -98,14 +98,14 @@ namespace CustomApi.Managers
 
                 if (!_dict.ContainsKey(id))
                 {
-                    throw new HttpNotFoundException();
+                    throw new NotFoundException();
                 }
 
                 var issue = _dict[id];
 
                 if (issue.DeletedAt != null)
                 {
-                    throw new HttpNotFoundException();
+                    throw new NotFoundException();
                 }
 
                 // Return issue
@@ -120,7 +120,7 @@ namespace CustomApi.Managers
         /// <param name="id">The existing issue ID.</param>
         /// <param name="data">The updated issue data.</param>
         /// <returns>The updated issue object.</returns>
-        /// <exception cref="HttpNotFoundException">Issue ID not found.</exception>
+        /// <exception cref="NotFoundException">Issue ID not found.</exception>
         public async Task<IssueGet> Put(string id, IssuePut data)
         {
             return await Task.Run(() =>
@@ -129,14 +129,14 @@ namespace CustomApi.Managers
 
                 if (!_dict.ContainsKey(id))
                 {
-                    throw new HttpNotFoundException();
+                    throw new NotFoundException();
                 }
 
                 var issue = _dict[id];
 
                 if (issue.DeletedAt != null)
                 {
-                    throw new HttpNotFoundException();
+                    throw new NotFoundException();
                 }
 
                 // Update issue
@@ -155,21 +155,21 @@ namespace CustomApi.Managers
         /// </summary>
         /// <param name="id">The existing issue ID.</param>
         /// <returns>The deleted issue object.</returns>
-        /// <exception cref="HttpNotFoundException">Issue ID not found.</exception>
+        /// <exception cref="NotFoundException">Issue ID not found.</exception>
         public async Task<IssueGet> Delete(string id)
         {
             // Check issue
             
             if (!_dict.ContainsKey(id))
             {
-                throw new HttpNotFoundException();
+                throw new NotFoundException();
             }
 
             var issue = _dict[id];
 
             if (issue.DeletedAt != null)
             {
-                throw new HttpNotFoundException();
+                throw new NotFoundException();
             }
 
             // Delete issue
