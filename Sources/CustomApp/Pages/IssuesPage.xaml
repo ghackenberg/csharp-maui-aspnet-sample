@@ -4,11 +4,7 @@
              xmlns:models="clr-namespace:CustomApp.Models.Pages"
              x:Class="CustomApp.Pages.IssuesPage"
              Title="Issues Page">
-    
-    <ContentPage.BindingContext>
-        <models:IssuesPageModel />
-    </ContentPage.BindingContext>
-    
+
     <StackLayout Spacing="20" Margin="20">
         <Button Text="Reload issues"
                 Clicked="OnReloadClicked"

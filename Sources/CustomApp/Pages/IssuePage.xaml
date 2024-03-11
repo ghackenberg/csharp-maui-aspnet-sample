@@ -4,11 +4,7 @@
              xmlns:models="clr-namespace:CustomApp.Models.Pages"
              x:Class="CustomApp.Pages.IssuePage"
              Title="Issue Page">
-    
-    <ContentPage.BindingContext>
-        <models:IssuePageModel />
-    </ContentPage.BindingContext>
-    
+
     <StackLayout Spacing="20" Margin="20">
         <Label Text="Coming soon"
                HorizontalOptions="Center"

@@ -4,10 +4,6 @@
              xmlns:models="clr-namespace:CustomApp.Models.Pages"
              x:Class="CustomApp.Pages.UsersPage"
              Title="Users Page">
-    
-    <ContentPage.BindingContext>
-        <models:UsersPageModel />
-    </ContentPage.BindingContext>
 
     <StackLayout Spacing="20" Margin="20">
         <Button Text="Reload users"

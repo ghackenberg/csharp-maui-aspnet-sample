@@ -5,31 +5,54 @@ namespace CustomApp.Pages;
 
 public partial class UsersPage : ContentPage
 {
-    private UsersPageModel ViewModel => (UsersPageModel)BindingContext;
     public UsersPage()
 	{
 		InitializeComponent();
+
+        BindingContext = UsersPageModel.Instance;
     }
 
     private void OnReloadClicked(object sender, EventArgs e)
     {
-        ViewModel.Reload();
+        // Reload items
+        UsersPageModel.Instance.Reload();
     }
 
     private void OnIssueClicked(object sender, SelectedItemChangedEventArgs e)
     {
+        // Get item
         var user = (UserGet)e.SelectedItem;
+
+        // Build item
+        var item = new UserGet
+        {
+            UserId = user.UserId,
+            CreatedAt = user.CreatedAt,
+            UpdatedAt = user.UpdatedAt,
+            DeletedAt = user.DeletedAt,
+            FirstName = user.FirstName,
+            LastName = user.LastName
+        };
+
+        // Build parameters
         var parameter = new Dictionary<string, object>()
         {
-            { "UserId", user.UserId },
-            { "FirstName", user.FirstName },
-            { "LastName", user.LastName }
+            { "Item", item }
         };
+
+        // Change route
         Shell.Current.GoToAsync("user", parameter);
     }
 
     private void OnCreateClicked(object sender, EventArgs e)
     {
-        Shell.Current.GoToAsync("user");
+        // Build parameters
+        var parameter = new Dictionary<string, object>()
+        {
+            { "Item", new UserGet() }
+        };
+
+        // Change route
+        Shell.Current.GoToAsync("user", parameter);
     }
 }

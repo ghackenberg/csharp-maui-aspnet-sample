@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 
 namespace CustomApp.Models
 {
-    abstract class AbstractModel : INotifyPropertyChanged
+    public abstract class AbstractModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 

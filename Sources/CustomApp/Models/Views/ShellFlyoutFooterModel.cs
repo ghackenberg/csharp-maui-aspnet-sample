@@ -1,6 +1,6 @@
 ﻿namespace CustomApp.Models.Views
 {
-    class ShellFlyoutFooterModel : AbstractModel
+    public class ShellFlyoutFooterModel : AbstractModel
     {
 
     }

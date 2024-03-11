@@ -6,30 +6,35 @@ namespace CustomApp.Pages;
 
 public partial class UserPage : ContentPage
 {
-    private UserPageModel ViewModel => (UserPageModel)BindingContext;
-
     public UserPage()
 	{
-		InitializeComponent();
-	}
+    	InitializeComponent();
+
+        BindingContext = UserPageModel.Instance;
+    }
 
     private void OnSaveClicked(object sender, EventArgs e)
     {
         Task.Run(async () =>
         {
-            ViewModel.IsSaveEnabled = false;
+            UserPageModel.Instance.IsSaveEnabled = false;
 
-            ViewModel.IsLoadVisible = true;
-            ViewModel.IsErrorVisible = false;
+            UserPageModel.Instance.IsLoadVisible = true;
+            UserPageModel.Instance.IsErrorVisible = false;
 
             try
             {
-                if (ViewModel.UserId.Equals(""))
+                if (UserPageModel.Instance.Item == null)
+                {
+                    throw new Exception("Unexpected application state");
+                }
+
+                if (UserPageModel.Instance.Item.UserId.Equals(""))
                 {
                     var data = new UserPost
                     {
-                        FirstName = ViewModel.FirstName,
-                        LastName = ViewModel.LastName
+                        FirstName = UserPageModel.Instance.Item.FirstName,
+                        LastName = UserPageModel.Instance.Item.LastName
                     };
 
                     await UsersClient.Instance.Post(data);
@@ -38,24 +43,27 @@ public partial class UserPage : ContentPage
                 {
                     var data = new UserPut
                     {
-                        FirstName = ViewModel.FirstName,
-                        LastName = ViewModel.LastName
+                        FirstName = UserPageModel.Instance.Item.FirstName,
+                        LastName = UserPageModel.Instance.Item.LastName
                     };
 
-                    await UsersClient.Instance.Put(ViewModel.UserId, data);
+                    await UsersClient.Instance.Put(UserPageModel.Instance.Item.UserId, data);
                 }
+
+                UsersPageModel.Instance.Reload();
+
                 await Shell.Current.GoToAsync("..");
             }
             catch (Exception exception)
             {
-                ViewModel.ErrorMessage = exception.Message;
+                UserPageModel.Instance.ErrorMessage = exception.Message;
 
-                ViewModel.IsErrorVisible = true;
+                UserPageModel.Instance.IsErrorVisible = true;
             }
 
-            ViewModel.IsSaveEnabled = true;
+            UserPageModel.Instance.IsSaveEnabled = true;
 
-            ViewModel.IsLoadVisible = false;
+            UserPageModel.Instance.IsLoadVisible = false;
         });
     }
 }

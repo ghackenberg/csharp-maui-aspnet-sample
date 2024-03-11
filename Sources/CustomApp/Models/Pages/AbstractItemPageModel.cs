@@ -1,6 +1,7 @@
 ﻿namespace CustomApp.Models.Pages
 {
-    abstract class AbstractItemPageModel : AbstractModel
+    [QueryProperty(nameof(Item), "Item")]
+    public abstract class AbstractItemPageModel<T> : AbstractModel
     {
         private bool _isSaveEnabled = true;
 
@@ -8,6 +9,8 @@
         private bool _isErrorVisible = false;
 
         private string? _errorMessage;
+
+        private T? _item;
 
         public bool IsSaveEnabled
         {
@@ -31,6 +34,12 @@
         {
             set => SetProperty(ref _errorMessage, value);
             get => _errorMessage;
+        }
+
+        public T? Item
+        {
+            set => SetProperty(ref _item, value);
+            get => _item;
         }
     }
 }

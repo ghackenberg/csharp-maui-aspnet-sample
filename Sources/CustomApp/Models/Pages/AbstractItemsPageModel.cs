@@ -1,6 +1,6 @@
 ﻿namespace CustomApp.Models
 {
-    abstract class AbstractItemsPageModel<T> : AbstractModel
+    public abstract class AbstractItemsPageModel<T> : AbstractModel
     {
         private bool _isReloadEnabled;
         private bool _isCreateEnabled;

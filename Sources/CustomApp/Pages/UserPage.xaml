@@ -4,26 +4,22 @@
              xmlns:models="clr-namespace:CustomApp.Models.Pages"
              x:Class="CustomApp.Pages.UserPage"
              Title="User Page">
-    
-    <ContentPage.BindingContext>
-        <models:UserPageModel />
-    </ContentPage.BindingContext>
-    
+
     <StackLayout Spacing="20" Margin="20">
         <TableView Intent="Form">
             <TableRoot>
                 <TableSection>
                     <EntryCell Label="User ID"
                                Placeholder="The user ID will be generated automatically"
-                               Text="{Binding Path=UserId}"
+                               Text="{Binding Path=Item.UserId}"
                                IsEnabled="False"/>
                     <EntryCell Label="First name"
                                Placeholder="Enter first name"
-                               Text="{Binding Path=FirstName}"
+                               Text="{Binding Path=Item.FirstName}"
                                IsEnabled="{Binding Path=IsSaveEnabled}"/>
                     <EntryCell Label="Last name"
                                Placeholder="Enter last name"
-                               Text="{Binding Path=LastName}"
+                               Text="{Binding Path=Item.LastName}"
                                IsEnabled="{Binding Path=IsSaveEnabled}"/>
                 </TableSection>
             </TableRoot>
