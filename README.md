@@ -2,7 +2,31 @@
 
 This project contains a **Sample Application** based on the awesome **.NET MAUI** and **ASP.NET** frameworks. Note that .NET MAUI allows you to build cross-platfrom graphical user interfaces, while ASP.NET supports you in building Cloud services. Here is a screenshot of the graphical user interface of this sample application:
 
-![.NET MAUI / ASP.NET Sample Screenshot](./Screenshots/CustomApp.png)
+## Screenshots
+
+In the following, we provide screenshots of the sample application to give a first impression of its functionality. The following screenshots are included:
+
+1. **.NET MAUI Users Page** provides a list of existing users
+2. **.NET MAUI User Page** provides details of one user
+3. **ASP.NET Swagger UI** provides the REST API documentation
+
+### .NET MAUI Users Page
+
+The **.NET MAUI Users Page** provides a list of existing users, allows you to reload the list of existing users, and provides means for editing existing users or creating new users. The users are retrieved from the backend service.
+
+![.NET MAUI / ASP.NET Sample Users Screenshot](./Screenshots/CustomApp-Users.png)
+
+### .NET MAUI User Page
+
+The **.NET MAUI User Page** provides means for editing the information of existing users or entering the information of new users and sending the information to the Cloud-based backend services for long-term storage.
+
+![.NET MAUI / ASP.NET Sample User Screenshot](./Screenshots/CustomApp-User.png)
+
+### ASP.NET Swagger UI
+
+The **ASP.NET Swagger UI** provides a documentation of the Cloud-based backend services, which are exposed via HTTP REST API. For each endpoint, the expected inputs and provided outputs are shown including examples.
+
+![.NET MAUI / ASP.NET Sample User Screenshot](./Screenshots/CustomApi.png)
 
 ## Software architecture
 
@@ -10,8 +34,6 @@ In the following, we explain the software architecture of the sample application
 
 1. **Package structure** describes the C# packages (i.e. DLLs and EXEs) and their relations.
 2. **Data structure** describes the database entities, their attributes, and their relations.
-
-Read more below.
 
 ### Package structure
 
