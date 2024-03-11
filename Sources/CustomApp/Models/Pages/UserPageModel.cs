@@ -9,8 +9,8 @@ namespace CustomApp.Models.Pages
 
         public UserGet? User
         {
-            set { SetProperty(ref _user, value); }
-            get { return _user; }
+            set => SetProperty(ref _user, value);
+            get => _user;
         }
     }
 }

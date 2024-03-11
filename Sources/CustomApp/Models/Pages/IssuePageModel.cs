@@ -9,8 +9,8 @@ namespace CustomApp.Models.Pages
 
         public IssueGet? Issue
         {
-            set { SetProperty(ref _issue, value); }
-            get { return _issue; }
+            set => SetProperty(ref _issue, value);
+            get => _issue;
         }
     }
 }

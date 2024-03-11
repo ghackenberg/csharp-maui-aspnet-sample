@@ -16,38 +16,38 @@ namespace CustomApp.Models.Pages
 
         public bool IsReloadEnabled
         {
-            set { SetProperty(ref _isReloadEnabled, value); }
-            get { return _isReloadEnabled; }
+            set => SetProperty(ref _isReloadEnabled, value);
+            get => _isReloadEnabled;
         }
 
         public bool IsLoadVisible
         {
-            set { SetProperty(ref _isLoadVisible, value); }  
-            get { return _isLoadVisible; }
+            set => SetProperty(ref _isLoadVisible, value);
+            get => _isLoadVisible;
         }
 
         public bool IsListVisible
         {
-            set { SetProperty(ref _isListVisible, value); }
-            get { return _isListVisible; }
+            set => SetProperty(ref _isListVisible, value);
+            get => _isListVisible;
         }
 
         public bool IsErrorVisible
         {
-            set { SetProperty(ref _isErrorVisible, value); }
-            get { return _isErrorVisible; }
+            set => SetProperty(ref _isErrorVisible, value);
+            get => _isErrorVisible;
         }
 
         public string? ErrorMessage
         {
-            set { SetProperty(ref _errorMessage, value); }
-            get { return _errorMessage; }
+            set => SetProperty(ref _errorMessage, value);
+            get => _errorMessage;
         }
 
         public List<IssueGet>? IssueList
         {
-            set { SetProperty(ref _issueList, value); }
-            get { return _issueList; }
+            set => SetProperty(ref _issueList, value);
+            get => _issueList;
         }
 
         public IssuesPageModel()

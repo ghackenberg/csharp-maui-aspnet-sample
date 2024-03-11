@@ -10,20 +10,20 @@ namespace CustomApp.Models.Pages
 
         public bool Load
         {
-            set { SetProperty(ref _load, value); }
-            get { return _load; }
+            set => SetProperty(ref _load, value);
+            get => _load;
         }
 
         public bool Error
         {
-            set { SetProperty(ref _error, value); }
-            get { return _error; }
+            set => SetProperty(ref _error, value);
+            get => _error;
         }
 
         public int Count
         {
-            set { SetProperty(ref _count, value); }
-            get { return _count; }
+            set => SetProperty(ref _count, value);
+            get => _count;
         }
 
         public UsersPageModel()
