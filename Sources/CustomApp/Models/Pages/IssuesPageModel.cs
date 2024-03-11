@@ -1,86 +1,53 @@
 ﻿using CustomLib.Clients;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
+using CustomLib.Models.Issues;
 
 namespace CustomApp.Models.Pages
 {
-    class IssuesPageModel : INotifyPropertyChanged
+    class IssuesPageModel : AbstractModel
     {
-        public event PropertyChangedEventHandler? PropertyChanged;
+        private bool _isReloadEnabled;
+        private bool _isLoadVisible;
+        private bool _isListVisible;
+        private bool _isErrorVisible;
 
-        private bool _load;
+        private string? _errorMessage;
 
-        private bool _done;
+        private List<IssueGet>? _issueList;
 
-        private bool _success;
-
-        private bool _error;
-
-        private int _count;
-
-        public bool Load
+        public bool IsReloadEnabled
         {
-            get => _load;
-            set
-            {
-                if (_load != value)
-                {
-                    _load = value;
-                    OnPropertyChanged(nameof(Load));
-                }
-            }
+            set { SetProperty(ref _isReloadEnabled, value); }
+            get { return _isReloadEnabled; }
         }
 
-        public bool Done
+        public bool IsLoadVisible
         {
-            get => _done;
-            set
-            {
-                if (_done != value)
-                {
-                    _done = value;
-                    OnPropertyChanged(nameof(Done));
-                }
-            }
+            set { SetProperty(ref _isLoadVisible, value); }  
+            get { return _isLoadVisible; }
         }
 
-        public bool Success
+        public bool IsListVisible
         {
-            get => _success;
-            set
-            {
-                if (_success != value)
-                {
-                    _success = value;
-                    OnPropertyChanged(nameof(Success));
-                }
-            }
+            set { SetProperty(ref _isListVisible, value); }
+            get { return _isListVisible; }
         }
 
-        public bool Error
+        public bool IsErrorVisible
         {
-            get => _error;
-            set
-            {
-                if (_error != value)
-                {
-                    _error = value;
-                    OnPropertyChanged(nameof(Error));
-                }
-            }
+            set { SetProperty(ref _isErrorVisible, value); }
+            get { return _isErrorVisible; }
         }
 
-        public int Count
+        public string? ErrorMessage
         {
-            get => _count;
-            set
-            {
-                if (_count != value)
-                {
-                    _count = value;
-                    OnPropertyChanged(nameof(Count));
-                }
-            }
+            set { SetProperty(ref _errorMessage, value); }
+            get { return _errorMessage; }
+        }
+
+        public List<IssueGet>? IssueList
+        {
+            set { SetProperty(ref _issueList, value); }
+            get { return _issueList; }
         }
 
         public IssuesPageModel()
@@ -90,8 +57,10 @@ namespace CustomApp.Models.Pages
 
         public void Reload()
         {
-            Load = true;
-            Done = false;
+            IsReloadEnabled = false;
+            IsLoadVisible = true;
+            IsListVisible = false;
+            IsErrorVisible = false;
 
             Task.Run(async () =>
             {
@@ -99,25 +68,20 @@ namespace CustomApp.Models.Pages
                 {
                     var issues = await IssuesClient.Instance.List();
 
-                    Count = issues.Count;
+                    IssueList = issues;
 
-                    Success = true;
-                    Error = false;
+                    IsListVisible = true;
                 }
-                catch
+                catch (Exception exception)
                 {
-                    Success = false;
-                    Error = true;
+                    ErrorMessage = exception.Message;
+
+                    IsErrorVisible = true;
                 }
 
-                Load = false;
-                Done = true;
+                IsReloadEnabled = true;
+                IsLoadVisible = false;
             });
-        }
-
-        public void OnPropertyChanged([CallerMemberName] string name = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
     }
 }

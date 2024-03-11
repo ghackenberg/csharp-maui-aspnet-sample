@@ -1,8 +1,11 @@
+using CustomApp.Models.Pages;
+
 namespace CustomApp.Pages;
 
 public partial class UsersPage : ContentPage
 {
-	public UsersPage()
+    private UsersPageModel ViewModel => (UsersPageModel)BindingContext;
+    public UsersPage()
 	{
 		InitializeComponent();
 	}

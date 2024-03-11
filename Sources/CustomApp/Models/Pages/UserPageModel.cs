@@ -1,31 +1,16 @@
-﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
+﻿using CustomLib.Models.Users;
 
 namespace CustomApp.Models.Pages
 {
-    [QueryProperty(nameof(UserId), "UserId")]
-    class UserPageModel : INotifyPropertyChanged
+    [QueryProperty(nameof(User), "User")]
+    class UserPageModel : AbstractModel
     {
-        public event PropertyChangedEventHandler? PropertyChanged;
+        private UserGet? _user;
 
-        private string _userId = "";
-
-        public string UserId
+        public UserGet? User
         {
-            get => _userId;
-            set
-            {
-                if (!_userId.Equals(value))
-                {
-                    _userId = value;
-                    OnPropertyChanged(nameof(UserId));
-                }
-            }
-        }
-
-        public void OnPropertyChanged([CallerMemberName] string name = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+            set { SetProperty(ref _user, value); }
+            get { return _user; }
         }
     }
 }

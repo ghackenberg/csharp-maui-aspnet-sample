@@ -1,57 +1,29 @@
 ﻿using CustomLib.Clients;
-using Microsoft.Maui.Layouts;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 
 namespace CustomApp.Models.Pages
 {
-    class UsersPageModel : INotifyPropertyChanged
+    class UsersPageModel : AbstractModel
     {
-        public event PropertyChangedEventHandler? PropertyChanged;
-
         private bool _load;
-
         private bool _error;
-
         private int _count;
 
         public bool Load
         {
-            get => _load;
-            set
-            {
-                if (_load != value)
-                {
-                    _load = value;
-                    OnPropertyChanged(nameof(Load));
-                }
-            }
+            set { SetProperty(ref _load, value); }
+            get { return _load; }
         }
 
         public bool Error
         {
-            get => _error;
-            set
-            {
-                if (_error != value)
-                {
-                    _error = value;
-                    OnPropertyChanged(nameof(Error));
-                }
-            }
+            set { SetProperty(ref _error, value); }
+            get { return _error; }
         }
 
         public int Count
         {
-            get => _count;
-            set
-            {
-                if (_count != value)
-                {
-                    _count = value;
-                    OnPropertyChanged(nameof(Count));
-                }
-            }
+            set { SetProperty(ref _count, value); }
+            get { return _count; }
         }
 
         public UsersPageModel()
@@ -62,7 +34,6 @@ namespace CustomApp.Models.Pages
         public void Reload()
         {
             Load = true;
-
             Error = false;
 
             Task.Run(async () =>
@@ -79,11 +50,6 @@ namespace CustomApp.Models.Pages
                 }
                 Load = false;
             });
-        }
-
-        public void OnPropertyChanged([CallerMemberName] string name = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
     }
 }

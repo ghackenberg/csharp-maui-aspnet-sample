@@ -63,10 +63,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Models\Globals\" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <ProjectReference Include="..\CustomLib\CustomLib.csproj" />
 	</ItemGroup>
 

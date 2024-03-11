@@ -1,30 +1,16 @@
-﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
+﻿using CustomLib.Models.Issues;
 
 namespace CustomApp.Models.Pages
 {
-    class IssuePageModel : INotifyPropertyChanged
+    [QueryProperty(nameof(Issue), "Issue")]
+    class IssuePageModel : AbstractModel
     {
-        public event PropertyChangedEventHandler? PropertyChanged;
+        private IssueGet? _issue;
 
-        private string _issueId = "";
-
-        public string IssueId
+        public IssueGet? Issue
         {
-            get => _issueId;
-            set
-            {
-                if (!_issueId.Equals(value))
-                {
-                    _issueId = value;
-                    OnPropertyChanged(nameof(IssueId));
-                }
-            }
-        }
-
-        public void OnPropertyChanged([CallerMemberName] string name = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+            set { SetProperty(ref _issue, value); }
+            get { return _issue; }
         }
     }
 }
