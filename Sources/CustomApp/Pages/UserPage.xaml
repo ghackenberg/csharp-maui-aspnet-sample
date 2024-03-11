@@ -6,12 +6,26 @@
              Title="User Page">
 
     <StackLayout Spacing="20" Margin="20">
-        <TableView Intent="Form">
+        <TableView Intent="Form"
+                   HorizontalOptions="Center"
+                   VerticalOptions="CenterAndExpand">
             <TableRoot>
                 <TableSection>
                     <EntryCell Label="User ID"
                                Placeholder="The user ID will be generated automatically"
                                Text="{Binding Path=Item.UserId}"
+                               IsEnabled="False"/>
+                    <EntryCell Label="Created At"
+                               Placeholder="Not created yet"
+                               Text="{Binding Path=Item.CreatedAt}"
+                               IsEnabled="False"/>
+                    <EntryCell Label="Updated At"
+                               Placeholder="Not updated yet"
+                               Text="{Binding Path=Item.UpdatedAt}"
+                               IsEnabled="False"/>
+                    <EntryCell Label="Deleted At"
+                               Placeholder="Not deleted yet"
+                               Text="{Binding Path=Item.DeletedAt}"
                                IsEnabled="False"/>
                     <EntryCell Label="First name"
                                Placeholder="Enter first name"
@@ -26,11 +40,11 @@
         </TableView>
         <ActivityIndicator IsRunning="True"
                            HorizontalOptions="Center"
-                           VerticalOptions="CenterAndExpand"
+                           VerticalOptions="Center"
                            IsVisible="{Binding Path=IsLoadVisible}"/>
         <Label TextColor="Red"
                HorizontalOptions="Center"
-               VerticalOptions="CenterAndExpand"
+               VerticalOptions="Center"
                Text="{Binding Path=ErrorMessage}"
                IsVisible="{Binding Path=IsErrorVisible}"/>
         <Button Text="Save user"
