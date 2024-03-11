@@ -9,8 +9,7 @@
         <models:UserPageModel />
     </ContentPage.BindingContext>
     
-    <StackLayout Spacing="20"
-                 Margin="20">
+    <StackLayout Spacing="20" Margin="20">
         <Label Text="Coming soon"
                HorizontalOptions="Center"
                VerticalOptions="CenterAndExpand"/>

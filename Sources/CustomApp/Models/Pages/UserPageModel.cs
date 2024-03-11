@@ -2,15 +2,8 @@
 
 namespace CustomApp.Models.Pages
 {
-    [QueryProperty(nameof(User), "User")]
-    class UserPageModel : AbstractModel
+    class UserPageModel : AbstractItemPageModel<UserGet>
     {
-        private UserGet? _user;
 
-        public UserGet? User
-        {
-            set => SetProperty(ref _user, value);
-            get => _user;
-        }
     }
 }

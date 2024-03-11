@@ -23,7 +23,7 @@
                Text="{Binding Path=ErrorMessage}"
                IsVisible="{Binding Path=IsErrorVisible}"/>
         <ListView ItemSelected="OnIssueClicked"
-                  ItemsSource="{Binding Path=IssueList}"
+                  ItemsSource="{Binding Path=ItemList}"
                   IsVisible="{Binding Path=IsListVisible}">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -39,7 +39,8 @@
             </ListView.ItemTemplate>
         </ListView>
         <Button Text="Create issue"
-                Clicked="OnCreateClicked"/>
+                Clicked="OnCreateClicked"
+                IsEnabled="{Binding Path=IsCreateEnabled}"/>
     </StackLayout>
     
 </ContentPage>

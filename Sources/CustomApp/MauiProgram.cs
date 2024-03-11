@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using CustomApp.Models.Pages;
+using Microsoft.Extensions.Logging;
 
 namespace CustomApp
 {
@@ -15,9 +16,11 @@ namespace CustomApp
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 }
             );
+            builder.Services.AddSingleton<UsersPageModel>();
+            builder.Services.AddSingleton<IssuesPageModel>();
 
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();

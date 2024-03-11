@@ -8,9 +8,23 @@ public partial class UsersPage : ContentPage
     public UsersPage()
 	{
 		InitializeComponent();
-	}
+    }
 
-    private void OnClicked(object sender, EventArgs e)
+    private void OnReloadClicked(object sender, EventArgs e)
+    {
+        ViewModel.Reload();
+    }
+
+    private void OnIssueClicked(object sender, SelectedItemChangedEventArgs e)
+    {
+        var parameter = new Dictionary<string, object>()
+        {
+            { "Item", e.SelectedItem }
+        };
+        Shell.Current.GoToAsync("user", parameter);
+    }
+
+    private void OnCreateClicked(object sender, EventArgs e)
     {
 		Shell.Current.GoToAsync("user");
     }

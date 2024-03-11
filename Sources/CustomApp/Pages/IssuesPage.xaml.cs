@@ -20,7 +20,7 @@ public partial class IssuesPage : ContentPage
     {
         var parameter = new Dictionary<string, object>()
         {
-            { "Issue", e.SelectedItem }
+            { "Item", e.SelectedItem }
         };
         Shell.Current.GoToAsync("issue", parameter);
     }

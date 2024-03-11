@@ -8,17 +8,39 @@
     <ContentPage.BindingContext>
         <models:UsersPageModel />
     </ContentPage.BindingContext>
-    
-    <StackLayout Spacing="20"
-                 Margin="20">
-        <Label Text="Coming soon"
+
+    <StackLayout Spacing="20" Margin="20">
+        <Button Text="Reload users"
+                Clicked="OnReloadClicked"
+                IsEnabled="{Binding Path=IsReloadEnabled}"/>
+        <ActivityIndicator HorizontalOptions="Center"
+                           VerticalOptions="CenterAndExpand"
+                           IsRunning="True"
+                           IsVisible="{Binding Path=IsLoadVisible}"/>
+        <Label TextColor="Red"
                HorizontalOptions="Center"
-               VerticalOptions="CenterAndExpand"/>
-        <Label Text="{Binding Path=Count}"
-               HorizontalOptions="Center"
-               VerticalOptions="CenterAndExpand"/>
-        <Button Text="Add user"
-                Clicked="OnClicked" />
+               VerticalOptions="CenterAndExpand"
+               Text="{Binding Path=ErrorMessage}"
+               IsVisible="{Binding Path=IsErrorVisible}"/>
+        <ListView ItemSelected="OnIssueClicked"
+                  ItemsSource="{Binding Path=ItemList}"
+                  IsVisible="{Binding Path=IsListVisible}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Margin="20" Spacing="20"
+                                     Orientation="Horizontal">
+                            <Label Text="{Binding Path=UserId}"/>
+                            <Label Text="{Binding Path=IssueId}"/>
+                            <Label Text="{Binding Path=Label}"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Text="Create user"
+                Clicked="OnCreateClicked"
+                IsEnabled="{Binding Path=IsCreateEnabled}"/>
     </StackLayout>
-    
+
 </ContentPage>
