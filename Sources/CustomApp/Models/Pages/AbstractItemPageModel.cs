@@ -1,14 +1,36 @@
 ﻿namespace CustomApp.Models.Pages
 {
-    [QueryProperty(nameof(Item), "Item")]
-    abstract class AbstractItemPageModel<T> : AbstractModel
+    abstract class AbstractItemPageModel : AbstractModel
     {
-        private T? _item;
+        private bool _isSaveEnabled = true;
 
-        public T? Item
+        private bool _isLoadVisible = false;
+        private bool _isErrorVisible = false;
+
+        private string? _errorMessage;
+
+        public bool IsSaveEnabled
         {
-            set => SetProperty(ref _item, value);
-            get => _item;
+            set => SetProperty(ref _isSaveEnabled, value);
+            get => _isSaveEnabled;
+        }
+
+        public bool IsLoadVisible
+        {
+            set => SetProperty(ref _isLoadVisible, value);
+            get => _isLoadVisible;
+        }
+
+        public bool IsErrorVisible
+        {
+            set => SetProperty(ref _isErrorVisible, value);
+            get => _isErrorVisible;
+        }
+
+        public string? ErrorMessage
+        {
+            set => SetProperty(ref _errorMessage, value);
+            get => _errorMessage;
         }
     }
 }

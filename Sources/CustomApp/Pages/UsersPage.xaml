@@ -13,9 +13,9 @@
         <Button Text="Reload users"
                 Clicked="OnReloadClicked"
                 IsEnabled="{Binding Path=IsReloadEnabled}"/>
-        <ActivityIndicator HorizontalOptions="Center"
+        <ActivityIndicator IsRunning="True"
+                           HorizontalOptions="Center"
                            VerticalOptions="CenterAndExpand"
-                           IsRunning="True"
                            IsVisible="{Binding Path=IsLoadVisible}"/>
         <Label TextColor="Red"
                HorizontalOptions="Center"
@@ -31,8 +31,8 @@
                         <StackLayout Margin="20" Spacing="20"
                                      Orientation="Horizontal">
                             <Label Text="{Binding Path=UserId}"/>
-                            <Label Text="{Binding Path=IssueId}"/>
-                            <Label Text="{Binding Path=Label}"/>
+                            <Label Text="{Binding Path=FirstName}"/>
+                            <Label Text="{Binding Path=LastName}"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

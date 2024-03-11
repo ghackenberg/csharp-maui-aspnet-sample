@@ -13,9 +13,9 @@
         <Button Text="Reload issues"
                 Clicked="OnReloadClicked"
                 IsEnabled="{Binding Path=IsReloadEnabled}"/>
-        <ActivityIndicator HorizontalOptions="Center"
+        <ActivityIndicator IsRunning="True"
+                           HorizontalOptions="Center"
                            VerticalOptions="CenterAndExpand"
-                           IsRunning="True"
                            IsVisible="{Binding Path=IsLoadVisible}"/>
         <Label TextColor="Red"
                HorizontalOptions="Center"

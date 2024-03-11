@@ -93,7 +93,7 @@ namespace CustomLib.Clients
 
             var requestContent = new StringContent(requestContentData, Encoding.UTF8, "application/json");
 
-            var response = await _client.PutAsync(_base, requestContent);
+            var response = await _client.PutAsync($"{_base}/{id}", requestContent);
 
             // Parse HTTP response
 

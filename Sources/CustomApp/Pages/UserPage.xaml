@@ -10,10 +10,36 @@
     </ContentPage.BindingContext>
     
     <StackLayout Spacing="20" Margin="20">
-        <Label Text="Coming soon"
+        <TableView Intent="Form">
+            <TableRoot>
+                <TableSection>
+                    <EntryCell Label="User ID"
+                               Placeholder="The user ID will be generated automatically"
+                               Text="{Binding Path=UserId}"
+                               IsEnabled="False"/>
+                    <EntryCell Label="First name"
+                               Placeholder="Enter first name"
+                               Text="{Binding Path=FirstName}"
+                               IsEnabled="{Binding Path=IsSaveEnabled}"/>
+                    <EntryCell Label="Last name"
+                               Placeholder="Enter last name"
+                               Text="{Binding Path=LastName}"
+                               IsEnabled="{Binding Path=IsSaveEnabled}"/>
+                </TableSection>
+            </TableRoot>
+        </TableView>
+        <ActivityIndicator IsRunning="True"
+                           HorizontalOptions="Center"
+                           VerticalOptions="CenterAndExpand"
+                           IsVisible="{Binding Path=IsLoadVisible}"/>
+        <Label TextColor="Red"
                HorizontalOptions="Center"
-               VerticalOptions="CenterAndExpand"/>
-        <Button Text="Save"/>
+               VerticalOptions="CenterAndExpand"
+               Text="{Binding Path=ErrorMessage}"
+               IsVisible="{Binding Path=IsErrorVisible}"/>
+        <Button Text="Save user"
+                Clicked="OnSaveClicked"
+                IsEnabled="{Binding Path=IsSaveEnabled}"/>
     </StackLayout>
     
 </ContentPage>

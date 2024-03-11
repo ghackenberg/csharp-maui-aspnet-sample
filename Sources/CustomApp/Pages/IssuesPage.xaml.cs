@@ -1,4 +1,5 @@
 using CustomApp.Models.Pages;
+using CustomLib.Models.Issues;
 
 namespace CustomApp.Pages;
 
@@ -18,9 +19,12 @@ public partial class IssuesPage : ContentPage
 
     private void OnIssueClicked(object sender, SelectedItemChangedEventArgs e)
     {
+        var issue = (IssueGet)e.SelectedItem;
         var parameter = new Dictionary<string, object>()
         {
-            { "Item", e.SelectedItem }
+            { "IssueId", issue.IssueId },
+            { "UserId", issue.UserId },
+            { "Label", issue.Label },
         };
         Shell.Current.GoToAsync("issue", parameter);
     }
