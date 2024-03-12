@@ -2,7 +2,11 @@
 
 This project contains a **Sample Application** based on the awesome **.NET MAUI** and **ASP.NET** frameworks. Note that .NET MAUI allows you to build cross-platfrom graphical user interfaces, while ASP.NET supports you in building Cloud services. Here is a screenshot of the graphical user interface of this sample application:
 
-## Screenshots
+## 📝 Guides
+
+*Coming soon*
+
+## 📸 Screenshots
 
 In the following, we provide screenshots of the sample application to give a first impression of its functionality. The following screenshots are included:
 
@@ -28,7 +32,7 @@ The **ASP.NET Swagger UI** provides a documentation of the Cloud-based backend s
 
 ![.NET MAUI / ASP.NET Sample User Screenshot](./Screenshots/CustomApi.png)
 
-## Software architecture
+## 📈 Software architecture
 
 In the following, we explain the software architecture of the sample application. We divided the expanation into the following subsections:
 
