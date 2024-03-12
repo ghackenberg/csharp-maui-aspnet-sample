@@ -1,17 +1,17 @@
 classDiagram
 
     class UserGet {
-        <<Response>>
+        <<HttpResponse>>
         string UserId
         DateTime CreatedAt
         DateTime UpdatedAt
         DateTime DeletedAt
     }
     class UserPost {
-        <<Request>>
+        <<HttpRequest>>
     }
     class UserPut {
-        <<Request>>
+        <<HttpRequest>>
         string FirstName
         string LastName
     }
@@ -20,18 +20,18 @@ classDiagram
     UserPost <|-- UserPut
 
     class IssueGet {
-        <<Response>>
+        <<HttpResponse>>
         string IssueId
         DateTime CreatedAt
         DateTime UpdatedAt
         DateTime DeletedAt
     }
     class IssuePost {
-        <<Request>>
+        <<HttpRequest>>
         string UserId
     }
     class IssuePut {
-        <<Request>>
+        <<HttpRequest>>
         string Label
     }
 
@@ -39,19 +39,19 @@ classDiagram
     IssuePost <|-- IssuePut
 
     class CommentGet {
-        <<Response>>
+        <<HttpResponse>>
         string CommentId
         DateTime CreatedAt
         DateTime UpdatedAt
         DateTime DeletedAt
     }
     class CommentPost {
-        <<Request>>
+        <<HttpRequest>>
         string UserId
         string IssueId
     }
     class CommentPut {
-        <<Request>>
+        <<HttpRequest>>
         string Text
     }
 
