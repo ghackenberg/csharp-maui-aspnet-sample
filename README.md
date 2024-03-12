@@ -34,6 +34,8 @@ In the following, we explain the software architecture of the sample application
 
 1. **Package structure** describes the C# packages (i.e. DLLs and EXEs) and their relations.
 2. **Data structure** describes the database entities, their attributes, and their relations.
+3. **Message structure** describes the structure of the HTTP request and response messages.
+4. **Interface structure** describes the interfaces and methods of the backend services.
 
 ### Package structure
 
