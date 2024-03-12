@@ -1,4 +1,4 @@
-# CSharp .NET MAUI / ASP.NET Sample
+# C# .NET MAUI / ASP.NET Sample
 
 This project contains a **Sample Application** based on the awesome **.NET MAUI** and **ASP.NET** frameworks. Note that .NET MAUI allows you to build cross-platfrom graphical user interfaces, while ASP.NET supports you in building Cloud services. Here is a screenshot of the graphical user interface of this sample application:
 
