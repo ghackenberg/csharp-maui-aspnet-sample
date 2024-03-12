@@ -2,11 +2,7 @@
 
 **This project contains a sample application based on the awesome Microsoft MAUI.NET and ASP.NET frameworks.**
 
-<img src="./Screenshots/CustomApp-Users.png" height="150" />
-&nbsp;
-<img src="./Screenshots/CustomApp-User.png" height="150" />
-&nbsp;
-<img src="./Screenshots/CustomApi.png" height="150" />
+<img src="./Screenshots/CustomApp-Users.png" height="150" />&Tab;<img src="./Screenshots/CustomApp-User.png" height="150" />&Tab;<img src="./Screenshots/CustomApi.png" height="150" />
 
 We use this sample project at the [School of Engineering](https://www.fh-ooe.at/campus-wels/) of the [University of Applied Sciences Upper Austria](https://www.fh-ooe.at/) in [Wels, Austria](https://www.wels.at/) for teaching courses in **Mobile and Cloud Computing** to our engineering and management students. Since we mainly use C# as a language and DotNet as a framework in our programming courses in the earlier semester, we decided to use the  MAUI.NET and ASP.NET frameworks in this course. The MAUI.NET and ASP.NET frameworks provide the following capabilities:
 
