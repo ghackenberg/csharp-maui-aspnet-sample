@@ -2,9 +2,7 @@
 
 **This project contains a sample application based on the awesome Microsoft [MAUI.NET](https://dotnet.microsoft.com/en-us/apps/maui) and [ASP.NET](https://dotnet.microsoft.com/en-us/apps/aspnet) frameworks.**
 
-We use this sample project at the [School of Engineering](https://www.fh-ooe.at/campus-wels/) of the [University of Applied Sciences Upper Austria](https://www.fh-ooe.at/) in [Wels, Austria](https://www.wels.at/) for teaching courses in **Mobile and Cloud Computing** to our engineering and management students. Since we mainly use C# as a language and .NET as a framework in our programming courses in the earlier semester, we decided to use the  MAUI.NET and ASP.NET frameworks in this course.
-
-The MAUI.NET and ASP.NET frameworks provide the following capabilities:
+We use this sample project at the [School of Engineering](https://www.fh-ooe.at/campus-wels/) of the [University of Applied Sciences Upper Austria](https://www.fh-ooe.at/) in [Wels, Austria](https://www.wels.at/) for teaching courses in **Mobile and Cloud Computing** to our engineering and management students. Since we mainly use C# as a language and .NET as a framework in our programming courses in the earlier semester, we decided to use the  MAUI.NET and ASP.NET frameworks in this course. The MAUI.NET and ASP.NET frameworks provide the following capabilities:
 
 - **MAUI.NET** supports building **cross-platfrom graphical user interfaces (GUIs)**.
 - **ASP.NET** supports building **Cloud services with state-of-the-art REST APIs**.
