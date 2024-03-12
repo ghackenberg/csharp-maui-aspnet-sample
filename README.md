@@ -47,14 +47,14 @@ The following diagram explains the data structrure of the sample application: Th
 
 ![.NET MAUI / ASP.NET Sample Data Structure](./Models/Data.svg)
 
-### Interface structure
-
-The following diagram explains the interface structure of the sample application. For each entity (i.e. user, issue, comment), methods are provided for listing all existing entity instances, creating a new instance, getting an existing instance, updating an existing instance, and deleting an existing instance.
-
-![.NET MAUI / ASP.NET Sample Interface Structure](./Models/Interface.svg)
-
 ### Message structure
 
 The following diagram explains the message structure of the sample application used for communication between the graphical user interface and the service via HTTP REST. For each entity (i.e. user, issue, comment), the structure of the HTTP responses as well as the HTTP POST and HTTP PUT requests are described.
 
 ![.NET MAUI / ASP.NET Sample Message Structure](./Models/Message.svg)
+
+### Interface structure
+
+The following diagram explains the interface structure of the sample application. For each entity (i.e. user, issue, comment), methods are provided for listing all existing entity instances, creating a new instance, getting an existing instance, updating an existing instance, and deleting an existing instance.
+
+![.NET MAUI / ASP.NET Sample Interface Structure](./Models/Interface.svg)
