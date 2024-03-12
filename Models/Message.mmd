@@ -1,0 +1,59 @@
+classDiagram
+
+    class UserGet {
+        <<Response>>
+        string UserId
+        DateTime CreatedAt
+        DateTime UpdatedAt
+        DateTime DeletedAt
+    }
+    class UserPost {
+        <<Request>>
+    }
+    class UserPut {
+        <<Request>>
+        string FirstName
+        string LastName
+    }
+
+    UserGet <|-- UserPost
+    UserPost <|-- UserPut
+
+    class IssueGet {
+        <<Response>>
+        string IssueId
+        DateTime CreatedAt
+        DateTime UpdatedAt
+        DateTime DeletedAt
+    }
+    class IssuePost {
+        <<Request>>
+        string UserId
+    }
+    class IssuePut {
+        <<Request>>
+        string Label
+    }
+
+    IssueGet <|-- IssuePost
+    IssuePost <|-- IssuePut
+
+    class CommentGet {
+        <<Response>>
+        string CommentId
+        DateTime CreatedAt
+        DateTime UpdatedAt
+        DateTime DeletedAt
+    }
+    class CommentPost {
+        <<Request>>
+        string UserId
+        string IssueId
+    }
+    class CommentPut {
+        <<Request>>
+        string Text
+    }
+
+    CommentGet <|-- CommentPost
+    CommentPost <|-- CommentPut
