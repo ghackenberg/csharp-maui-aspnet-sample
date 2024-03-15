@@ -16,7 +16,7 @@ When forking a GitHub repository, you can choose the name of the forked reposito
 
 ## ``Step 2.3`` - Visit forked repository
 
-After finishing the forking process, you should see a copy of the original GitHub repository under your own account and username.
+After finishing the forking process, you should see a copy of the original GitHub repository under your own account and username. On the main page of your repository fork, you find the name your fork as well as a link to the original repository under the fork name. Furthermore, the main page shows you whether your fork is up-to-date, ahead, or behind with respect to the original repository. Immediately after forking, your repository fork should be up-to-date, but that will change while software development progresses.
 
 ![GitHub Repository Fork](./GitHub_Repository_Fork.png)
 
