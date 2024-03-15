@@ -18,6 +18,10 @@ When forking a GitHub repository, you can choose the name of the forked reposito
 
 After finishing the forking process, you should see a copy of the original GitHub repository under your own account and username.
 
+![GitHub Repository Fork](./GitHub_Repository_Fork.png)
+
 ## ``Step 2.4`` - Update forked repository
 
 From here on, the fork is detached from the original repository, i.e. changes to the original repository are *not* reflected on the fork automatically. However, GitHub provides you with information on how many changes have been made to the original repository since forking it. Also, Github provides the means for merging these changes into your fork. The merging process can be done fully automatically, if you do your changes in a separate branch and do not touch the branches of the original repository.
+
+![GitHub Repository Fork Sync](./GitHub_Repository_Fork_Sync.png)
