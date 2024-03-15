@@ -11,12 +11,12 @@ We use this sample project at the [School of Engineering](https://www.fh-ooe.at/
 
 The following set of guides helps you **getting started with MAUI.NET and ASP.NET development on your local machine**. Note that the guides have been prepared for Windows machines only. In principle, MAUI.NET and ASP.NET development should be possible also on OS X and Linux machines. However, we did not test that!
 
-- [**Step 1 - Create your personal GitHub account**](./Guides/0_Register.md)
-- [**Step 2 - Fork the respository** of the sample application](./Guides/1_Fork.md)
-- [**Step 3 - Prepare your development environment**](./Guides/2_Prepare.md)
-- [**Step 4 - Clone the sources** of the sample application](./Guides/3_Clone.md)
-- [**Step 5 - Build and run** the sample application](./Guides/4_Run.md)
-- [**Step 6 - Make changes** to the sample application](./Guides/5_Change.md)
+- [**Step 1 - Create your personal GitHub account**](./Guides/0_Register/README.md)
+- [**Step 2 - Fork the respository** of the sample application](./Guides/1_Fork/README.md)
+- [**Step 3 - Prepare your development environment**](./Guides/2_Prepare/README.md)
+- [**Step 4 - Clone the sources** of the sample application](./Guides/3_Clone/README.md)
+- [**Step 5 - Build and run** the sample application](./Guides/4_Run/README.md)
+- [**Step 6 - Make changes** to the sample application](./Guides/5_Change/README.md)
 
 ## 📜 Documents
 
