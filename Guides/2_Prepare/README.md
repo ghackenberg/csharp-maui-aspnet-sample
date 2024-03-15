@@ -12,6 +12,10 @@ To start the installation process, go to the [Microsoft Visual Studio website](h
 
 After the installer has been downloaded, start the installation executable and proceed until the workload selection appear. In the workload selection screen, selected the **MAUI.NET and ASP.NET workloads** as depicted in the following screenshot. These two workloads are required in order to load, build, and run the sample project successfully on your local computer.
 
+![Visual Studio Installer Workloads](./Visual_Studio_Installer_Workloads.png)
+
 ## ``Step 3.3`` - Start environment
 
 Finally, after installing Visual Studio including the MAUI.NET and ASP.NET workloads, you can start the environment and very it works as expected. When starting Visual Studio, you should first see a purple splash screen, before the welcome screen appears. The welcome screen shows the software projects, which you have been working on recently, and allows you to open them.
+
+![Visual Studio Welcome Screen](./Visual_Studio_Welcome_Screen.png)
