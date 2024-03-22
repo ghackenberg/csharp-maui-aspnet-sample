@@ -1,6 +1,10 @@
-# Step 1 - Create and explore your personal GitHub account
+# Guide 1 - Create and explore your personal GitHub account
 
 To start working on the project and keeping your change history, you first need to fork this GitHub project. And in order to fork this GitHub project, you need to create your own GitHub account.
+
+## Previous steps
+
+Nothing to do before! 😀
 
 ## ``Step 1.1`` - Start registration
 
@@ -31,3 +35,7 @@ Then, you can visit and edit your GitHub profile page. Your GitHub profile page 
 The profile page also includes a repositories tab. Under the repositories tab you find all the GitHub repositories, which are associated with your GitHub account. For each repository, the repository name, a repository description, the repository keyword, the main programming language used in the source code, the number of repository stars and forks, and information about the source code license are provided. You also can use the repositories tab to create a new GitHub repository and start working on another awesome software project!
 
 ![Personal GitHub Account Repositories](./Personal_GitHub_Account_Repositories.png)
+
+## Next steps
+
+[Guide 2 - Create a fork of the original Git repository](../1_Fork/README.md)
