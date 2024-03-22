@@ -10,13 +10,13 @@ In this guide you learn how to clone a Git repository with Visual Studio. In the
 
 When you want to clone a Git repository from [GitHub.com](https://github.com), you should open your browser and navigate to the repository page first. In our case, the original repository can be found at https://github.com/ghackenberg/csharp-maui-aspnet-sample. If you created a fork of the original repository, you should use the URL of the fork instead.
 
-TODO Screenshot
+![GitHub Repository Page](./GitHub_Repository_Page.png)
 
 ## ``Step 4.2`` - Obtain Git repository URL
 
 On the GitHub repository page, you find a green button for cloning the repository. When clicking on the button, you are shown a number of options for creating a clone: Either you can use the SSH protocol for downloading the repository files, or you can use the HTTPS protocol (which is slightly slower but easier to configure). Finally, you also have the option to download the latest source code as ZIP archive. Here we will choose the HTTPS option for its simplicity.
 
-TODO Screenshot
+![GitHub Repository Clone HTTPS](./GitHub_Repository_Clone_HTTPS.png)
 
 ## ``Step 4.3`` - Enter Visual Studio clone screen
 
@@ -30,9 +30,11 @@ After clicking the repository clone button on the welcome screen, a mask is show
 
 ![Visual Studio Welcome Wizard Clone](./Visual_Studio_Welcome_Wizard_Clone.png)
 
-## ``Step 4.5`` - Pick Visual Studio solution file
+## ``Step 4.5`` - Load local Git repository
 
-TODO Content
+After hitten the clone button, Microsoft Visual Studio starts downloading the Gut repository (including the entire version history) to your local computer. Furthermore, Visual Studio automatically detects the C# source code in the repository and loads the corresponding projects into your workspace. From now on you can start editing and compiling the source code as well as running the application.
+
+![Visual Studio Solution Explorer](./Visual_Studio_Solution_Explorer.png)
 
 ## Next steps
 
