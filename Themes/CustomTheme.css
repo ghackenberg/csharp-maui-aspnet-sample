@@ -8,35 +8,39 @@ section h3,
 section h4,
 section h5,
 section h6 {
-  color: tomato !important;
+    color: tomato !important;
 }
 
 section.title {
-  text-align: center;
+    text-align: center;
 }
+
 section.title header,
 section.title footer,
 section.title::after {
-  display: none;
+    display: none;
 }
 
 section.section {
-  text-align: center;
-  color: white !important;
-  background-color: gray !important;
+    text-align: center;
+    color: white !important;
+    background-color: gray !important;
 }
+
 section.section header,
 section.section footer {
-  color: lightgray;
+    color: lightgray;
 }
+
 section.section::after {
-  color: lightgray;
+    color: lightgray;
 }
+
 section.section h1,
 section.section h2,
 section.section h3,
 section.section h4,
 section.section h5,
 section.section h6 {
-  color: gold !important;
+    color: gold !important;
 }
