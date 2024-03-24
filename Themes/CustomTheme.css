@@ -11,36 +11,35 @@ section h6 {
     color: tomato !important;
 }
 
-section.title {
-    text-align: center;
-}
-
-section.title header,
-section.title footer,
-section.title::after {
+section.clean header,
+section.clean footer,
+section.clean::after {
     display: none;
 }
 
-section.section {
+section.center {
     text-align: center;
+}
+
+section.dark {
     color: white !important;
     background-color: gray !important;
 }
 
-section.section header,
-section.section footer {
+section.dark header,
+section.dark footer {
     color: lightgray;
 }
 
-section.section::after {
+section.dark::after {
     color: lightgray;
 }
 
-section.section h1,
-section.section h2,
-section.section h3,
-section.section h4,
-section.section h5,
-section.section h6 {
+section.dark h1,
+section.dark h2,
+section.dark h3,
+section.dark h4,
+section.dark h5,
+section.dark h6 {
     color: gold !important;
 }
