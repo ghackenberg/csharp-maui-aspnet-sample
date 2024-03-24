@@ -1,0 +1,35 @@
+classDiagram
+
+    class UserPost {
+        <<HttpRequest>>
+    }
+    class UserPut {
+        <<HttpRequest>>
+        string FirstName
+        string LastName
+    }
+
+    UserPost <|-- UserPut
+
+    class IssuePost {
+        <<HttpRequest>>
+        string UserId
+    }
+    class IssuePut {
+        <<HttpRequest>>
+        string Label
+    }
+
+    IssuePost <|-- IssuePut
+
+    class CommentPost {
+        <<HttpRequest>>
+        string UserId
+        string IssueId
+    }
+    class CommentPut {
+        <<HttpRequest>>
+        string Text
+    }
+
+    CommentPost <|-- CommentPut

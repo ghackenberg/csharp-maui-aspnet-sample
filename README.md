@@ -71,13 +71,13 @@ The following diagram explains the package structure of the sample application. 
 
 The following diagram explains the data structrure of the sample application: The data structure consists of three classes: A user class representing the users of the application, an issue class representing the issues created by the users, and a comment class representing comments created by the users and contained in issues.
 
-![MAUI.NET / ASP.NET Sample Data Structure](./Models/Data.svg)
+![MAUI.NET / ASP.NET Sample Data Structure](./Models/Data/Comment.svg)
 
 ### Message structure
 
 The following diagram explains the message structure of the sample application used for communication between the graphical user interface and the service via HTTP REST. For each entity (i.e. user, issue, comment), the structure of the HTTP responses as well as the HTTP POST and HTTP PUT requests are described.
 
-![MAUI.NET / ASP.NET Sample Message Structure](./Models/Message.svg)
+![MAUI.NET / ASP.NET Sample Message Structure](./Models/Message/Get.svg)
 
 ### Interface structure
 

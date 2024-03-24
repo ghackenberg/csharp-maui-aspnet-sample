@@ -44,15 +44,55 @@ Also check out https://mentawise.com and https://caddrive.org 😎
 
 ---
 
-![bg right w:90%](../Models/Data.png)
+<!-- _class: center -->
 
-### The domain model
+### Domain model
+
+*Coming soon*
+
+---
+
+![bg right w:90%](../Models/Data/Overview.png)
+
+#### Domain model overview
 
 The diagram on the right shows the **domain model** implemented by the application.
 
 The data model consists of **three entities**, namely `User`, `Issue`, and `Comment`.
 
 Issues and comments are `created by` users, comments are `contained in` issues.
+
+---
+
+![bg right w:90%](../Models/Data/User.png)
+
+#### The `User` entity
+
+*Coming soon*
+
+---
+
+![bg right w:90%](../Models/Data/Issue.png)
+
+#### The `Issue` entity
+
+*Coming soon*
+
+---
+
+![bg right w:90%](../Models/Data/Comment.png)
+
+#### The `Comment` entity
+
+*Coming soon*
+
+---
+
+<!-- _class: center -->
+
+### Project structure
+
+*Coming soon*
 
 ---
 
@@ -84,37 +124,45 @@ The `CustomApi` implements the **backend**, the `CustomApp` the **frontend**.
 
 ---
 
-![bg right w:90%](../Models/Message.png)
+![bg right w:90%](../Models/Message/Get.png)
 
 #### Message overview
 
-The REST API uses corresponding **data structures** for working with these entities.
+The REST API uses request and response **messages** for working with these entities.
 
-For **each resource** (i.e. user, issue, comment) we distinguish `Get`, `Post`, and `Put` data structures.
+For **each resource** (i.e. user, issue, comment) we distinguish `Get`, `Post`, and `Put` messages.
+
+In the following, we describe each **type of message** in more detail including their data fields.
 
 ---
 
-![bg right w:90%](../Models/Message.png)
+![bg right w:90%](../Models/Message/Put.png)
 
 #### `Put` messages
 
 The `Put` structures contain the fields that you can **override later** after creating an instance.
 
+*More coming soon*
+
 ---
 
-![bg right w:90%](../Models/Message.png)
+![bg right w:90%](../Models/Message/Post.png)
 
 #### `Post` messages
 
 The `Post` structures derive from the `Put` structures and add the fields that you can **set only initially** when creating an instance such as entity references.
 
+*More coming soon*
+
 ---
 
-![bg right w:90%](../Models/Message.png)
+![bg right w:90%](../Models/Message/Get.png)
 
 #### `Get` messages
 
 Finally, the `Get` structures derive from the `Post` structures and add the fields that are **read only** such as instance identifiers and timestamps.
+
+*More coming soon*
 
 ---
 
