@@ -26,7 +26,7 @@ Also check out https://mentawise.com and https://caddrive.org 😎
 
 ![bg right:40% w:100%](../Images/MAUI_ASPNET_Sample_Social_Preview_Image.png)
 
-## Section overview
+## Deck overview
 
 
 - **Section 1 - Basics** you should know before diving deeper
@@ -44,7 +44,7 @@ Also check out https://mentawise.com and https://caddrive.org 😎
 
 ---
 
-![bg right w:90%](../Models/Data.svg)
+![bg right w:90%](../Models/Data.png)
 
 ### The domain model
 
@@ -56,7 +56,7 @@ Issues and comments are `created by` users, comments are `contained in` issues.
 
 ---
 
-![bg right w:90%](../Models/Package.svg)
+![bg right w:90%](../Models/Package.png)
 
 ### The project structure
 
@@ -72,35 +72,47 @@ The `CustomApi` implements the **backend**, the `CustomApp` the **frontend**.
 
 ## Section 2 - The `CustomLib` project
 
-**Message** and **interface structures**
+**Messages**, **exceptions**, and **interfaces**
 
 ---
 
 <!-- _class: center -->
 
-### Message structures
+### Messages
 
 **Data exchange** between frontend and backend
 
 ---
 
-![bg right w:90%](../Models/Message.svg)
+![bg right w:90%](../Models/Message.png)
 
-#### Message structures
+#### Message overview
 
 The REST API uses corresponding **data structures** for working with these entities.
 
 For **each resource** (i.e. user, issue, comment) we distinguish `Get`, `Post`, and `Put` data structures.
 
+---
+
+![bg right w:90%](../Models/Message.png)
+
+#### `Put` messages
+
 The `Put` structures contain the fields that you can **override later** after creating an instance.
 
 ---
 
-![bg right w:90%](../Models/Message.svg)
+![bg right w:90%](../Models/Message.png)
 
-#### `Post` and `Get` structures
+#### `Post` messages
 
 The `Post` structures derive from the `Put` structures and add the fields that you can **set only initially** when creating an instance such as entity references.
+
+---
+
+![bg right w:90%](../Models/Message.png)
+
+#### `Get` messages
 
 Finally, the `Get` structures derive from the `Post` structures and add the fields that are **read only** such as instance identifiers and timestamps.
 
@@ -108,37 +120,87 @@ Finally, the `Get` structures derive from the `Post` structures and add the fiel
 
 <!-- _class: center -->
 
-### Interface structures
+### Exceptions
 
-Methods **provided by** backend and **required by** frontend
+**Problems** during service execution
 
 ---
 
-![bg right w:90%](../Models/Interface.svg)
+#### Exception overview
 
-#### Interface structures
+*Coming soon*
+
+---
+
+<!-- _class: center -->
+
+### Interfaces
+
+**Methods** *provided by* backend and *required by* frontend
+
+---
+
+![bg right w:90%](../Models/Interface.png)
+
+#### Interface overview
 
 Based on the message data structures we **define the methods** of the REST API.
 
 We use a **generic interface** model including `List`, `Post`, `Get`, `Put`, and `Delete` methods.
 
-The `List` method returns a **collection** of created (and *not* deleted) instances.
+In the following, we explain each method **in more detail** including inputs and outputs.
 
 ---
 
-![bg right w:90%](../Models/Interface.svg)
+![bg right w:90%](../Models/Interface.png)
 
-#### `Post`, `Get`, and `Put` methods
+#### The `List` method
+
+The `List` method returns a **collection** of created (and *not* deleted) instances.
+
+Note that in our case the method **does not require** any input parameters.
+
+*Usually the input parameters are used for **filtering and paging** the instances.*
+
+---
+
+![bg right w:90%](../Models/Interface.png)
+
+#### The `Post` method
 
 The `Post` method **creates and returns** new instances of a given entity type.
 
-The `Get` method **returns** an existing instance with a given identifier.
+The **input parameters** use the corresponding `Post` message defined previously.
 
-The `Put` method **overrides and returns** an existing instance with a given identifier.
+The **return type** corresponds to the respective `Get` message from before.
 
 ---
 
-![bg right w:90%](../Models/Interface.svg)
+![bg right w:90%](../Models/Interface.png)
+
+#### The `Get` method
+
+The `Get` method **returns** an existing instance with a given identifier.
+
+The **single input parameter** represents the identifier of the desired instance.
+
+The **return type** corresponds to the respective `Get` message from before.
+
+---
+
+![bg right w:90%](../Models/Interface.png)
+
+#### The `Put` method
+
+The `Put` method **overrides and returns** an existing instance with a given identifier.
+
+The **two input parameters** are the identifier of the instance and the respective `Put` message.
+
+The **return type** corresponds to the respective `Get` type as introduced before.
+
+---
+
+![bg right w:90%](../Models/Interface.png)
 
 #### The `Delete` method
 
@@ -154,7 +216,7 @@ Instead, the `DeletedAt` timestamp of the instance is **set to the current times
 
 ## Section 3 - The `CustomApi` project
 
-**ASP.NET backend** and **controller structures**
+**ASP.NET backend** and **controllers**
 
 ---
 
@@ -170,7 +232,15 @@ For each **resource** (i.e. user, issue, comment), the same set of functions is 
 
 ---
 
-### Controller structures
+<!-- _class: center -->
+
+### Controllers
+
+*Coming soon*
+
+---
+
+### Controller overview
 
 *Coming soon*
 
@@ -180,7 +250,7 @@ For each **resource** (i.e. user, issue, comment), the same set of functions is 
 
 ## Section 4 - The `CustomApp` project
 
-**MAUI.NET frontend** and **page structures**
+**MAUI.NET frontend**, **view models**, and **pages**
 
 ---
 
@@ -208,9 +278,33 @@ You can change the **first and last name**, the other fields are set automatical
 
 ---
 
-![bg right w:90%](../Models/Pages.svg)
+<!-- _class: center -->
 
-### Page structures
+### View models
+
+*Coming soon*
+
+---
+
+![bg right w:90%](../Models/Pages.png)
+
+### View model overview
+
+*Coming soon*
+
+---
+
+<!-- _class: center -->
+
+### Pages
+
+*Coming soon*
+
+---
+
+![bg right w:90%](../Models/Pages.png)
+
+### Page overview
 
 *Coming soon*
 
@@ -218,6 +312,6 @@ You can change the **first and last name**, the other fields are set automatical
 
 <!-- _class: center dark -->
 
-## You are ready to start coding 👩‍💻
+## You are ready to code 👩‍💻
 
 Well done!
