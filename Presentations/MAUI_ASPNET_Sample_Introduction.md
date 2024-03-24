@@ -1,47 +1,9 @@
 ---
 marp: true
-paginate: true
+theme: CustomTheme
 header: Short introduction to the C# MAUI.NET / ASP.NET Sample Application
 footer: Dr. Georg Hackenberg | Professor for Industrial Informatics | FH OÖ
-style: |
-  section h1,
-  section h2,
-  section h3,
-  section h4,
-  section h5,
-  section h6 {
-    color: tomato !important;
-  }
-
-  section.title {
-    text-align: center;
-  }
-  section.title header,
-  section.title footer,
-  section.title::after {
-    display: none;
-  }
-
-  section.section {
-    text-align: center;
-    color: white !important;
-    background-color: gray !important;
-  }
-  section.section header,
-  section.section footer {
-    color: lightgray;
-  }
-  section.section::after {
-    color: lightgray;
-  }
-  section.section h1,
-  section.section h2,
-  section.section h3,
-  section.section h4,
-  section.section h5,
-  section.section h6 {
-    color: gold !important;
-  }
+paginate: true
 ---
 
 <!-- _class: title -->
