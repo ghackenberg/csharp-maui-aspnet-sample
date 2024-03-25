@@ -1,0 +1,43 @@
+classDiagram
+
+    direction LR
+
+    class AbstractInterface~TypeGet, TypePost, TypePut~ {
+        <<Interface>>
+        List~TypeGet~ List()
+        ... Post(...)
+        ... Get(...)
+        ... Put(...)
+        ... Delete(...)
+    }
+
+    class UsersInterface["&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UsersInterface&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"] {
+        <<Interface>>
+        List~UserGet~ List()
+        ... Post(...)
+        ... Get(...)
+        ... Put(...)
+        ... Delete(...)
+    }
+
+    class IssuesInterface["&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IssuesInterface&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"] {
+        <<Interface>>
+        List~IssueGet~ List()
+        ... Post(...)
+        ... Get(...)
+        ... Put(...)
+        ... Delete(...)
+    }
+
+    class CommentsInterface["&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CommentsInterface&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"] {
+        <<Interface>>
+        List~CommentGet~ List()
+        ... Post(...)
+        ... Get(...)
+        ... Put(...)
+        ... Delete(...)
+    }
+    
+    AbstractInterface <|-- UsersInterface
+    AbstractInterface <|-- IssuesInterface
+    AbstractInterface <|-- CommentsInterface

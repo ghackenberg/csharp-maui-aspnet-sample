@@ -256,7 +256,7 @@ Furthermore, the read-only fields include **create, update, and delete timestamp
 
 ---
 
-![bg right w:90%](../Models/Interface.png)
+![bg right w:90%](../Models/Interface/Overview.png)
 
 #### Interface overview
 
@@ -264,11 +264,11 @@ Based on the message data structures we **define the methods** of the REST API.
 
 We use a **generic interface** model including `List`, `Post`, `Get`, `Put`, and `Delete` methods.
 
-In the following, we explain each method **in more detail** including inputs and outputs.
+In the following, we explain each method **in more detail** including its inputs and outputs.
 
 ---
 
-![bg right w:90%](../Models/Interface.png)
+![bg right w:90%](../Models/Interface/List.png)
 
 #### The `List` method
 
@@ -276,11 +276,11 @@ The `List` method returns a **collection** of created (and *not* deleted) instan
 
 Note that in our case the method **does not require** any input parameters.
 
-*Usually the input parameters are used for **filtering and paging** the instances.*
+*Usually the input parameters are used for **filtering and paging** the instances on demand.*
 
 ---
 
-![bg right w:90%](../Models/Interface.png)
+![bg right w:90%](../Models/Interface/Post.png)
 
 #### The `Post` method
 
@@ -292,7 +292,7 @@ The **return type** corresponds to the respective `Get` message from before.
 
 ---
 
-![bg right w:90%](../Models/Interface.png)
+![bg right w:90%](../Models/Interface/Get.png)
 
 #### The `Get` method
 
@@ -304,7 +304,7 @@ The **return type** corresponds to the respective `Get` message from before.
 
 ---
 
-![bg right w:90%](../Models/Interface.png)
+![bg right w:90%](../Models/Interface/Put.png)
 
 #### The `Put` method
 
@@ -316,7 +316,7 @@ The **return type** corresponds to the respective `Get` type as introduced befor
 
 ---
 
-![bg right w:90%](../Models/Interface.png)
+![bg right w:90%](../Models/Interface/Delete.png)
 
 #### The `Delete` method
 

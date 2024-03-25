@@ -83,7 +83,7 @@ The following diagram explains the message structure of the sample application u
 
 The following diagram explains the interface structure of the sample application. For each entity (i.e. user, issue, comment), methods are provided for listing all existing entity instances, creating a new instance, getting an existing instance, updating an existing instance, and deleting an existing instance.
 
-![MAUI.NET / ASP.NET Sample Interface Structure](./Models/Interface.svg)
+![MAUI.NET / ASP.NET Sample Interface Structure](./Models/Interface/Full.svg)
 
 ### Page structure
 
