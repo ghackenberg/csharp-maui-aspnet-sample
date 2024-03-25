@@ -1,5 +1,7 @@
 classDiagram
 
+    direction BT
+
     class UserGet {
         <<HttpResponse>>
         string UserId
@@ -57,3 +59,7 @@ classDiagram
 
     CommentGet <|-- CommentPost
     CommentPost <|-- CommentPut
+
+    style UserGet fill:yellow
+    style IssueGet fill:yellow
+    style CommentGet fill:yellow

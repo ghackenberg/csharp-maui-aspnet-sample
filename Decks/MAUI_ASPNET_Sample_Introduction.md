@@ -1,14 +1,14 @@
 ---
 marp: true
 theme: CustomTheme
-header: Short introduction to the C# MAUI.NET / ASP.NET Sample Application
+header: C# MAUI.NET / ASP.NET Sample Application
 footer: Dr. Georg Hackenberg | Professor for Industrial Informatics | FH OÖ
 paginate: true
 ---
 
 <!-- _class: clean center -->
 
-# Short introduction to the<br/>C# MAUI.NET / ASP.NET Sample Application
+# C# MAUI.NET / ASP.NET Sample Application
 
 **Dr. Georg Hackenberg BSc MSc**
 
@@ -29,18 +29,21 @@ Also check out https://mentawise.com and https://caddrive.org 😎
 ## Deck overview
 
 
-- **Section 1 - Basics** you should know before diving deeper
-- **Section 2 - The `CustomLib` project** containing common classes
-- **Section 3 - The `CustomApi` project** implementing the backend
-- **Section 4 - The `CustomApp` project** implementing the frontend
+- **Section 1 - The software architecture**
+- **Section 2 - The `CustomLib` component**
+- **Section 3 - The `CustomApi` component**
+- **Section 4 - The `CustomSdk` component**
+- **Section 5 - The `CustomCli` component**
+- **Section 6 - The `CustomApp` component**
+- **Section 7 - The follow-up resources**
 
 ---
 
 <!-- _class: center dark -->
 
-## Section 1 - Basics
+## Section 1 - The software architecture
 
-**Domain model** and **package structure**
+**Domain** and **component model**
 
 ---
 
@@ -48,7 +51,7 @@ Also check out https://mentawise.com and https://caddrive.org 😎
 
 ### Domain model
 
-*Coming soon*
+The **entities**, their **attributes**, and their **relationships**
 
 ---
 
@@ -68,7 +71,12 @@ Issues and comments are `created by` users, comments are `contained in` issues.
 
 #### The `User` entity
 
-*Coming soon*
+The `User` entity represents, as the name suggests, the users of the sample application.
+
+For each user, **a first and a last name** must be defined, which are shown in the GUI.
+
+Furthermore, each user has a unique **identifier** as well as create, update, and delete timestamps.
+
 
 ---
 
@@ -76,7 +84,11 @@ Issues and comments are `created by` users, comments are `contained in` issues.
 
 #### The `Issue` entity
 
-*Coming soon*
+The `Issue` entity represents problems with some machine reported by the users.
+
+Each issue carries the identifier of the corresponding user as well as a **label** explaning the issue.
+
+Also, each issue has a unique **identifier** as well as a create, update, and delete timestamp.
 
 ---
 
@@ -84,33 +96,81 @@ Issues and comments are `created by` users, comments are `contained in` issues.
 
 #### The `Comment` entity
 
-*Coming soon*
+Finally, the `Comment` entity represents, as the name suggests, comments associated to issues.
+
+For each comment, the identifier of the corresponding user and a **text** is defined.
+
+Moreover, each comment has a unique **identifier** as well as a create, update, and delete timestamp.
 
 ---
 
 <!-- _class: center -->
 
-### Project structure
+### Component model
+
+**Components** and their **dependencies / interactions**
+
+---
+
+![bg right w:90%](../Models/Package/Full.png)
+
+### Component model overview
+
+The sample application comprises **two library** and **three executable** components.
+
+The **library components** include the `CustomLib` and the `CustomSdk` components.
+
+The **executable components** include the `CustomApi`, the `CustomCli`, and the `CustomApp` components.
+
+---
+
+![bg right w:90%](../Models/Package/Lib.png)
+
+### The `CustomLib` component
+
+The `CustomLib` contains a common set of **classes and interfaces** used by the other components.
+
+Most importantly, the `CustomLib` defines the **messages** exchanged between backend and frontends.
+
+Furthermore, the `CustomLib` defines the **contracts** between backend and frontends as *regular interfaces*.
+
+---
+
+![bg right w:90%](../Models/Package/Api.png)
+
+### The `CustomApi` component
 
 *Coming soon*
 
 ---
 
-![bg right w:90%](../Models/Package.png)
+![bg right w:90%](../Models/Package/Sdk.png)
 
-### The project structure
+### The `CustomSdk` component
 
-The sample application comprises **three code projects**: `CustomLib`, `CustomApi`, and `CustomApp`.
+*Coming soon*
 
-The `CustomLib` provides a common **class library** used by the other two projects.
+---
 
-The `CustomApi` implements the **backend**, the `CustomApp` the **frontend**.
+![bg right w:90%](../Models/Package/Cli.png)
+
+### The `CustomCli` component
+
+*Coming soon*
+
+---
+
+![bg right w:90%](../Models/Package/App.png)
+
+### The `CustomApp` component
+
+*Coming soon*
 
 ---
 
 <!-- _class: center dark -->
 
-## Section 2 - The `CustomLib` project
+## Section 2 - The `CustomLib` component
 
 **Messages**, **exceptions**, and **interfaces**
 
@@ -124,7 +184,7 @@ The `CustomApi` implements the **backend**, the `CustomApp` the **frontend**.
 
 ---
 
-![bg right w:90%](../Models/Message/Get.png)
+![bg right w:90%](../Models/Message/Type.png)
 
 #### Message overview
 
@@ -140,9 +200,11 @@ In the following, we describe each **type of message** in more detail including 
 
 #### `Put` messages
 
-The `Put` structures contain the fields that you can **override later** after creating an instance.
+The `Put` messages contain the fields that you can **override later** after creating an instance.
 
-*More coming soon*
+For `User` entities, **the first and the last name** can be changed any time later.
+
+For `Issue` entities, the **label** can be changed later, and for `Comment` entities the **text**.
 
 ---
 
@@ -150,9 +212,11 @@ The `Put` structures contain the fields that you can **override later** after cr
 
 #### `Post` messages
 
-The `Post` structures derive from the `Put` structures and add the fields that you can **set only initially** when creating an instance such as entity references.
+The `Post` messages derive from the `Put` messages and add the fields that you can **set initially only**.
 
-*More coming soon*
+For `Issue` entities you must define the identifier of the **user** who created the issue.
+
+For `Comment` entities you must define the identifier of the **user** as well as the containing **issue**.
 
 ---
 
@@ -160,9 +224,11 @@ The `Post` structures derive from the `Put` structures and add the fields that y
 
 #### `Get` messages
 
-Finally, the `Get` structures derive from the `Post` structures and add the fields that are **read only** such as instance identifiers and timestamps.
+Finally, the `Get` messages derive from the `Post` messages and add the fields that are **read-only**.
 
-*More coming soon*
+For all entities the read-only fields include the **unique entity identifier** selected randomly on creation.
+
+Furthermore, the read-only fields include **create, update, and delete timestamps** managed automatically.
 
 ---
 
@@ -173,6 +239,8 @@ Finally, the `Get` structures derive from the `Post` structures and add the fiel
 **Problems** during service execution
 
 ---
+
+![bg right w:90%](../Models/Exceptions.png)
 
 #### Exception overview
 
@@ -262,7 +330,7 @@ Instead, the `DeletedAt` timestamp of the instance is **set to the current times
 
 <!-- _class: center dark -->
 
-## Section 3 - The `CustomApi` project
+## Section 3 - The `CustomApi` component
 
 **ASP.NET backend** and **controllers**
 
@@ -296,7 +364,35 @@ For each **resource** (i.e. user, issue, comment), the same set of functions is 
 
 <!-- _class: center dark -->
 
-## Section 4 - The `CustomApp` project
+## Section 4 - The `CustomSdk` component
+
+*Coming soon*
+
+---
+
+### Software development kit (SDK)
+
+*Coming soon*
+
+---
+
+<!-- _class: center dark -->
+
+## Section 5 - The `CustomCli` component
+
+*Coming soon*
+
+---
+
+### Command line interface (CLI)
+
+*Coming soon*
+
+---
+
+<!-- _class: center dark -->
+
+## Section 6 - The `CustomApp` component
 
 **MAUI.NET frontend**, **view models**, and **pages**
 
@@ -353,6 +449,20 @@ You can change the **first and last name**, the other fields are set automatical
 ![bg right w:90%](../Models/Pages.png)
 
 ### Page overview
+
+*Coming soon*
+
+---
+
+<!-- _class: center dark -->
+
+## Section 7 - The follow-up resources
+
+*Coming soon*
+
+---
+
+### Follow-up resource overview
 
 *Coming soon*
 

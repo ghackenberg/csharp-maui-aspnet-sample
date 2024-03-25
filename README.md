@@ -65,19 +65,19 @@ In the following, we explain internal structures of the sample application. We d
 
 The following diagram explains the package structure of the sample application. The package structure consists of three projects: A MAUI.NET application project, an ASP.NET werb service project, and a common class library project. Furthermore, the MAUI.NET application communicates with the ASP.NET web service via HTTP REST protocol.
 
-![MAUI.NET / ASP.NET Sample Package Structure](./Models/Package.svg)
+![MAUI.NET / ASP.NET Sample Package Structure](./Models/Package/Full.svg)
 
 ### Data structure
 
 The following diagram explains the data structrure of the sample application: The data structure consists of three classes: A user class representing the users of the application, an issue class representing the issues created by the users, and a comment class representing comments created by the users and contained in issues.
 
-![MAUI.NET / ASP.NET Sample Data Structure](./Models/Data/Comment.svg)
+![MAUI.NET / ASP.NET Sample Data Structure](./Models/Data/Full.svg)
 
 ### Message structure
 
 The following diagram explains the message structure of the sample application used for communication between the graphical user interface and the service via HTTP REST. For each entity (i.e. user, issue, comment), the structure of the HTTP responses as well as the HTTP POST and HTTP PUT requests are described.
 
-![MAUI.NET / ASP.NET Sample Message Structure](./Models/Message/Get.svg)
+![MAUI.NET / ASP.NET Sample Message Structure](./Models/Message/Full.svg)
 
 ### Interface structure
 

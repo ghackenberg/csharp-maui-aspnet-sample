@@ -3,12 +3,15 @@ classDiagram
 
     class User {
         <<Entity>>
+        ...
     }
     class Issue {
         <<Entity>>
+        ...
     }
     class Comment {
         <<Entity>>
+        ...
     }
 
     User "1" <.. "*" Issue : created by

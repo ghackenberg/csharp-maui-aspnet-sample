@@ -13,6 +13,9 @@
         <views:ShellFlyoutHeader />
     </Shell.FlyoutHeader>
 
+    <FlyoutItem Title="Calculator" Icon="user.png" Route="calculator">
+        <ShellContent ContentTemplate="{DataTemplate pages:CalculatorPage}" />
+    </FlyoutItem>
     <FlyoutItem Title="Users" Icon="user.png" Route="users">
         <ShellContent ContentTemplate="{DataTemplate pages:UsersPage}" />
     </FlyoutItem>
