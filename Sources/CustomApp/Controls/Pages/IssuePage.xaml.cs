@@ -1,6 +1,6 @@
 using CustomApp.Models.Pages;
 
-namespace CustomApp.Pages;
+namespace CustomApp.Controls.Pages;
 
 public partial class IssuePage : ContentPage
 {

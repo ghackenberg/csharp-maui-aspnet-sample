@@ -21,12 +21,6 @@ namespace CustomApp
                 }
             );
 
-            // Configure services
-            builder.Services.AddSingleton<UsersPageModel>();
-            builder.Services.AddSingleton<UserPageModel>();
-            builder.Services.AddSingleton<IssuesPageModel>();
-            builder.Services.AddSingleton<IssuePageModel>();
-
 #if DEBUG
             // Configure debugger
             builder.Logging.AddDebug();

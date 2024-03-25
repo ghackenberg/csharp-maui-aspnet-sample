@@ -64,40 +64,41 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\CustomLib\CustomLib.csproj" />
+	  <ProjectReference Include="..\CustomSdk\CustomSdk.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Pages\IssuesPage.xaml.cs">
+	  <Compile Update="Controls\Pages\IssuesPage.xaml.cs">
 	    <DependentUpon>IssuesPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\IssuePage.xaml.cs">
+	  <Compile Update="Controls\Pages\IssuePage.xaml.cs">
 	    <DependentUpon>IssuePage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\UserPage.xaml.cs">
+	  <Compile Update="Controls\Pages\UserPage.xaml.cs">
 	    <DependentUpon>UserPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\UsersPage.xaml.cs">
+	  <Compile Update="Controls\Pages\UsersPage.xaml.cs">
 	    <DependentUpon>UsersPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Pages\UsersPage.xaml">
+	  <MauiXaml Update="Controls\Pages\UsersPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\IssuesPage.xaml">
+	  <MauiXaml Update="Controls\Pages\IssuesPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\IssuePage.xaml">
+	  <MauiXaml Update="Controls\Pages\IssuePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\UserPage.xaml">
+	  <MauiXaml Update="Controls\Pages\UserPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\ShellFlyoutFooter.xaml">
+	  <MauiXaml Update="Controls\Views\ShellFlyoutFooter.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\ShellFlyoutHeader.xaml">
+	  <MauiXaml Update="Controls\Views\ShellFlyoutHeader.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

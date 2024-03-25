@@ -2,11 +2,11 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:models="clr-namespace:CustomApp.Models.Pages"
-             x:Class="CustomApp.Pages.UsersPage"
-             Title="Users Page">
+             x:Class="CustomApp.Controls.Pages.IssuesPage"
+             Title="Issues Page">
 
     <StackLayout Spacing="20" Margin="20">
-        <Button Text="Reload users"
+        <Button Text="Reload issues"
                 Clicked="OnReloadClicked"
                 IsEnabled="{Binding Path=IsReloadEnabled}"/>
         <ActivityIndicator IsRunning="True"
@@ -26,18 +26,17 @@
                     <ViewCell>
                         <StackLayout Margin="20" Spacing="20"
                                      Orientation="Horizontal">
-                            <Label Text="{Binding Path=FirstName}"/>
-                            <Label Text="{Binding Path=LastName}"/>
-                            <Label Text="{Binding Path=CreatedAt}"/>
-                            <Label Text="{Binding Path=UpdatedAt}"/>
+                            <Label Text="{Binding Path=UserId}"/>
+                            <Label Text="{Binding Path=IssueId}"/>
+                            <Label Text="{Binding Path=Label}"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button Text="Create user"
+        <Button Text="Create issue"
                 Clicked="OnCreateClicked"
                 IsEnabled="{Binding Path=IsCreateEnabled}"/>
     </StackLayout>
-
+    
 </ContentPage>

@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:models="clr-namespace:CustomApp.Models.Pages"
-             x:Class="CustomApp.Pages.UserPage"
+             x:Class="CustomApp.Controls.Pages.UserPage"
              Title="User Page">
 
     <StackLayout Spacing="20" Margin="20">

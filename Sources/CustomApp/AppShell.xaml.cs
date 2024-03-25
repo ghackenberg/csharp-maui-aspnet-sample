@@ -1,4 +1,4 @@
-﻿using CustomApp.Pages;
+﻿using CustomApp.Controls.Pages;
 
 namespace CustomApp
 {

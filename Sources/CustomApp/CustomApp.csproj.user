@@ -6,22 +6,22 @@
     <ActiveDebugProfile>Windows Machine</ActiveDebugProfile>
   </PropertyGroup>
   <ItemGroup>
-    <MauiXaml Update="Pages\UsersPage.xaml">
+    <MauiXaml Update="Controls\Pages\UsersPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
-    <MauiXaml Update="Pages\IssuesPage.xaml">
+    <MauiXaml Update="Controls\Pages\IssuesPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
-    <MauiXaml Update="Pages\IssuePage.xaml">
+    <MauiXaml Update="Controls\Pages\IssuePage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
-    <MauiXaml Update="Pages\UserPage.xaml">
+    <MauiXaml Update="Controls\Pages\UserPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
-    <MauiXaml Update="Views\ShellFlyoutFooter.xaml">
+    <MauiXaml Update="Controls\Views\ShellFlyoutFooter.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
-    <MauiXaml Update="Views\ShellFlyoutHeader.xaml">
+    <MauiXaml Update="Controls\Views\ShellFlyoutHeader.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
   </ItemGroup>

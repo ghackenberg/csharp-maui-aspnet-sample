@@ -1,7 +1,7 @@
 ﻿using CustomLib.Interfaces;
 using CustomLib.Models.Comments;
 
-namespace CustomLib.Clients
+namespace CustomSdk.Clients
 {
     /// <summary>
     /// A singleton for calling comment CRUD operations via HTTP.

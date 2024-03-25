@@ -1,5 +1,5 @@
-﻿using CustomLib.Clients;
-using CustomLib.Models.Issues;
+﻿using CustomLib.Models.Issues;
+using CustomSdk.Clients;
 
 namespace CustomApp.Models.Pages
 {

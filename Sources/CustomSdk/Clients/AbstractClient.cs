@@ -5,7 +5,7 @@ using System.Net;
 using System.Text;
 using System.Text.Json;
 
-namespace CustomLib.Clients
+namespace CustomSdk.Clients
 {
     public abstract class AbstractClient<GetType, PostType, PutType> : AbstractInterface<GetType, PostType, PutType>
     {

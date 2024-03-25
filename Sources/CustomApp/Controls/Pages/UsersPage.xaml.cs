@@ -1,7 +1,7 @@
 using CustomApp.Models.Pages;
 using CustomLib.Models.Users;
 
-namespace CustomApp.Pages;
+namespace CustomApp.Controls.Pages;
 
 public partial class UsersPage : ContentPage
 {

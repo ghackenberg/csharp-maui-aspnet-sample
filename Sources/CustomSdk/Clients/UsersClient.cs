@@ -1,7 +1,7 @@
 ﻿using CustomLib.Interfaces;
 using CustomLib.Models.Users;
 
-namespace CustomLib.Clients
+namespace CustomSdk.Clients
 {
     /// <summary>
     /// A singleton for calling user CRUD operations via HTTP.

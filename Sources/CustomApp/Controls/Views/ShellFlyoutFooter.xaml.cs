@@ -1,7 +1,6 @@
-using CustomApp.Models.Pages;
 using CustomApp.Models.Views;
 
-namespace CustomApp.Views;
+namespace CustomApp.Controls.Views;
 
 public partial class ShellFlyoutFooter : ContentView
 {

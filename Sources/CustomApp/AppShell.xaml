@@ -3,8 +3,8 @@
     x:Class="CustomApp.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:pages="clr-namespace:CustomApp.Pages"
-    xmlns:views="clr-namespace:CustomApp.Views"
+    xmlns:pages="clr-namespace:CustomApp.Controls.Pages"
+    xmlns:views="clr-namespace:CustomApp.Controls.Views"
     FlyoutBackgroundColor="LightBlue"
     FlyoutBehavior="Locked"
     Title="CustomApp">

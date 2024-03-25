@@ -1,8 +1,8 @@
 using CustomApp.Models.Pages;
-using CustomLib.Clients;
 using CustomLib.Models.Users;
+using CustomSdk.Clients;
 
-namespace CustomApp.Pages;
+namespace CustomApp.Controls.Pages;
 
 public partial class UserPage : ContentPage
 {

@@ -1,5 +1,5 @@
-﻿using CustomLib.Clients;
-using CustomLib.Models.Users;
+﻿using CustomLib.Models.Users;
+using CustomSdk.Clients;
 
 namespace CustomApp.Models.Pages
 {

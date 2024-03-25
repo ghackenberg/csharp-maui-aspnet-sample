@@ -1,7 +1,7 @@
 ﻿using CustomLib.Interfaces;
 using CustomLib.Models.Issues;
 
-namespace CustomLib.Clients
+namespace CustomSdk.Clients
 {
     /// <summary>
     /// A singleton for callding issue CRUD operations via HTTP.

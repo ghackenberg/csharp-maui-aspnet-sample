@@ -2,13 +2,13 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:models="clr-namespace:CustomApp.Models.Views"
-             x:Class="CustomApp.Views.ShellFlyoutFooter">
+             x:Class="CustomApp.Controls.Views.ShellFlyoutHeader"
+             HeightRequest="200">
     <ContentView.BindingContext>
-        <models:ShellFlyoutFooterModel />
+        <models:ShellFlyoutHeaderModel />
     </ContentView.BindingContext>
-    <StackLayout Margin="20">
-        <Label Text="CustomApp v0.0.1"
-               FontAttributes="Bold"
-               HorizontalOptions="Center"/>
-    </StackLayout>
+    <Grid>
+        <Image Aspect="AspectFill"
+               Source="dotnet_bot.png" />
+    </Grid>
 </ContentView>

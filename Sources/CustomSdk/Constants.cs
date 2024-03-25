@@ -1,4 +1,4 @@
-﻿namespace CustomLib
+﻿namespace CustomSdk
 {
     class Constants
     {
