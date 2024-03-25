@@ -11,9 +11,9 @@ section h6 {
     color: tomato !important;
 }
 
-section.clean header,
-section.clean footer,
-section.clean::after {
+section.hide-header header,
+section.hide-footer footer,
+section.hide-page-number::after {
     display: none;
 }
 

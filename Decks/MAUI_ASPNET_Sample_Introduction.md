@@ -6,7 +6,7 @@ footer: Dr. Georg Hackenberg | Professor for Industrial Informatics | FH OÖ
 paginate: true
 ---
 
-<!-- _class: clean center -->
+<!-- _class: center hide-header hide-footer hide-page-number -->
 
 # C# MAUI.NET / ASP.NET Sample Application
 
@@ -24,7 +24,9 @@ Also check out https://mentawise.com and https://caddrive.org 😎
 
 ---
 
-![bg right:40% w:100%](../Images/MAUI_ASPNET_Sample_Social_Preview_Image.png)
+<!-- _class: hide-page-number -->
+
+![bg right:40% w:150%](../Images/MAUI_ASPNET_Sample_Deck_Preview_Image.png)
 
 ## Deck overview
 
@@ -128,11 +130,11 @@ The **executable components** include the `CustomApi`, the `CustomCli`, and the 
 
 ### The `CustomLib` component
 
-The `CustomLib` contains a common set of **classes and interfaces** used by the other components.
+The `CustomLib` component contains a common set of **classes and interfaces** for the other components.
 
-Most importantly, the `CustomLib` defines the **messages** exchanged between backend and frontends.
+Most importantly, it defines the **messages** exchanged between the backend and the frontends.
 
-Furthermore, the `CustomLib` defines the **contracts** between backend and frontends as *regular interfaces*.
+Furthermore, it defines the **contracts** between backend and frontends in the form of *regular interfaces*.
 
 ---
 
@@ -140,7 +142,11 @@ Furthermore, the `CustomLib` defines the **contracts** between backend and front
 
 ### The `CustomApi` component
 
-*Coming soon*
+The `CustomApi` component implements the **backend** of the sample application.
+
+The backend is responsible for **managing and serving** the entity instances.
+
+The backend services are exposed as **HTTP REST API** using the Microsoft ASP.NET framework.
 
 ---
 
@@ -148,7 +154,11 @@ Furthermore, the `CustomLib` defines the **contracts** between backend and front
 
 ### The `CustomSdk` component
 
-*Coming soon*
+The `CustomSdk` provides a set of classes for **interacting** with the `CustomApi`backend.
+
+The interaction is realized by means of **HTTP REST API clients** producing and consuming messages.
+
+These clients send **request messages** to the backend and the backend responds with **response messages**.
 
 ---
 
@@ -156,7 +166,11 @@ Furthermore, the `CustomLib` defines the **contracts** between backend and front
 
 ### The `CustomCli` component
 
-*Coming soon*
+The `CustomCli` component provides a **command line interface (CLI)** for the backend services.
+
+CLIs represent the simplest form of application and are used, e.g., for **administration tasks**.
+
+The implementation uses the clients of the `CustomSdk` to **access** the backend services.
 
 ---
 
@@ -164,7 +178,11 @@ Furthermore, the `CustomLib` defines the **contracts** between backend and front
 
 ### The `CustomApp` component
 
-*Coming soon*
+The `CustomApp` component provides a **graphical user interface (GUI)** for the sample application.
+
+GUIs typically are shipped to the end **users of an application** and excell over CLIs in terms of usability.
+
+The implementation is based in the **Microsoft MAUI.NET** cross-platform application framework.
 
 ---
 
@@ -324,55 +342,83 @@ Instead, the `DeletedAt` timestamp of the instance is **set to the current times
 
 #### Exception overview
 
-*Coming soon*
+Under some circumstances, the interface methods **cannot** execute successfully.
+
+If such circumstances occur, the methods **throw** one of the exceptions shown on the right side.
+
+In the sample application we distinguish two exception types:  **HTTP** and **parse exceptions**.
 
 ---
 
 ![bg right w:90%](../Models/Exception/Http.png)
 
-#### HTTP exception
+#### HTTP exceptions
 
-*Coming soon*
+HTTP exceptions indicate that the method **could not** be executed successfully.
+
+There are different reasons why **method execution** might not have been successful.
+
+In the HTTP protocol and HTTP REST APIs, the reasons are **differentiated** by means of *status codes*.
 
 ---
 
 ![bg right w:90%](../Models/Exception/400.png)
 
-#### Bad request exception
+#### Bad request exceptions
 
-*Coming soon*
+The first possible reason is called **bad request** and comes with a status code of `400`.
+
+Bad request exceptions indicate an **issue** with the **HTTP request message** sent to the backend.
+
+For example, the request message might **miss mandatory parameters** for method execution.
 
 ---
 
 ![bg right w:90%](../Models/Exception/401.png)
 
-#### Unauthorized exception
+#### Unauthorized exceptions
 
-*Coming soon*
+The second possible reason is that the caller **has not provided** authorization information.
+
+Typically, backend methods can only be executed by users, which have **registered and signed in**.
+
+If an adequate authorization proof is missing, the backend will answer with **unauthorized status** `401`.
 
 ---
 
 ![bg right w:90%](../Models/Exception/403.png)
 
-#### Forbidden exception
+#### Forbidden exceptions
 
-*Coming soon*
+The third possible reason is that the caller has authorized, but does not have the **necessary permissions**.
+
+For example, a registered and signed in user **should not be allowed** to change other user profiles.
+
+If such request is received by the backend, it will answer with the **forbidden status** `403`.
 
 ---
 
 ![bg right w:90%](../Models/Exception/404.png)
 
-#### Not found exception
+#### Not found exceptions
 
-*Coming soon*
+The fourth possible reason is that the user tries to **access an entity** which does not exist.
+
+For example, the user might want to update an entity which has been **deleted in the meantime**.
+
+In such cases the backend will respond with the **not found status code** `404`.
 
 ---
 
 ![bg right w:90%](../Models/Exception/Parse.png)
 
-#### Parse exception
+#### Parse exceptions
 
-*Coming soon*
+Even if none of the previous exceptions occur, **another kind** of problem might arise.
+
+In the sample application all interface methods are **expected to consume and produce** JSON encoded data.
+
+If the JSON parser **fails to decode** a message, a parse exception will be thrown.
 
 ---
 
@@ -380,13 +426,21 @@ Instead, the `DeletedAt` timestamp of the instance is **set to the current times
 
 ## Section 3 - The `CustomApi` component
 
-**ASP.NET backend** and **controllers**
+**Swagger UI** and **controllers**
+
+---
+
+<!-- _class: center -->
+
+### Swagger UI
+
+*Coming soon*
 
 ---
 
 ![bg right h:90%](../Screenshots/CustomApi.png)
 
-### ASP.NET backend
+### Swagger UI overview
 
 The data itself is managed by an **ASP.NET backend** service with standard REST API.
 
