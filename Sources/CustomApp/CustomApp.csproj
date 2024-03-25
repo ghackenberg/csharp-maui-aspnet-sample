@@ -68,6 +68,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Controls\Pages\CalculatorPage.xaml.cs">
+	    <DependentUpon>CalculatorPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Controls\Pages\IssuesPage.xaml.cs">
 	    <DependentUpon>IssuesPage.xaml</DependentUpon>
 	  </Compile>
@@ -83,6 +86,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Controls\Pages\CalculatorPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Controls\Pages\UsersPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
