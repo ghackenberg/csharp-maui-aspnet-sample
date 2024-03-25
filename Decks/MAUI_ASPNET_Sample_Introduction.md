@@ -172,7 +172,7 @@ Furthermore, the `CustomLib` defines the **contracts** between backend and front
 
 ## Section 2 - The `CustomLib` component
 
-**Messages**, **exceptions**, and **interfaces**
+**Messages**, **interfaces**, and **exceptions**
 
 ---
 
@@ -180,7 +180,7 @@ Furthermore, the `CustomLib` defines the **contracts** between backend and front
 
 ### Messages
 
-**Data exchange** between frontend and backend
+**Data exchange** between frontends and backend
 
 ---
 
@@ -234,25 +234,9 @@ Furthermore, the read-only fields include **create, update, and delete timestamp
 
 <!-- _class: center -->
 
-### Exceptions
-
-**Problems** during service execution
-
----
-
-![bg right w:90%](../Models/Exceptions.png)
-
-#### Exception overview
-
-*Coming soon*
-
----
-
-<!-- _class: center -->
-
 ### Interfaces
 
-**Methods** *provided by* backend and *required by* frontend
+**Methods** *provided by* backend and *required by* frontends
 
 ---
 
@@ -325,6 +309,70 @@ Finally, the `Delete` method **deletes and returns** an existing instance with a
 Note that deleting an instance **does not remove** the dataset from the database.
 
 Instead, the `DeletedAt` timestamp of the instance is **set to the current timestamp**.
+
+---
+
+<!-- _class: center -->
+
+### Exceptions
+
+**Potential problems** during method execution
+
+---
+
+![bg right w:90%](../Models/Exception/Overview.png)
+
+#### Exception overview
+
+*Coming soon*
+
+---
+
+![bg right w:90%](../Models/Exception/Http.png)
+
+#### HTTP exception
+
+*Coming soon*
+
+---
+
+![bg right w:90%](../Models/Exception/400.png)
+
+#### Bad request exception
+
+*Coming soon*
+
+---
+
+![bg right w:90%](../Models/Exception/401.png)
+
+#### Unauthorized exception
+
+*Coming soon*
+
+---
+
+![bg right w:90%](../Models/Exception/403.png)
+
+#### Forbidden exception
+
+*Coming soon*
+
+---
+
+![bg right w:90%](../Models/Exception/404.png)
+
+#### Not found exception
+
+*Coming soon*
+
+---
+
+![bg right w:90%](../Models/Exception/Parse.png)
+
+#### Parse exception
+
+*Coming soon*
 
 ---
 
