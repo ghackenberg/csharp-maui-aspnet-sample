@@ -1,0 +1,31 @@
+classDiagram
+    direction LR
+
+    class User {
+        <<Entity>>
+        +String UserId
+        +DateTime CreatedAt
+        +DateTime UpdatedAt
+        +DateTime DeletedAt
+        +String FirstName
+        +String LastName
+    }
+    class Issue {
+        <<Entity>>
+        +String UserId
+        +String IssueId
+        +DateTime CreatedAt
+        +DateTime UpdatedAt
+        +DateTime DeletedAt
+        +String Label
+    }
+    class Comment {
+        <<Entity>>
+        ...
+    }
+
+    User "1" <.. "*" Issue : created by
+    User "1" <.. "*" Comment : created by
+    Issue "1" <.. "*" Comment : contained in
+
+    style Issue fill:yellow

@@ -1,0 +1,40 @@
+classDiagram
+    direction LR
+
+    class CustomCli {
+        <<Executable, Console>>
+    }
+    class CustomApp {
+        <<Executable, MAUI>>
+        +Models
+        +Views
+        +Pages
+    }
+    class CustomApi {
+        <<Executable, ASP>>
+        +Managers
+        +Services
+        +Controllers
+    }
+    class CustomSdk {
+        <<Lib>>
+        +Clients
+    }
+    class CustomLib {
+        <<Lib>>
+        +Messages
+        +Exceptions
+        +Interfaces
+    }
+
+    CustomCli ..> CustomLib : using
+    CustomCli ..> CustomSdk : using
+    CustomApp ..> CustomSdk : using
+    CustomSdk ..> CustomLib : using
+    CustomSdk --> CustomApi : <b>Request message</b><br/>(JSON encoded)
+    CustomSdk .. CustomApi : <i>HTTP connection</i>
+    CustomSdk <-- CustomApi : <b>Response message</b><br/>(JSON encoded)
+    CustomApi ..> CustomLib : using
+    CustomApp ..> CustomLib : using
+
+    style CustomSdk fill:yellow

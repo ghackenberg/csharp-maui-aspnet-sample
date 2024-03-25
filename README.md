@@ -11,12 +11,12 @@ We use this sample project at the [School of Engineering](https://www.fh-ooe.at/
 
 The following set of guides helps you **getting started with MAUI.NET and ASP.NET development on your local machine**. Note that the guides have been prepared for Windows machines only. In principle, MAUI.NET and ASP.NET development should be possible also on OS X and Linux machines. However, we did not test that!
 
-- [**Step 1 - Create your personal GitHub account**](./Guides/0_Register/README.md)
-- [**Step 2 - Fork the respository** of the sample application](./Guides/1_Fork/README.md)
-- [**Step 3 - Prepare your development environment**](./Guides/2_Prepare/README.md)
-- [**Step 4 - Clone the sources** of the sample application](./Guides/3_Clone/README.md)
-- [**Step 5 - Build and run** the sample application](./Guides/4_Run/README.md)
-- [**Step 6 - Make changes** to the sample application](./Guides/5_Change/README.md)
+- [**Guide 1 - Create your personal GitHub account**](./Guides/0_Register/README.md)
+- [**Guide 2 - Fork the respository** of the sample application](./Guides/1_Fork/README.md)
+- [**Guide 3 - Prepare your development environment**](./Guides/2_Prepare/README.md)
+- [**Guide 4 - Clone the sources** of the sample application](./Guides/3_Clone/README.md)
+- [**Guide 5 - Build and run** the sample application](./Guides/4_Run/README.md)
+- [**Guide 6 - Make changes** to the sample application](./Guides/5_Change/README.md)
 
 ## 📜 Documents
 
@@ -65,22 +65,28 @@ In the following, we explain internal structures of the sample application. We d
 
 The following diagram explains the package structure of the sample application. The package structure consists of three projects: A MAUI.NET application project, an ASP.NET werb service project, and a common class library project. Furthermore, the MAUI.NET application communicates with the ASP.NET web service via HTTP REST protocol.
 
-![MAUI.NET / ASP.NET Sample Package Structure](./Models/Package.svg)
+![MAUI.NET / ASP.NET Sample Package Structure](./Models/Package/Full.svg)
 
 ### Data structure
 
 The following diagram explains the data structrure of the sample application: The data structure consists of three classes: A user class representing the users of the application, an issue class representing the issues created by the users, and a comment class representing comments created by the users and contained in issues.
 
-![MAUI.NET / ASP.NET Sample Data Structure](./Models/Data.svg)
+![MAUI.NET / ASP.NET Sample Data Structure](./Models/Data/Full.svg)
 
 ### Message structure
 
 The following diagram explains the message structure of the sample application used for communication between the graphical user interface and the service via HTTP REST. For each entity (i.e. user, issue, comment), the structure of the HTTP responses as well as the HTTP POST and HTTP PUT requests are described.
 
-![MAUI.NET / ASP.NET Sample Message Structure](./Models/Message.svg)
+![MAUI.NET / ASP.NET Sample Message Structure](./Models/Message/Full.svg)
 
 ### Interface structure
 
 The following diagram explains the interface structure of the sample application. For each entity (i.e. user, issue, comment), methods are provided for listing all existing entity instances, creating a new instance, getting an existing instance, updating an existing instance, and deleting an existing instance.
 
-![MAUI.NET / ASP.NET Sample Interface Structure](./Models/Interface.svg)
+![MAUI.NET / ASP.NET Sample Interface Structure](./Models/Interface/Full.svg)
+
+### Page structure
+
+The following diagram explains the page structure and the underlying view models of the MAUI.NET sample application. At the base you find an abstract view model, which implements the ``INotifyPropertyChanged`` interface. On top of the abstract view model, you find an abstract collection view model as well as an abstract item view model. The collecton view model forms the basis of the user and issue overview pages. The item view model instead forms the basis of the user and item detail pages.
+
+![MAUI.NET / ASP.NET Sample Page Structure](./Models/Pages.svg)

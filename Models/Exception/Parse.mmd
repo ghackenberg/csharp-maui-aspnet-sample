@@ -1,0 +1,35 @@
+classDiagram
+    direction LR
+    
+    class Exception {
+        <<System>>
+        +string Message
+    }
+    class HttpException {
+        +int StatusCode
+    }
+    class BadRequestException {
+        +int StatusCode = 400
+    }
+    class UnauthorizedException {
+        +int StatusCode = 401
+    }
+    class ForbiddenException {
+        +int StatusCode = 403
+    }
+    class NotFoundException {
+        +int StatusCode = 404
+    }
+    class ParseException {
+
+    }
+
+    Exception <|-- HttpException
+    Exception <|-- ParseException
+    HttpException <|-- BadRequestException
+    HttpException <|-- UnauthorizedException
+    HttpException <|-- ForbiddenException
+    HttpException <|-- NotFoundException
+
+    style Exception fill:white
+    style ParseException fill:yellow

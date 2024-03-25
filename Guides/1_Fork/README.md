@@ -1,6 +1,10 @@
-# Step 2 - Fork the repository of the sample application
+# Guide 2 - Fork the repository of the sample application
 
 After having [created your personal GitHub account](../0_Register/README.md), you can proceed with forking this GitHub repository. Forking means creating your own independent copy of the original copy. Afterwards, you can work on your independent copy without messing with the original repository behind. Forking is a common approach for building on the work of other open source software developers.
+
+## Previous steps
+
+[Guide 1 - Create your personal GitHub account](../0_Register/README.md)
 
 ## ``Step 2.1`` - Vist original repository
 
@@ -25,3 +29,7 @@ After finishing the forking process, you should see a copy of the original GitHu
 From here on, the fork is detached from the original repository, i.e. changes to the original repository are *not* reflected on the fork automatically. However, GitHub provides you with information on how many changes have been made to the original repository since forking it. Also, Github provides the means for merging these changes into your fork. The merging process can be done fully automatically, if you do your changes in a separate branch and do not touch the branches of the original repository.
 
 ![GitHub Repository Fork Sync](./GitHub_Repository_Fork_Sync.png)
+
+## Next steps
+
+[Guide 3 - Install Microsoft Visual Studio on your computer](../2_Prepare/README.md)

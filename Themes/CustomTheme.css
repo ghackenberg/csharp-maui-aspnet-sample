@@ -1,0 +1,45 @@
+/* @theme CustomTheme */
+
+@import 'default';
+
+section h1,
+section h2,
+section h3,
+section h4,
+section h5,
+section h6 {
+    color: tomato !important;
+}
+
+section.clean header,
+section.clean footer,
+section.clean::after {
+    display: none;
+}
+
+section.center {
+    text-align: center;
+}
+
+section.dark {
+    color: white !important;
+    background-color: gray !important;
+}
+
+section.dark header,
+section.dark footer {
+    color: lightgray;
+}
+
+section.dark::after {
+    color: lightgray;
+}
+
+section.dark h1,
+section.dark h2,
+section.dark h3,
+section.dark h4,
+section.dark h5,
+section.dark h6 {
+    color: gold !important;
+}
