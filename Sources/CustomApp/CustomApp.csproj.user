@@ -6,14 +6,7 @@
     <ActiveDebugProfile>Windows Machine</ActiveDebugProfile>
   </PropertyGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <MauiXaml Update="Controls\Pages\UsersPage.xaml">
-=======
-    <MauiXaml Update="Pages\CalculatorPage.xaml">
-      <SubType>Designer</SubType>
-    </MauiXaml>
-    <MauiXaml Update="Pages\UsersPage.xaml">
->>>>>>> d2dedfbaf0f03c74ec01a6d7b3d3626bfd6c7b67
       <SubType>Designer</SubType>
     </MauiXaml>
     <MauiXaml Update="Controls\Pages\IssuesPage.xaml">
