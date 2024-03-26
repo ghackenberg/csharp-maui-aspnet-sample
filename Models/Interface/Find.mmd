@@ -2,11 +2,11 @@ classDiagram
 
     class AbstractInterface~ResourceRead, ResourceQuery, ResourceCreate, ResourceUpdate~ {
         <<Interface>>
-        ... Find(...)
+        List~ResourceRead~ Find(ResourceQuery query)
         ... Create(...)
         ... Read(...)
         ... Update(...)
-        ResourceRead Delete(string id)
+        ... Delete(...)
     }
 
     class UsersInterface {

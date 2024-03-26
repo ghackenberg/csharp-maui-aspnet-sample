@@ -190,35 +190,35 @@ The implementation is based in the **Microsoft MAUI.NET** cross-platform applica
 
 ## Section 2 - The `CustomLib` component
 
-**Messages**, **interfaces**, and **exceptions**
+**Models**, **interfaces**, and **exceptions**
 
 ---
 
 <!-- _class: center -->
 
-### Messages
+### HTTP request / response *body models*
 
-**Data exchange** between frontends and backend
+**JSON-encoded** data exchange through **message bodies**
 
 ---
 
-![bg right w:90%](../Models/Message/Type.png)
+![bg right w:90%](../Models/Message/Body/Type.png)
 
-#### Message overview
+#### Generic message body model
 
-The REST API uses request and response **messages** for working with these entities.
+The REST API uses request and response **messages** for managing the entities (also called *resources*).
 
-For **each resource** (i.e. user, issue, comment) we distinguish `Get`, `Post`, and `Put` messages.
+For **each resource** (i.e. user, issue, comment) we distinguish `Read`, `Create`, and `Update` messages.
 
 In the following, we describe each **type of message** in more detail including their data fields.
 
 ---
 
-![bg right w:90%](../Models/Message/Put.png)
+![bg right w:90%](../Models/Message/Body/Update.png)
 
-#### `Put` messages
+#### `Update` request body models
 
-The `Put` messages contain the fields that you can **override later** after creating an instance.
+The `Update` messages contain the fields that you can **override later** after creating an instance.
 
 For `User` entities, **the first and the last name** can be changed any time later.
 
@@ -226,11 +226,11 @@ For `Issue` entities, the **label** can be changed later, and for `Comment` enti
 
 ---
 
-![bg right w:90%](../Models/Message/Post.png)
+![bg right w:90%](../Models/Message/Body/Create.png)
 
-#### `Post` messages
+#### `Create` request body models
 
-The `Post` messages derive from the `Put` messages and add the fields that you can **set initially only**.
+The `Create` messages derive from the `Update` messages and add the fields that you can **set initially only**.
 
 For `Issue` entities you must define the identifier of the **user** who created the issue.
 
@@ -238,11 +238,11 @@ For `Comment` entities you must define the identifier of the **user** as well as
 
 ---
 
-![bg right w:90%](../Models/Message/Get.png)
+![bg right w:90%](../Models/Message/Body/Read.png)
 
-#### `Get` messages
+#### `Read` response body models
 
-Finally, the `Get` messages derive from the `Post` messages and add the fields that are **read-only**.
+Finally, the `Read` messages derive from the `Create` messages and add the fields that are **read-only**.
 
 For all entities the read-only fields include the **unique entity identifier** selected randomly on creation.
 
@@ -252,69 +252,101 @@ Furthermore, the read-only fields include **create, update, and delete timestamp
 
 <!-- _class: center -->
 
-### Interfaces
+### HTTP request *query models*
 
-**Methods** *provided by* backend and *required by* frontends
+**URL-encoded** data exchange through **query strings**
+
+---
+
+![bg right w:90%](../Models/Message/Query/Type.png)
+
+#### Generic request query model
+
+In addition to the body models, the HTTP REST API uses so-called **query** models.
+
+The query models define the parameters for **querying and filtering** the resources.
+
+Again, we define **for each resource type** (i.e. user, issue, comment) an independent query model.
+
+---
+
+![bg right w:90%](../Models/Message/Query/Query.png)
+
+#### Concrete request query models
+
+The diagram on the right shows the **query models** for the different entities of the system.
+
+The query models for users and issues **do not provide** any special querying and filtering capabilities.
+
+Only the query model for comments allows to filter the instances by **associated issue identifier**.
+
+---
+
+<!-- _class: center -->
+
+### Abstract interface
+
+**Resource-independent** method signatures
 
 ---
 
 ![bg right w:90%](../Models/Interface/Overview.png)
 
-#### Interface overview
+#### Abstract interface overview
 
-Based on the message data structures we **define the methods** of the REST API.
+Based on the previous body and query models we **define the methods** of the REST API.
 
-We use a **generic interface** model including `List`, `Post`, `Get`, `Put`, and `Delete` methods.
+We use a **generic interface** model including `Find`, `Create`, `Read`, `Update`, and `Delete` methods.
 
 In the following, we explain each method **in more detail** including its inputs and outputs.
 
 ---
 
-![bg right w:90%](../Models/Interface/List.png)
+![bg right w:90%](../Models/Interface/Find.png)
 
-#### The `List` method
+#### The `Find` method
 
-The `List` method returns a **collection** of created (and *not* deleted) instances.
+The `Find` method returns a **collection** of created (and *not* deleted) instances.
 
-Note that in our case the method **does not require** any input parameters.
+The method receives parameters for **filtering** through the respective `Query` model.
 
-*Usually the input parameters are used for **filtering and paging** the instances on demand.*
-
----
-
-![bg right w:90%](../Models/Interface/Post.png)
-
-#### The `Post` method
-
-The `Post` method **creates and returns** new instances of a given entity type.
-
-The **input parameters** use the corresponding `Post` message defined previously.
-
-The **return type** corresponds to the respective `Get` message from before.
+The method returns a list of the **matching instances** encoded using the respective `Read` model.
 
 ---
 
-![bg right w:90%](../Models/Interface/Get.png)
+![bg right w:90%](../Models/Interface/Create.png)
 
-#### The `Get` method
+#### The `Create` method
 
-The `Get` method **returns** an existing instance with a given identifier.
+The `Create` method **creates and returns** new instances of a given entity type.
+
+The **input parameters** use the corresponding `Create` model defined previously.
+
+The **return type** corresponds to the respective `Read` model from before.
+
+---
+
+![bg right w:90%](../Models/Interface/Read.png)
+
+#### The `Read` method
+
+The `Read` method **returns** an existing instance with a given identifier.
 
 The **single input parameter** represents the identifier of the desired instance.
 
-The **return type** corresponds to the respective `Get` message from before.
+The **return type** corresponds to the respective `Read` model from before.
 
 ---
 
-![bg right w:90%](../Models/Interface/Put.png)
+![bg right w:90%](../Models/Interface/Update.png)
 
-#### The `Put` method
+#### The `Update` method
 
-The `Put` method **overrides and returns** an existing instance with a given identifier.
+The `Update` method **overrides and returns** an existing instance with a given identifier.
 
-The **two input parameters** are the identifier of the instance and the respective `Put` message.
+The **two input parameters** are the identifier of the instance and the respective `Update` model.
 
-The **return type** corresponds to the respective `Get` type as introduced before.
+The **return type** corresponds to the respective `Read` model as introduced before.
 
 ---
 
@@ -324,9 +356,53 @@ The **return type** corresponds to the respective `Get` type as introduced befor
 
 Finally, the `Delete` method **deletes and returns** an existing instance with a given identifier.
 
-Note that deleting an instance **does not remove** the dataset from the database.
+The **single input parameter** represents the identifier of the instance that shall be deleted.
 
-Instead, the `DeletedAt` timestamp of the instance is **set to the current timestamp**.
+The **return type** again corresponds to the `Read` model of the correspnding resource type.
+
+---
+
+<!-- _class: center -->
+
+### Concrete interfaces
+
+**Resource-dependent** method signatures
+
+---
+
+![bg right w:90%](../Models/Interface/User.png)
+
+#### The users interface
+
+The diagram on the ride side shows the **concrete interface** for managing `User` entities.
+
+The type parameters `ResourceRead` and `ResourceQuery` **are replaced** with `UserRead` and `UserQuery`.
+
+Also, `ResourceCreate` and `ResourceUpdate` **are substituted** with `UserCreate` and `UserUpdate`.
+
+---
+
+![bg right w:90%](../Models/Interface/Issue.png)
+
+#### The issues interface
+
+The diagram on the ride side shows the **concrete interface** for managing `Issue` entities.
+
+The type parameters `ResourceRead` and `ResourceQuery` **are replaced** with `IssueRead` and `IssueQuery`.
+
+Also, `ResourceCreate` and `ResourceUpdate` **are substituted** with `IssueCreate` and `IssueUpdate`.
+
+---
+
+![bg right w:90%](../Models/Interface/Comment.png)
+
+#### The comments interface
+
+The diagram on the ride side shows the **concrete interface** for managing `Comment` entities.
+
+The parameters `ResourceRead` and `ResourceQuery` **are replaced** with `CommentRead` and `CommentQuery`.
+
+Also, `ResourceCreate` and `ResourceUpdate` **are substituted** with `CommentCreate` and `CommentUpdate`.
 
 ---
 
@@ -426,7 +502,7 @@ If the JSON parser **fails to decode** a message, a parse exception will be thro
 
 ## Section 3 - The `CustomApi` component
 
-**Swagger UI** and **controllers**
+**Swagger UI**, **managers**,  **controllers**, and **handlers**
 
 ---
 
@@ -452,6 +528,20 @@ For each **resource** (i.e. user, issue, comment), the same set of functions is 
 
 <!-- _class: center -->
 
+### Managers
+
+*Coming soon*
+
+---
+
+### Manager overview
+
+*Coming soon*
+
+---
+
+<!-- _class: center -->
+
 ### Controllers
 
 *Coming soon*
@@ -459,6 +549,20 @@ For each **resource** (i.e. user, issue, comment), the same set of functions is 
 ---
 
 ### Controller overview
+
+*Coming soon*
+
+---
+
+<!-- _class: center -->
+
+### Handlers
+
+*Coming soon*
+
+---
+
+### Handler overview
 
 *Coming soon*
 

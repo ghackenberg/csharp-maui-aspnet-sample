@@ -1,43 +1,28 @@
 classDiagram
 
-    direction LR
-
-    class AbstractInterface~TypeGet, TypePost, TypePut~ {
+    class AbstractInterface~ResourceRead, ResourceQuery, ResourceCreate, ResourceUpdate~ {
         <<Interface>>
-        ... List(...)
-        ... Post(...)
-        ... Get(...)
-        ... Put(...)
+        ... Find(...)
+        ... Create(...)
+        ... Read(...)
+        ... Update(...)
         ... Delete(...)
     }
 
-    class UsersInterface["&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UsersInterface&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"] {
+    class UsersInterface {
         <<Interface>>
-        ... List(...)
-        ... Post(...)
-        ... Get(...)
-        ... Put(...)
-        ... Delete(...)
     }
 
-    class IssuesInterface["&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IssuesInterface&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"] {
+    class IssuesInterface {
         <<Interface>>
-        ... List(...)
-        ... Post(...)
-        ... Get(...)
-        ... Put(...)
-        ... Delete(...)
     }
 
-    class CommentsInterface["&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CommentsInterface&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"] {
+    class CommentsInterface {
         <<Interface>>
-        ... List(...)
-        ... Post(...)
-        ... Get(...)
-        ... Put(...)
-        ... Delete(...)
     }
-    
+
     AbstractInterface <|-- UsersInterface
     AbstractInterface <|-- IssuesInterface
     AbstractInterface <|-- CommentsInterface
+
+    style AbstractInterface fill:yellow

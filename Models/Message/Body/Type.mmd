@@ -1,0 +1,27 @@
+classDiagram
+
+    direction BT
+
+    note for ResourceUpdate "<b>Fields you can override later</b>"
+    note for ResourceCreate "<b>Fields you can set initially</b><br/><br/>(includes the fields you<br/>can override later)"
+    note for ResourceRead "<b>Fields you can read</b><br/><br/>(includes the fields you<br/>can set initially and<br/>override later)"
+
+    class ResourceRead {
+        <<HttpResponseBody>>
+        ...
+    }
+    class ResourceCreate {
+        <<HttpRequestBody>>
+        ...
+    }
+    class ResourceUpdate {
+        <<HttpRequestBody>>
+        ...
+    }
+
+    ResourceRead --|> ResourceCreate
+    ResourceCreate --|> ResourceUpdate
+
+    style ResourceRead fill:yellow
+    style ResourceCreate fill:yellow
+    style ResourceUpdate fill:yellow

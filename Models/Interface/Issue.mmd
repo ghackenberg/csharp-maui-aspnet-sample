@@ -1,7 +1,5 @@
 classDiagram
 
-    direction LR
-
     class AbstractInterface~ResourceRead, ResourceQuery, ResourceCreate, ResourceUpdate~ {
         <<Interface>>
         List~ResourceRead~ Find(ResourceQuery query)
@@ -9,15 +7,6 @@ classDiagram
         ResourceRead Read(string id)
         ResourceRead Update(string id, ResourceUpdate data)
         ResourceRead Delete(string id)
-    }
-
-    class UsersInterface {
-        <<Interface>>
-        List~UserRead~ Find(UserQuery query)
-        UserRead Create(UserCreate data)
-        UserRead Read(string id)
-        UserRead Update(string id, UserUpdate data)
-        UserRead Delete(string id)
     }
 
     class IssuesInterface {
@@ -28,16 +17,9 @@ classDiagram
         IssueRead Update(string id, IssueUpdate data)
         IssueRead Delete(string id)
     }
-
-    class CommentsInterface {
-        <<Interface>>
-        List~CommentRead~ Find(CommentQuery query)
-        CommentRead Create(CommentCreate data)
-        CommentRead Read(string id)
-        CommentRead Update(string id, CommentUpdate data)
-        CommentRead Delete(string id)
-    }
     
     AbstractInterface <|-- UsersInterface
     AbstractInterface <|-- IssuesInterface
     AbstractInterface <|-- CommentsInterface
+
+    style IssuesInterface fill:yellow

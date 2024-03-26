@@ -1,0 +1,65 @@
+classDiagram
+
+    direction BT
+
+    class UserRead {
+        <<HttpResponse>>
+        string UserId
+        DateTime CreatedAt
+        DateTime UpdatedAt
+        DateTime DeletedAt
+    }
+    class UserCreate {
+        <<HttpRequest>>
+    }
+    class UserUpdate {
+        <<HttpRequest>>
+        string FirstName
+        string LastName
+    }
+
+    UserRead <|-- UserCreate
+    UserCreate <|-- UserUpdate
+
+    class IssueRead {
+        <<HttpResponseBody>>
+        string IssueId
+        DateTime CreatedAt
+        DateTime UpdatedAt
+        DateTime DeletedAt
+    }
+    class IssueCreate {
+        <<HttpRequestBody>>
+        string UserId
+    }
+    class IssueUpdate {
+        <<HttpRequestBody>>
+        string Label
+    }
+
+    IssueRead <|-- IssueCreate
+    IssueCreate <|-- IssueUpdate
+
+    class CommentRead {
+        <<HttpResponseBody>>
+        string CommentId
+        DateTime CreatedAt
+        DateTime UpdatedAt
+        DateTime DeletedAt
+    }
+    class CommentCreate {
+        <<HttpRequestBody>>
+        string UserId
+        string IssueId
+    }
+    class CommentUpdate {
+        <<HttpRequestBody>>
+        string Text
+    }
+
+    CommentRead <|-- CommentCreate
+    CommentCreate <|-- CommentUpdate
+
+    style UserRead fill:yellow
+    style IssueRead fill:yellow
+    style CommentRead fill:yellow

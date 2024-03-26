@@ -77,7 +77,7 @@ The following diagram explains the data structrure of the sample application: Th
 
 The following diagram explains the message structure of the sample application used for communication between the graphical user interface and the service via HTTP REST. For each entity (i.e. user, issue, comment), the structure of the HTTP responses as well as the HTTP POST and HTTP PUT requests are described.
 
-![MAUI.NET / ASP.NET Sample Message Structure](./Models/Message/Full.svg)
+![MAUI.NET / ASP.NET Sample Message Structure](./Models/Message/Body/Full.svg)
 
 ### Interface structure
 
