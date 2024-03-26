@@ -13,9 +13,9 @@ namespace CustomApi.Controllers
     public class IssuesController : ControllerBase, IssuesInterface
     {
         [HttpGet]
-        public async Task<List<IssueGet>> List()
+        public async Task<List<IssueGet>> List([FromQuery] IssueQuery query)
         {
-            return await IssuesManager.Instance.List();
+            return await IssuesManager.Instance.List(query);
         }
 
         [HttpPost]

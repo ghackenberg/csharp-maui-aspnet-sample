@@ -31,8 +31,9 @@ namespace CustomApi.Managers
         /// <summary>
         /// List all comments, which have been created and not deleted.
         /// </summary>
+        /// <param name="query">The comment query.</param>
         /// <returns>The comment objects.</returns>
-        public async Task<List<CommentGet>> List()
+        public async Task<List<CommentGet>> List(CommentQuery query)
         {
             return await Task.Run(() =>
             {
@@ -40,7 +41,7 @@ namespace CustomApi.Managers
 
                 foreach (var comment in _list)
                 {
-                    if (comment.DeletedAt == null)
+                    if (comment.DeletedAt == null && comment.IssueId.Equals(query.IssueId))
                     {
                         result.Add(comment);
                     }

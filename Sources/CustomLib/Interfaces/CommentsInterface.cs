@@ -2,7 +2,7 @@
 
 namespace CustomLib.Interfaces
 {
-    public interface CommentsInterface : AbstractInterface<CommentGet, CommentPost, CommentPut>
+    public interface CommentsInterface : AbstractInterface<CommentGet, CommentQuery, CommentPost, CommentPut>
     {
 
     }

@@ -7,7 +7,7 @@ using System.Text.Json;
 
 namespace CustomSdk.Clients
 {
-    public abstract class AbstractClient<GetType, PostType, PutType> : AbstractInterface<GetType, PostType, PutType>
+    public abstract class AbstractClient<GetType, QueryType, PostType, PutType> : AbstractInterface<GetType, QueryType, PostType, PutType>
     {
         private string _base;
 
@@ -31,12 +31,15 @@ namespace CustomSdk.Clients
         /// <summary>
         /// List all objects, which have been created and not deleted.
         /// </summary>
+        /// <param name="data">The query data.</param>
         /// <returns>The objects.</returns>
-        public async Task<List<GetType>> List()
+        public async Task<List<GetType>> List(QueryType query)
         {
+            var queryString = (query == null ? "" : query.ToString());
+
             // Send HTTP request and recieve HTTP response
 
-            var response = await _client.GetAsync(_base);
+            var response = await _client.GetAsync($"{_base}?{queryString}");
 
             // Parse HTTP response
 

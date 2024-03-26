@@ -6,7 +6,7 @@ namespace CustomSdk.Clients
     /// <summary>
     /// A singleton for calling comment CRUD operations via HTTP.
     /// </summary>
-    public class CommentsClient : AbstractClient<CommentGet, CommentPost, CommentPut>, CommentsInterface
+    public class CommentsClient : AbstractClient<CommentGet, CommentQuery, CommentPost, CommentPut>, CommentsInterface
     {
         /// <summary>
         /// The singleton instance.

@@ -31,8 +31,9 @@ namespace CustomApi.Managers
         /// <summary>
         /// List all issues, which have been created and not deleted.
         /// </summary>
+        /// <param name="query">The issue query.</param>
         /// <returns>The issue objects.</returns>
-        public async Task<List<IssueGet>> List()
+        public async Task<List<IssueGet>> List(IssueQuery query)
         {
             return await Task.Run(() =>
             {

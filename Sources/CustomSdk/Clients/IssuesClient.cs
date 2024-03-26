@@ -6,7 +6,7 @@ namespace CustomSdk.Clients
     /// <summary>
     /// A singleton for callding issue CRUD operations via HTTP.
     /// </summary>
-    public class IssuesClient : AbstractClient<IssueGet, IssuePost, IssuePut>, IssuesInterface
+    public class IssuesClient : AbstractClient<IssueGet, IssueQuery, IssuePost, IssuePut>, IssuesInterface
     {
         /// <summary>
         /// The singleton instance.

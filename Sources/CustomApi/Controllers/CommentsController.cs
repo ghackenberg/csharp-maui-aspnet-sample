@@ -13,9 +13,9 @@ namespace CustomApi.Controllers
     public class CommentsController : ControllerBase, CommentsInterface
     {
         [HttpGet]
-        public async Task<List<CommentGet>> List()
+        public async Task<List<CommentGet>> List([FromQuery] CommentQuery query)
         {
-            return await CommentsManager.Instance.List();
+            return await CommentsManager.Instance.List(query);
         }
 
         [HttpPost]

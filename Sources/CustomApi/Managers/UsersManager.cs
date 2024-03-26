@@ -31,8 +31,9 @@ namespace CustomApi.Managers
         /// <summary>
         /// List all users, which have been created and not deleted.
         /// </summary>
+        /// <param name="query">The user query.</param>
         /// <returns>The user objects.</returns>
-        public async Task<List<UserGet>> List()
+        public async Task<List<UserGet>> List(UserQuery query)
         {
             return await Task.Run(() =>
             {

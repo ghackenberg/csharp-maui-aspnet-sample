@@ -12,9 +12,9 @@ namespace CustomApi.Controllers
     public class UsersController : ControllerBase
     {
         [HttpGet]
-        public async Task<List<UserGet>> List()
+        public async Task<List<UserGet>> List([FromQuery] UserQuery query)
         {
-            return await UsersManager.Instance.List();
+            return await UsersManager.Instance.List(query);
         }
 
         [HttpPost]
