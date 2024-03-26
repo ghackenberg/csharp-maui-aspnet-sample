@@ -1,4 +1,5 @@
 ﻿using CustomApi.Managers;
+using CustomLib.Interfaces;
 using CustomLib.Models.Users;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,34 +10,34 @@ namespace CustomApi.Controllers
     /// </summary>
     [Route("api/users")]
     [ApiController]
-    public class UsersController : ControllerBase
+    public class UsersController : ControllerBase, UsersInterface
     {
         [HttpGet]
-        public async Task<List<UserGet>> List([FromQuery] UserQuery query)
+        public async Task<List<UserRead>> Find([FromQuery] UserQuery query)
         {
-            return await UsersManager.Instance.List(query);
+            return await UsersManager.Instance.Find(query);
         }
 
         [HttpPost]
-        public async Task<UserGet> Post(UserPost data)
+        public async Task<UserRead> Create(UserCreate data)
         {
-            return await UsersManager.Instance.Post(data);
+            return await UsersManager.Instance.Create(data);
         }
 
         [HttpGet("{id}")]
-        public async Task<UserGet> Get(string id)
+        public async Task<UserRead> Read(string id)
         {
-            return await UsersManager.Instance.Get(id);
+            return await UsersManager.Instance.Read(id);
         }
 
         [HttpPut("{id}")]
-        public async Task<UserGet> Put(string id, UserPut data)
+        public async Task<UserRead> Update(string id, UserUpdate data)
         {
-            return await UsersManager.Instance.Put(id, data);
+            return await UsersManager.Instance.Update(id, data);
         }
 
         [HttpDelete("{id}")]
-        public async Task<UserGet> Delete(string id)
+        public async Task<UserRead> Delete(string id)
         {
             return await UsersManager.Instance.Delete(id);
         }

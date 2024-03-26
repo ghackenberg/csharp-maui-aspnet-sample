@@ -1,6 +1,6 @@
 ﻿namespace CustomLib.Models.Users
 {
-    public class UserPost : UserPut
+    public class UserCreate : UserUpdate
     {
 
     }

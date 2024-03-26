@@ -3,15 +3,15 @@ using CustomSdk.Clients;
 
 namespace CustomApp.Models.Pages
 {
-    public class UsersPageModel : AbstractItemsPageModel<UserGet>
+    public class UsersPageModel : AbstractItemsPageModel<UserRead>
     {
         public static readonly UsersPageModel Instance = new UsersPageModel();
 
         private UsersPageModel() { }
 
-        protected override Task<List<UserGet>> ReloadInternal()
+        protected override Task<List<UserRead>> ReloadInternal()
         {
-            return UsersClient.Instance.List();
+            return UsersClient.Instance.Find(new UserQuery());
         }
     }
 }

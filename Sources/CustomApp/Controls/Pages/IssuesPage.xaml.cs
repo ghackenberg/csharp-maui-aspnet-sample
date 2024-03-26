@@ -21,10 +21,10 @@ public partial class IssuesPage : ContentPage
     private void OnIssueClicked(object sender, SelectedItemChangedEventArgs e)
     {
         // Read item
-        var issue = (IssueGet)e.SelectedItem;
+        var issue = (IssueRead)e.SelectedItem;
 
         // Build item
-        var item = new IssueGet
+        var item = new IssueRead
         {
             UserId = issue.UserId,
             IssueId = issue.IssueId,
@@ -47,7 +47,7 @@ public partial class IssuesPage : ContentPage
     private void OnCreateClicked(object sender, EventArgs e)
     {
         // Build item
-        var item = new IssueGet();
+        var item = new IssueRead();
 
         // Build parameters
         var parameter = new Dictionary<string, object>()

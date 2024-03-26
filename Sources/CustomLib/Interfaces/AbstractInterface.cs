@@ -1,11 +1,11 @@
 ﻿namespace CustomLib.Interfaces
 {
-    public interface AbstractInterface<GetType, QueryType, PostType, PutType>
+    public interface AbstractInterface<ResourceRead, ResourceQuery, ResourceCreate, ResourceUpdate>
     {
-        public Task<List<GetType>> List(QueryType query);
-        public Task<GetType> Post(PostType data);
-        public Task<GetType> Get(string id);
-        public Task<GetType> Put(string id, PutType data);
-        public Task<GetType> Delete(string id);
+        public Task<List<ResourceRead>> Find(ResourceQuery query);
+        public Task<ResourceRead> Create(ResourceCreate data);
+        public Task<ResourceRead> Read(string id);
+        public Task<ResourceRead> Update(string id, ResourceUpdate data);
+        public Task<ResourceRead> Delete(string id);
     }
 }

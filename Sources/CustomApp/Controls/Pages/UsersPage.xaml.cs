@@ -21,10 +21,10 @@ public partial class UsersPage : ContentPage
     private void OnIssueClicked(object sender, SelectedItemChangedEventArgs e)
     {
         // Get item
-        var user = (UserGet)e.SelectedItem;
+        var user = (UserRead)e.SelectedItem;
 
         // Build item
-        var item = new UserGet
+        var item = new UserRead
         {
             UserId = user.UserId,
             CreatedAt = user.CreatedAt,
@@ -49,7 +49,7 @@ public partial class UsersPage : ContentPage
         // Build parameters
         var parameter = new Dictionary<string, object>()
         {
-            { "Item", new UserGet() }
+            { "Item", new UserRead() }
         };
 
         // Change route

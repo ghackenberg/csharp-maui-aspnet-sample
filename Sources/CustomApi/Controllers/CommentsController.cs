@@ -13,31 +13,31 @@ namespace CustomApi.Controllers
     public class CommentsController : ControllerBase, CommentsInterface
     {
         [HttpGet]
-        public async Task<List<CommentGet>> List([FromQuery] CommentQuery query)
+        public async Task<List<CommentRead>> Find([FromQuery] CommentQuery query)
         {
-            return await CommentsManager.Instance.List(query);
+            return await CommentsManager.Instance.Find(query);
         }
 
         [HttpPost]
-        public async Task<CommentGet> Post(CommentPost data)
+        public async Task<CommentRead> Create(CommentCreate data)
         {
-            return await CommentsManager.Instance.Post(data);
+            return await CommentsManager.Instance.Create(data);
         }
 
         [HttpGet("{id}")]
-        public async Task<CommentGet> Get(string id)
+        public async Task<CommentRead> Read(string id)
         {
-            return await CommentsManager.Instance.Get(id);
+            return await CommentsManager.Instance.Read(id);
         }
 
         [HttpPut("{id}")]
-        public async Task<CommentGet> Put(string id, CommentPut data)
+        public async Task<CommentRead> Update(string id, CommentUpdate data)
         {
-            return await CommentsManager.Instance.Put(id, data);
+            return await CommentsManager.Instance.Update(id, data);
         }
 
         [HttpDelete("{id}")]
-        public async Task<CommentGet> Delete(string id)
+        public async Task<CommentRead> Delete(string id)
         {
             return await CommentsManager.Instance.Delete(id);
         }

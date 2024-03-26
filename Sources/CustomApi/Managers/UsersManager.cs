@@ -22,22 +22,22 @@ namespace CustomApi.Managers
         /// <summary>
         /// All users.
         /// </summary>
-        private readonly List<UserGet> _list = new List<UserGet>();
+        private readonly List<UserRead> _list = new List<UserRead>();
         /// <summary>
         /// All users accessible via their ID.
         /// </summary>
-        private readonly Dictionary<string, UserGet> _dict = new Dictionary<string, UserGet>();
+        private readonly Dictionary<string, UserRead> _dict = new Dictionary<string, UserRead>();
 
         /// <summary>
         /// List all users, which have been created and not deleted.
         /// </summary>
         /// <param name="query">The user query.</param>
         /// <returns>The user objects.</returns>
-        public async Task<List<UserGet>> List(UserQuery query)
+        public async Task<List<UserRead>> Find(UserQuery query)
         {
             return await Task.Run(() =>
             {
-                var result = new List<UserGet>();
+                var result = new List<UserRead>();
 
                 foreach (var user in _list)
                 {
@@ -56,13 +56,13 @@ namespace CustomApi.Managers
         /// </summary>
         /// <param name="data">The new user data.</param>
         /// <returns>The new user object.</returns>
-        public async Task<UserGet> Post(UserPost data)
+        public async Task<UserRead> Create(UserCreate data)
         {
             return await Task.Run(() =>
             {
                 // Create user
 
-                var user = new UserGet();
+                var user = new UserRead();
 
                 user.UserId = Guid.NewGuid().ToString();
                 user.CreatedAt = DateTime.Now;
@@ -87,7 +87,7 @@ namespace CustomApi.Managers
         /// <param name="id">The existing user ID.</param>
         /// <returns>The existing user object.</returns>
         /// <exception cref="NotFoundException">User ID not found.</exception>
-        public async Task<UserGet> Get(string id)
+        public async Task<UserRead> Read(string id)
         {
             return await Task.Run(() =>
             {
@@ -118,7 +118,7 @@ namespace CustomApi.Managers
         /// <param name="data">The updated user data.</param>
         /// <returns>The updated user object.</returns>
         /// <exception cref="NotFoundException">User ID not found.</exception>
-        public async Task<UserGet> Put(string id, UserPut data)
+        public async Task<UserRead> Update(string id, UserUpdate data)
         {
             return await Task.Run(() =>
             {
@@ -154,7 +154,7 @@ namespace CustomApi.Managers
         /// <param name="id">The existing user ID.</param>
         /// <returns>The deleted user object.</returns>
         /// <exception cref="NotFoundException">User ID not found.</exception>
-        public async Task<UserGet> Delete(string id)
+        public async Task<UserRead> Delete(string id)
         {
             // Check user
 

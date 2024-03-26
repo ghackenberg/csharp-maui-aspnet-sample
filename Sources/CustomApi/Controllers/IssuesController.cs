@@ -13,31 +13,31 @@ namespace CustomApi.Controllers
     public class IssuesController : ControllerBase, IssuesInterface
     {
         [HttpGet]
-        public async Task<List<IssueGet>> List([FromQuery] IssueQuery query)
+        public async Task<List<IssueRead>> Find([FromQuery] IssueQuery query)
         {
-            return await IssuesManager.Instance.List(query);
+            return await IssuesManager.Instance.Find(query);
         }
 
         [HttpPost]
-        public async Task<IssueGet> Post(IssuePost data)
+        public async Task<IssueRead> Create(IssueCreate data)
         {
-            return await IssuesManager.Instance.Post(data);
+            return await IssuesManager.Instance.Create(data);
         }
 
         [HttpGet("{id}")]
-        public async Task<IssueGet> Get(string id)
+        public async Task<IssueRead> Read(string id)
         {
-            return await IssuesManager.Instance.Get(id);
+            return await IssuesManager.Instance.Read(id);
         }
 
         [HttpPut("{id}")]
-        public async Task<IssueGet> Put(string id, IssuePut data)
+        public async Task<IssueRead> Update(string id, IssueUpdate data)
         {
-            return await IssuesManager.Instance.Put(id, data);
+            return await IssuesManager.Instance.Update(id, data);
         }
 
         [HttpDelete("{id}")]
-        public async Task<IssueGet> Delete(string id)
+        public async Task<IssueRead> Delete(string id)
         {
             return await IssuesManager.Instance.Delete(id);
         }

@@ -6,7 +6,7 @@ namespace CustomSdk.Clients
     /// <summary>
     /// A singleton for calling user CRUD operations via HTTP.
     /// </summary>
-    public class UsersClient : AbstractClient<UserGet, UserQuery, UserPost, UserPut>, UsersInterface
+    public class UsersClient : AbstractClient<UserRead, UserQuery, UserCreate, UserUpdate>, UsersInterface
     {
         /// <summary>
         /// The singleton instance.

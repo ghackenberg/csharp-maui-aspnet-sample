@@ -22,22 +22,22 @@ namespace CustomApi.Managers
         /// <summary>
         /// All issues.
         /// </summary>
-        private readonly List<IssueGet> _list = new List<IssueGet>();
+        private readonly List<IssueRead> _list = new List<IssueRead>();
         /// <summary>
         /// All issues accessible via their ID.
         /// </summary>
-        private readonly Dictionary<string, IssueGet> _dict = new Dictionary<string, IssueGet>();
+        private readonly Dictionary<string, IssueRead> _dict = new Dictionary<string, IssueRead>();
 
         /// <summary>
         /// List all issues, which have been created and not deleted.
         /// </summary>
         /// <param name="query">The issue query.</param>
         /// <returns>The issue objects.</returns>
-        public async Task<List<IssueGet>> List(IssueQuery query)
+        public async Task<List<IssueRead>> Find(IssueQuery query)
         {
             return await Task.Run(() =>
             {
-                var result = new List<IssueGet>();
+                var result = new List<IssueRead>();
 
                 foreach (var issue in _list)
                 {
@@ -56,17 +56,17 @@ namespace CustomApi.Managers
         /// </summary>
         /// <param name="data">The new issue data.</param>
         /// <returns>The new issue object.</returns>
-        public async Task<IssueGet> Post(IssuePost data)
+        public async Task<IssueRead> Create(IssueCreate data)
         {
             return await Task.Run(async () =>
             {
                 // Check user
 
-                await UsersManager.Instance.Get(data.UserId);
+                await UsersManager.Instance.Read(data.UserId);
 
                 // Create issue
 
-                var issue = new IssueGet();
+                var issue = new IssueRead();
 
                 issue.UserId = data.UserId;
                 issue.IssueId = Guid.NewGuid().ToString();
@@ -91,7 +91,7 @@ namespace CustomApi.Managers
         /// <param name="id">The existing issue id.</param>
         /// <returns>The existing user object.</returns>
         /// <exception cref="NotFoundException">Issue ID not found.</exception>
-        public async Task<IssueGet> Get(string id)
+        public async Task<IssueRead> Read(string id)
         {
             return await Task.Run(() =>
             {
@@ -122,7 +122,7 @@ namespace CustomApi.Managers
         /// <param name="data">The updated issue data.</param>
         /// <returns>The updated issue object.</returns>
         /// <exception cref="NotFoundException">Issue ID not found.</exception>
-        public async Task<IssueGet> Put(string id, IssuePut data)
+        public async Task<IssueRead> Update(string id, IssueUpdate data)
         {
             return await Task.Run(() =>
             {
@@ -157,7 +157,7 @@ namespace CustomApi.Managers
         /// <param name="id">The existing issue ID.</param>
         /// <returns>The deleted issue object.</returns>
         /// <exception cref="NotFoundException">Issue ID not found.</exception>
-        public async Task<IssueGet> Delete(string id)
+        public async Task<IssueRead> Delete(string id)
         {
             // Check issue
             
@@ -192,9 +192,9 @@ namespace CustomApi.Managers
         /// </summary>
         /// <param name="id">The user ID.</param>
         /// <returns>The deleted issue objects.</returns>
-        public async Task<List<IssueGet>> DeleteByUserId(string id)
+        public async Task<List<IssueRead>> DeleteByUserId(string id)
         {
-            var result = new List<IssueGet>();
+            var result = new List<IssueRead>();
 
             foreach (var issue in _list)
             {

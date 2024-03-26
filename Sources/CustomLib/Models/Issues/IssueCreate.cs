@@ -1,6 +1,6 @@
 ﻿namespace CustomLib.Models.Issues
 {
-    public class IssuePost : IssuePut
+    public class IssueCreate : IssueUpdate
     {
         public string UserId { get; set; } = "";
     }

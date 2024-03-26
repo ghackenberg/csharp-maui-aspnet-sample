@@ -2,7 +2,7 @@
 
 namespace CustomLib.Interfaces
 {
-    public interface IssuesInterface : AbstractInterface<IssueGet, IssueQuery, IssuePost, IssuePut>
+    public interface IssuesInterface : AbstractInterface<IssueRead, IssueQuery, IssueCreate, IssueUpdate>
     {
 
     }

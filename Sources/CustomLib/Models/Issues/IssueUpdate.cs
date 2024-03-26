@@ -1,6 +1,6 @@
 ﻿namespace CustomLib.Models.Issues
 {
-    public class IssuePut
+    public class IssueUpdate
     {
         public string Label { get; set; } = "";
     }

@@ -2,7 +2,7 @@
 
 namespace CustomLib.Interfaces
 {
-    public interface UsersInterface : AbstractInterface<UserGet, UserQuery, UserPost, UserPut>
+    public interface UsersInterface : AbstractInterface<UserRead, UserQuery, UserCreate, UserUpdate>
     {
 
     }

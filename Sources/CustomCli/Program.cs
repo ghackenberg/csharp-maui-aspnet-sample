@@ -13,10 +13,16 @@ namespace CustomCli
             {
                 if (args.Length == 0)
                 {
+                    Console.WriteLine("Reading commands from standard input");
+
+                    // Loop-read multiple commands from standard input
                     Loop().Wait();
                 }
                 else
                 {
+                    Console.WriteLine("Reading command from program arguments");
+
+                    // Read single command from program arguments
                     Process(args).Wait();
                 }
             }
@@ -26,28 +32,34 @@ namespace CustomCli
             }
         }
 
-        static async Task Loop()
+        private static async Task Loop()
         {
             while (true)
             {
                 try
                 {
+                    Console.WriteLine();
+
                     Console.Write("Please enter next command: ");
 
                     var command = Console.ReadLine();
 
+                    Console.WriteLine();
+
                     if (command == null)
                     {
-                        Console.WriteLine("Could not process command!");
+                        Console.Error.WriteLine("Could not process command!");
                     }
                     else
                     {
                         if (await Process(command.Split(" ")))
                         {
+                            // Read next command
                             continue;
                         }
                         else
                         {
+                            // Stop reading commands
                             break;
                         }
                     }
@@ -59,7 +71,7 @@ namespace CustomCli
             }
         }
 
-        static async Task<bool> Process(string[] command)
+        private static async Task<bool> Process(string[] command)
         {
             if (command.Length == 1)
             {
@@ -70,82 +82,65 @@ namespace CustomCli
                 }
                 else if (command[0].Equals("help"))
                 {
-                    Console.WriteLine("Supported commands:");
-                    Console.WriteLine(" - quit");
-                    Console.WriteLine(" - help");
-                    Console.WriteLine(" - list users");
-                    Console.WriteLine(" - list issues");
-                    Console.WriteLine(" - list comments <issueId>");
-                    Console.WriteLine(" - post user <firstName> <lastName>");
-                    Console.WriteLine(" - post issue <userId> <label>");
-                    Console.WriteLine(" - post comment <userId> <issueId> <text>");
-                    Console.WriteLine(" - get user <userId>");
-                    Console.WriteLine(" - get issue <issueId>");
-                    Console.WriteLine(" - get comment <commentId>");
-                    Console.WriteLine(" - put user <userId> <firstName> <lastName>");
-                    Console.WriteLine(" - put issue <issueId> <label>");
-                    Console.WriteLine(" - put comment <commentId> <text>");
-                    Console.WriteLine(" - delete user <userId>");
-                    Console.WriteLine(" - delete issue <issueId>");
-                    Console.WriteLine(" - delete comment <commentId>");
+                    PrintHelp();
                 }
                 else
                 {
-                    CommandNotSupported();
+                    PrintUnknownCommand();
                 }
             }
             else if (command.Length == 2)
             {
-                if (command[0].Equals("list"))
+                if (command[0].Equals("find"))
                 {
                     if (command[1].Equals("users"))
                     {
-                        await ListUsers();
+                        await FindUsers();
                     }
                     else if (command[1].Equals("issues"))
                     {
-                        await ListIssues();
+                        await FindIssues();
                     }
                     else
                     {
-                        CommandNotSupported();
+                        PrintUnknownCommand();
                     }
                 }
                 else
                 {
-                    CommandNotSupported();
+                    PrintUnknownCommand();
                 }
             }
             else if (command.Length == 3)
             {
-                if (command[0].Equals("list"))
+                if (command[0].Equals("find"))
                 {
                     if (command[1].Equals("comments"))
                     {
-                        await ListComments(command[2]);
+                        await FindComments(command[2]);
                     }
                     else
                     {
-                        CommandNotSupported();
+                        PrintUnknownCommand();
                     }
                 }
-                else if (command[0].Equals("get"))
+                else if (command[0].Equals("read"))
                 {
                     if (command[1].Equals("user"))
                     {
-                        await GetUser(command[2]);
+                        await ReadUser(command[2]);
                     }
                     else if (command[1].Equals("issue"))
                     {
-                        await GetIssue(command[2]);
+                        await ReadIssue(command[2]);
                     }
                     else if (command[1].Equals("comment"))
                     {
-                        await GetComment(command[2]);
+                        await ReadComment(command[2]);
                     }
                     else
                     {
-                        CommandNotSupported();
+                        PrintUnknownCommand();
                     }
                 }
                 else if (command[0].Equals("delete"))
@@ -164,237 +159,261 @@ namespace CustomCli
                     }
                     else
                     {
-                        CommandNotSupported();
+                        PrintUnknownCommand();
                     }
                 }
                 else
                 {
-                    CommandNotSupported();
+                    PrintUnknownCommand();
                 }
             }
             else if (command.Length == 4)
             {
-                if (command[0].Equals("post"))
+                if (command[0].Equals("create"))
                 {
                     if (command[1].Equals("user"))
                     {
-                        await PostUser(command[2], command[3]);
+                        await CreateUser(command[2], command[3]);
                     }
                     else if (command[1].Equals("issue"))
                     {
-                        await PostIssue(command[2], command[3]);
+                        await CreateIssue(command[2], command[3]);
                     }
                     else
                     {
-                        CommandNotSupported();
+                        PrintUnknownCommand();
                     }
                 }
-                else if (command[0].Equals("Put"))
+                else if (command[0].Equals("update"))
                 {
                     if (command[1].Equals("issue"))
                     {
-                        await PutIssue(command[2], command[3]);
+                        await UpdateIssue(command[2], command[3]);
                     }
                     else if (command[1].Equals("comment"))
                     {
-                        await PutComment(command[2], command[3]);
+                        await UpdateComment(command[2], command[3]);
                     }
                     else
                     {
-                        CommandNotSupported();
+                        PrintUnknownCommand();
                     }
                 }
                 else
                 {
-                    CommandNotSupported();
+                    PrintUnknownCommand();
                 }
             }
             else if (command.Length == 5)
             {
-                if (command[0].Equals("post"))
+                if (command[0].Equals("create"))
                 {
                     if (command[1].Equals("comment"))
                     {
-                        await PostComment(command[2], command[3], command[4]);
+                        await CreateComment(command[2], command[3], command[4]);
                     }
                     else
                     {
-                        CommandNotSupported();
+                        PrintUnknownCommand();
                     }
                 }
-                else if (command[0].Equals("put"))
+                else if (command[0].Equals("update"))
                 {
                     if (command[1].Equals("user"))
                     {
-                        await PutUser(command[2], command[3], command[4]);
+                        await UpdateUser(command[2], command[3], command[4]);
                     }
                     else
                     {
-                        CommandNotSupported();
+                        PrintUnknownCommand();
                     }
                 }
                 else
                 {
-                    CommandNotSupported();
+                    PrintUnknownCommand();
                 }
             }
             else
             {
-                CommandNotSupported();
+                PrintUnknownCommand();
             }
             return true;
         }
 
-        static async Task ListUsers()
+        private static void PrintHelp()
+        {
+            Console.WriteLine("Supported commands:");
+            Console.WriteLine(" - quit");
+            Console.WriteLine(" - help");
+            Console.WriteLine(" - find users");
+            Console.WriteLine(" - find issues");
+            Console.WriteLine(" - find comments <issueId>");
+            Console.WriteLine(" - create user <firstName> <lastName>");
+            Console.WriteLine(" - create issue <userId> <label>");
+            Console.WriteLine(" - create comment <userId> <issueId> <text>");
+            Console.WriteLine(" - read user <userId>");
+            Console.WriteLine(" - read issue <issueId>");
+            Console.WriteLine(" - read comment <commentId>");
+            Console.WriteLine(" - update user <userId> <firstName> <lastName>");
+            Console.WriteLine(" - update issue <issueId> <label>");
+            Console.WriteLine(" - update comment <commentId> <text>");
+            Console.WriteLine(" - delete user <userId>");
+            Console.WriteLine(" - delete issue <issueId>");
+            Console.WriteLine(" - delete comment <commentId>");
+        }
+
+        private static async Task FindUsers()
         {
             var query = new UserQuery();
 
-            foreach (var user in await UsersClient.Instance.List(query))
+            foreach (var user in await UsersClient.Instance.Find(query))
             {
                 await PrintUser(user);
             }
         }
 
-        static async Task ListIssues()
+        private static async Task FindIssues()
         {
             var query = new IssueQuery();
 
-            foreach (var issue in await IssuesClient.Instance.List(query))
+            foreach (var issue in await IssuesClient.Instance.Find(query))
             {
                 await PrintIssue(issue);
             }
         }
 
-        static async Task ListComments(string issueId)
+        private static async Task FindComments(string issueId)
         {
             var query = new CommentQuery();
 
             query.IssueId = issueId;
 
-            foreach (var comment in await CommentsClient.Instance.List(query))
+            foreach (var comment in await CommentsClient.Instance.Find(query))
             {
                 await PrintComment(comment);
             }
         }
 
-        static async Task PostUser(string firstName, string lastName)
+        private static async Task CreateUser(string firstName, string lastName)
         {
-            var data = new UserPost();
+            var data = new UserCreate();
 
             data.FirstName = firstName;
             data.LastName = lastName;
 
-            await UsersClient.Instance.Post(data);
+            await UsersClient.Instance.Create(data);
         }
 
-        static async Task PostIssue(string userId, string label)
+        private static async Task CreateIssue(string userId, string label)
         {
-            var data = new IssuePost();
+            var data = new IssueCreate();
 
             data.UserId = userId;
             data.Label = label;
 
-            await IssuesClient.Instance.Post(data);
+            await IssuesClient.Instance.Create(data);
         }
 
-        static async Task PostComment(string userId, string issueId, string text)
+        private static async Task CreateComment(string userId, string issueId, string text)
         {
-            var data = new CommentPost();
+            var data = new CommentCreate();
 
             data.UserId = userId;
             data.IssueId = issueId;
             data.Text = text;
 
-            await CommentsClient.Instance.Post(data);
+            await CommentsClient.Instance.Create(data);
         }
 
-        static async Task GetUser(string userId)
+        private static async Task ReadUser(string userId)
         {
-            var user = await UsersClient.Instance.Get(userId);
+            var user = await UsersClient.Instance.Read(userId);
 
             await PrintUser(user);
         }
 
-        static async Task GetIssue(string issueId)
+        private static async Task ReadIssue(string issueId)
         {
-            var issue = await IssuesClient.Instance.Get(issueId);
+            var issue = await IssuesClient.Instance.Read(issueId);
 
             await PrintIssue(issue);
         }
 
-        static async Task GetComment(string commentId)
+        private static async Task ReadComment(string commentId)
         {
-            var comment = await CommentsClient.Instance.Get(commentId);
+            var comment = await CommentsClient.Instance.Read(commentId);
 
             await PrintComment(comment);
         }
 
-        static async Task PutUser(string userId, string firstName, string lastName)
+        private static async Task UpdateUser(string userId, string firstName, string lastName)
         {
-            var data = new UserPut();
+            var data = new UserUpdate();
 
             data.FirstName = firstName;
             data.LastName = lastName;
 
-            await UsersClient.Instance.Put(userId, data);
+            await UsersClient.Instance.Update(userId, data);
         }
 
-        static async Task PutIssue(string issueId, string label)
+        private static async Task UpdateIssue(string issueId, string label)
         {
-            var data = new IssuePut();
+            var data = new IssueUpdate();
 
             data.Label = label;
 
-            await IssuesClient.Instance.Put(issueId, data);
+            await IssuesClient.Instance.Update(issueId, data);
         }
 
-        static async Task PutComment(string commentId, string text)
+        private static async Task UpdateComment(string commentId, string text)
         {
-            var data = new CommentPut();
+            var data = new CommentUpdate();
 
             data.Text = text;
 
-            await CommentsClient.Instance.Put(commentId, data);
+            await CommentsClient.Instance.Update(commentId, data);
         }
 
-        static async Task DeleteUser(string userId)
+        private static async Task DeleteUser(string userId)
         {
             await UsersClient.Instance.Delete(userId);
         }
 
-        static async Task DeleteIssue(string issueId)
+        private static async Task DeleteIssue(string issueId)
         {
             await IssuesClient.Instance.Delete(issueId);
         }
 
-        static async Task DeleteComment(string commentId)
+        private static async Task DeleteComment(string commentId)
         {
             await CommentsClient.Instance.Delete(commentId);
         }
 
-        static async Task PrintUser(UserGet user)
+        private static async Task PrintUser(UserRead user)
         {
             await Task.Run(() => Console.WriteLine($"[{user.UserId}] {user.FirstName} {user.LastName}"));
         }
 
-        static async Task PrintIssue(IssueGet issue)
+        private static async Task PrintIssue(IssueRead issue)
         {
-            var user = await UsersClient.Instance.Get(issue.UserId);
+            var user = await UsersClient.Instance.Read(issue.UserId);
 
             Console.WriteLine($"[{issue.IssueId}] {user.FirstName} {user.LastName}: {issue.Label}");
         }
 
-        static async Task PrintComment(CommentGet comment)
+        private static async Task PrintComment(CommentRead comment)
         {
-            var user = await UsersClient.Instance.Get(comment.UserId);
-            var issue = await IssuesClient.Instance.Get(comment.IssueId);
+            var user = await UsersClient.Instance.Read(comment.UserId);
+            var issue = await IssuesClient.Instance.Read(comment.IssueId);
 
             Console.WriteLine($"[{comment.CommentId}] {user.FirstName} {user.LastName}: {issue.Label} -> {comment.Text}");
         }
 
-        static void CommandNotSupported()
+        private static void PrintUnknownCommand()
         {
-            Console.Error.WriteLine("Command not supported!");
+            Console.Error.WriteLine("Unknown command!");
+            Console.WriteLine();
+            PrintHelp();
         }
     }
 }

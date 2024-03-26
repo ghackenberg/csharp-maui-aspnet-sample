@@ -7,7 +7,7 @@ using System.Text.Json;
 
 namespace CustomSdk.Clients
 {
-    public abstract class AbstractClient<GetType, QueryType, PostType, PutType> : AbstractInterface<GetType, QueryType, PostType, PutType>
+    public abstract class AbstractClient<ResourceRead, ResourceQuery, ResourceCreate, ResourceUpdate> : AbstractInterface<ResourceRead, ResourceQuery, ResourceCreate, ResourceUpdate>
     {
         private string _base;
 
@@ -33,7 +33,7 @@ namespace CustomSdk.Clients
         /// </summary>
         /// <param name="data">The query data.</param>
         /// <returns>The objects.</returns>
-        public async Task<List<GetType>> List(QueryType query)
+        public async Task<List<ResourceRead>> Find(ResourceQuery query)
         {
             var queryString = (query == null ? "" : query.ToString());
 
@@ -43,7 +43,7 @@ namespace CustomSdk.Clients
 
             // Parse HTTP response
 
-            return await Parse<List<GetType>>(response);
+            return await Parse<List<ResourceRead>>(response);
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace CustomSdk.Clients
         /// </summary>
         /// <param name="data">The new object data.</param>
         /// <returns>The new object.</returns>
-        public async Task<GetType> Post(PostType data)
+        public async Task<ResourceRead> Create(ResourceCreate data)
         {
             // Send HTTP request and recieve HTTP response
 
@@ -63,7 +63,7 @@ namespace CustomSdk.Clients
 
             // Parse HTTP response
 
-            return await Parse<GetType>(response);
+            return await Parse<ResourceRead>(response);
         }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace CustomSdk.Clients
         /// </summary>
         /// <param name="id">The existing object ID.</param>
         /// <returns>The existing object.</returns>
-        public async Task<GetType> Get(string id)
+        public async Task<ResourceRead> Read(string id)
         {
             // Send HTTP request and recieve HTTP response
 
@@ -79,7 +79,7 @@ namespace CustomSdk.Clients
 
             // Parse HTTP response
 
-            return await Parse<GetType>(response);
+            return await Parse<ResourceRead>(response);
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace CustomSdk.Clients
         /// <param name="id">The existing object ID.</param>
         /// <param name="data">The updated object data.</param>
         /// <returns>The updated object.</returns>
-        public async Task<GetType> Put(string id, PutType data)
+        public async Task<ResourceRead> Update(string id, ResourceUpdate data)
         {
             // Send HTTP request and recieve HTTP response
 
@@ -100,7 +100,7 @@ namespace CustomSdk.Clients
 
             // Parse HTTP response
 
-            return await Parse<GetType>(response);
+            return await Parse<ResourceRead>(response);
         }
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace CustomSdk.Clients
         /// </summary>
         /// <param name="id">The existing object ID.</param>
         /// <returns>The deleted object.</returns>
-        public async Task<GetType> Delete(string id)
+        public async Task<ResourceRead> Delete(string id)
         {
             // Send HTTP request and recieve HTTP response
 
@@ -116,7 +116,7 @@ namespace CustomSdk.Clients
 
             // Parse HTTP response
 
-            return await Parse<GetType>(response);
+            return await Parse<ResourceRead>(response);
         }
 
         /// <summary>

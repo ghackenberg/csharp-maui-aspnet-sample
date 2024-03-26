@@ -31,23 +31,23 @@ public partial class UserPage : ContentPage
 
                 if (UserPageModel.Instance.Item.UserId.Equals(""))
                 {
-                    var data = new UserPost
+                    var data = new UserCreate
                     {
                         FirstName = UserPageModel.Instance.Item.FirstName,
                         LastName = UserPageModel.Instance.Item.LastName
                     };
 
-                    await UsersClient.Instance.Post(data);
+                    await UsersClient.Instance.Create(data);
                 }
                 else
                 {
-                    var data = new UserPut
+                    var data = new UserUpdate
                     {
                         FirstName = UserPageModel.Instance.Item.FirstName,
                         LastName = UserPageModel.Instance.Item.LastName
                     };
 
-                    await UsersClient.Instance.Put(UserPageModel.Instance.Item.UserId, data);
+                    await UsersClient.Instance.Update(UserPageModel.Instance.Item.UserId, data);
                 }
 
                 UsersPageModel.Instance.Reload();

@@ -2,7 +2,7 @@
 
 namespace CustomApp.Models.Pages
 {
-    public class UserPageModel : AbstractItemPageModel<UserGet>
+    public class UserPageModel : AbstractItemPageModel<UserRead>
     {
         public static readonly UserPageModel Instance = new UserPageModel();
 

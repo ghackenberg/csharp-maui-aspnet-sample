@@ -22,22 +22,22 @@ namespace CustomApi.Managers
         /// <summary>
         /// All comments.
         /// </summary>
-        private readonly List<CommentGet> _list = new List<CommentGet>();
+        private readonly List<CommentRead> _list = new List<CommentRead>();
         /// <summary>
         /// All comments accessible via their ID.
         /// </summary>
-        private readonly Dictionary<string, CommentGet> _dict = new Dictionary<string, CommentGet>();
+        private readonly Dictionary<string, CommentRead> _dict = new Dictionary<string, CommentRead>();
 
         /// <summary>
         /// List all comments, which have been created and not deleted.
         /// </summary>
         /// <param name="query">The comment query.</param>
         /// <returns>The comment objects.</returns>
-        public async Task<List<CommentGet>> List(CommentQuery query)
+        public async Task<List<CommentRead>> Find(CommentQuery query)
         {
             return await Task.Run(() =>
             {
-                var result = new List<CommentGet>();
+                var result = new List<CommentRead>();
 
                 foreach (var comment in _list)
                 {
@@ -56,18 +56,18 @@ namespace CustomApi.Managers
         /// </summary>
         /// <param name="data">The new comment data.</param>
         /// <returns>The new comment object.</returns>
-        public async Task<CommentGet> Post(CommentPost data)
+        public async Task<CommentRead> Create(CommentCreate data)
         {
             return await Task.Run(async () =>
             {
                 // Check user and issue
 
-                await UsersManager.Instance.Get(data.UserId);
-                await IssuesManager.Instance.Get(data.IssueId);
+                await UsersManager.Instance.Read(data.UserId);
+                await IssuesManager.Instance.Read(data.IssueId);
 
                 // Create comment
 
-                var comment = new CommentGet();
+                var comment = new CommentRead();
 
                 comment.UserId = data.UserId;
                 comment.IssueId = data.IssueId;
@@ -93,7 +93,7 @@ namespace CustomApi.Managers
         /// <param name="id">The existing comment ID.</param>
         /// <returns>The existing comment object.</returns>
         /// <exception cref="NotFoundException">Comment ID not found.</exception>
-        public async Task<CommentGet> Get(string id)
+        public async Task<CommentRead> Read(string id)
         {
             return await Task.Run(() =>
             {
@@ -124,7 +124,7 @@ namespace CustomApi.Managers
         /// <param name="data">The updated comment data.</param>
         /// <returns>The updated comment object.</returns>
         /// <exception cref="NotFoundException">Comment ID not found.</exception>
-        public async Task<CommentGet> Put(string id, CommentPut data)
+        public async Task<CommentRead> Update(string id, CommentUpdate data)
         {
             return await Task.Run(() =>
             {
@@ -159,7 +159,7 @@ namespace CustomApi.Managers
         /// <param name="id">The exsting comment ID.</param>
         /// <returns>The deleted comment object.</returns>
         /// <exception cref="NotFoundException">Comment ID not found.</exception>
-        public async Task<CommentGet> Delete(string id)
+        public async Task<CommentRead> Delete(string id)
         {
             return await Task.Run(() =>
             {
@@ -193,9 +193,9 @@ namespace CustomApi.Managers
         /// </summary>
         /// <param name="id">The user ID.</param>
         /// <returns>The deleted comment objects.</returns>
-        public async Task<List<CommentGet>> DeleteByUserId(string id)
+        public async Task<List<CommentRead>> DeleteByUserId(string id)
         {
-            var result = new List<CommentGet>();
+            var result = new List<CommentRead>();
 
             foreach (var comment in _list)
             {
@@ -215,9 +215,9 @@ namespace CustomApi.Managers
         /// </summary>
         /// <param name="id">The issue ID.</param>
         /// <returns>The deleted comment objects.</returns>
-        public async Task<List<CommentGet>> DeleteByIssueId(string id)
+        public async Task<List<CommentRead>> DeleteByIssueId(string id)
         {
-            var result = new List<CommentGet>();
+            var result = new List<CommentRead>();
 
             foreach (var comment in _list)
             {

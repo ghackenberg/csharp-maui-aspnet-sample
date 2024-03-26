@@ -1,8 +1,8 @@
-﻿namespace CustomLib.Models.Users
+﻿namespace CustomLib.Models.Issues
 {
-    public class UserGet : UserPost
+    public class IssueRead : IssueCreate
     {
-        public string UserId { get; set; } = "";
+        public string IssueId { get; set; } = "";
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; } = DateTime.Now;
         public DateTime? DeletedAt { get; set; }

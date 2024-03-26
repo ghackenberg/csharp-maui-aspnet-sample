@@ -2,7 +2,7 @@
 
 namespace CustomApp.Models.Pages
 {
-    public class IssuePageModel : AbstractItemPageModel<IssueGet>
+    public class IssuePageModel : AbstractItemPageModel<IssueRead>
     {
         public static readonly IssuePageModel Instance = new IssuePageModel();
 
