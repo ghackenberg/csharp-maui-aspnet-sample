@@ -502,7 +502,7 @@ If the JSON parser **fails to decode** a message, a parse exception will be thro
 
 ## Section 3 - The `CustomApi` component
 
-**Managers**,  **controllers**, **handlers**, and the **Swagger UI**
+**Managers**,  **controllers**, and **handlers**
 
 ---
 
@@ -578,47 +578,166 @@ Also comment **delete operations** *must not be forwarded* recursively and can b
 
 ### Controllers
 
-*Coming soon*
+**Binding** *interface methods* to *HTTP REST API endpoints*.
 
 ---
 
-### Controller overview
+![bg right w:90%](../Models/Controller/Full.png)
 
-*Coming soon*
+#### Controller overview
 
----
+In the Microsoft ASP.NET framework, **annotated controller classes** define the endpoints of the HTTP REST API.
 
-<!-- _class: center -->
+In the sample application, we define one controller class **for each resource type** (i.e. user, issue, comment).
 
-### Handlers
-
-*Coming soon*
+The controllers essentially just **forward the method calls** to the respective *manager singletons*.
 
 ---
 
-### Handler overview
+![bg right h:90%](../Screenshots/Controllers/User.png)
 
-*Coming soon*
+#### The `UserController` class
+
+The screenshot on the right shows the **source code** of the annotated `UserController` class.
+
+The class-level annotation `[ApiController]` indicates that the class **can handle HTTP requests**.
+
+The class-level annotation `[Route]` indicates which **request paths** the class wants to handle.
 
 ---
 
-<!-- _class: center -->
+![bg right h:90%](../Screenshots/Controllers/User.png)
 
-### Swagger UI
+#### HTTP request method binding
 
-*Coming soon*
+Then, note the **method-level annotations** `[HttpGet]`, `[HttpPost]`, `[HttpPut]`, and `[HttpDelete]`.
+
+These annotations define the binding from **HTTP methods** (`GET`, `POST`, `PUT`, `DELETE`) to controller methods.
+
+For example, `HTTP GET <path>` requests are only forwarded to methods with `HttpGet` annotation.
+
+---
+
+![bg right h:90%](../Screenshots/Controllers/User.png)
+
+#### HTTP request path binding
+
+The previous annotations also support **path to method** and **path segment to parameter** bindings.
+
+E.g., `HTTP GET /api/users` results in the method call `Find(...)` with pure *path to method binding*.
+
+And `HTTP GET /api/users/xyz` results in the method call `Get("xyz")` with *path segment to parameter binding*.
+
+---
+
+![bg right h:90%](../Screenshots/Controllers/User.png)
+
+#### HTTP request query string binding
+
+The **parameter-level annotation** `[FromQuery]` indicates a query string to parameter binding.
+
+Query strings can be **appended** to HTTP request paths using the syntax `HTTP GET <path>?<queryString>`.
+
+ASP.NET automatically parses the query strings into the `Query` models introduced previously.
+
+---
+
+![bg right h:90%](../Screenshots/Controllers/User.png)
+
+#### HTTP request body binding
+
+Then, ASP.NET automatically binds the **JSON-encoded bodies** of HTTP requests to method parameters.
+
+E.g., for `HTTP POST /api/users` requests the request body is turned into a `UserCreate` instance.
+
+And for `HTTP PUT /api/users/xyz` requests the request body is parsed into a `UserUpdate` instance.
+
+---
+
+![bg right h:90%](../Screenshots/Controllers/User.png)
+
+#### HTTP response body binding
+
+Finally, ASP.NET also automatically translates the **return values** to JSON encoded bodies of HTTP responses.
+
+E.g., for `HTTP GET /api/users` requests the response body contains a **JSON array** of user data.
+
+And for `HTTP GET /api/users/xyz` requests the response body contains a **single JSON object** of user data.
+
+---
+
+<!-- _class: hide-header hide-footer hide-page-number -->
+
+![bg h:90%](../Screenshots/Controllers/Issue.png)
+![bg h:90%](../Screenshots/Controllers/Comment.png)
 
 ---
 
 ![bg right h:90%](../Screenshots/CustomApi.png)
 
-### Swagger UI overview
+### The Swagger UI
 
-The data itself is managed by an **ASP.NET backend** service with standard REST API.
+ASP.NET can build a so-called **Swagger UI** from your annotated controller classes automatically.
 
-The screenshot on the right provides an **overview** of the API services exposed.
+In **debug mode**, the Swagger UI will open in the browser when you run an ASP.NET project.
 
-For each **resource** (i.e. user, issue, comment), the same set of functions is defined.
+The Swagger UI can be used for **documentation** as well as for **testing** of HTTP REST APIs.
+
+---
+
+<!-- _class: center -->
+
+### Exceptions
+
+**Binding** *exceptions* to *HTTP response status codes*
+
+---
+
+![bg right w:90%](../Screenshots/Exceptions/Handle.png)
+
+### Custom exception handler class
+
+Under certain circumstances, the managers **might throw** one of the exceptions introduced previously.
+
+These exceptions must be **translated** into corresponding **HTTP response messages and status codes**.
+
+To achieve such translation, we must define a **custom exeception handler** as shown on the right.
+
+---
+
+![bg right w:90%](../Screenshots/Exceptions/Handle.png)
+
+### Exception type filtering
+
+When an exception occurs **during controller method execution**, the exception handlers are invoked.
+
+Each exception handler can decide, **whether to process the exception or pass it on** to the next handler.
+
+Note that our custom exception handler **only processes instances** of our own `HttpException` class.
+
+---
+
+![bg right w:90%](../Screenshots/Exceptions/Handle.png)
+
+### HTTP response definition
+
+Instances of the `HttpException` class carry a **status code** (between `400` and `404`) and a **message** string.
+
+Both the status code and the message values of the exception are **transferred** to the HTTP response.
+
+Note that this implementation also works if we **introduce additional** `HttpException` subclasses.
+
+---
+
+![bg right w:90%](../Screenshots/Exceptions/Register.png)
+
+### Exception handler registration
+
+Finally, we need to **register our custom exception** handler in the ASP.NET framework.
+
+The code on the right shows a **working solution** with a custom exception handler class.
+
+We need to add **lines 8 and 9** as well as **line 18** for the custom exception handler to work properly.
 
 ---
 

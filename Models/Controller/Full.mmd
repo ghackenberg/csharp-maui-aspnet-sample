@@ -1,0 +1,82 @@
+classDiagram
+
+    namespace CustomLib {
+        class UsersInterface {
+            <<Interface>>
+            ...(...)
+        }
+        class IssuesInterface {
+            <<Interface>>
+            ...(...)
+        }
+        class CommentsInterface {
+            <<Interface>>
+            ...(...)
+        }
+    }
+
+    namespace CustomApi {
+        class UsersManager {
+            <<Singleton>>
+            +UsersManager Instance$
+            -List~UserGet~ _list
+            -Dictionary~string, UserGet~ _dict
+            ...(...)
+        }
+        class IssuesManager {
+            <<Singleton>>
+            +IssuesManager Instance$
+            -List~IssueGet~ _list
+            -Dictionary~string, IssueGet~ _dict
+            ...(...)
+        }
+        class CommentsManager {
+            <<Singleton>>
+            +CommentsManager Instance$
+            -List~CommentGet~ _list
+            -Dictionary~string, CommentGet~ _dict
+            ...(...)
+        }
+
+        class UsersController {
+            <<AspNetController>>
+            ... Find(...)
+            ... Create(...)
+            ... Read(...)
+            ... Update(...)
+            ... Delete(...)
+        }
+        class IssuesController {
+            <<AspNetController>>
+            ... Find(...)
+            ... Create(...)
+            ... Read(...)
+            ... Update(...)
+            ... Delete(...)
+        }
+        class CommentsController {
+            <<AspNetController>>
+            ... Find(...)
+            ... Create(...)
+            ... Read(...)
+            ... Update(...)
+            ... Delete(...)
+        }
+    }
+
+    UsersInterface <|-- UsersManager
+    UsersInterface <|-- UsersController
+
+    IssuesInterface <|-- IssuesManager
+    IssuesInterface <|-- IssuesController
+
+    CommentsInterface <|-- CommentsManager
+    CommentsInterface <|-- CommentsController
+
+    UsersController ..> UsersManager : forward calls
+    IssuesController ..> IssuesManager : forward calls
+    CommentsController ..> CommentsManager : forward calls
+
+    style UsersController fill:yellow
+    style IssuesController fill:yellow
+    style CommentsController fill:yellow
