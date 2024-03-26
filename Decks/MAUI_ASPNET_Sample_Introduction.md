@@ -502,27 +502,7 @@ If the JSON parser **fails to decode** a message, a parse exception will be thro
 
 ## Section 3 - The `CustomApi` component
 
-**Swagger UI**, **managers**,  **controllers**, and **handlers**
-
----
-
-<!-- _class: center -->
-
-### Swagger UI
-
-*Coming soon*
-
----
-
-![bg right h:90%](../Screenshots/CustomApi.png)
-
-### Swagger UI overview
-
-The data itself is managed by an **ASP.NET backend** service with standard REST API.
-
-The screenshot on the right provides an **overview** of the API services exposed.
-
-For each **resource** (i.e. user, issue, comment), the same set of functions is defined.
+**Managers**,  **controllers**, **handlers**, and the **Swagger UI**
 
 ---
 
@@ -530,13 +510,67 @@ For each **resource** (i.e. user, issue, comment), the same set of functions is 
 
 ### Managers
 
-*Coming soon*
+A **simple main-memory storage** for the entities.
 
 ---
 
+![bg right h:90%](../Models/Manager/Full.png)
+
 ### Manager overview
 
-*Coming soon*
+In the `CustomApi` component, the **managers** are responsible for storing, updating, and querying the entities.
+
+For overall **type safety**, the managers implement the interfaces of the `CustomLib`component.
+
+Furthermore, the manager implementations are based on the **singleton design pattern**.
+
+---
+
+![bg right h:90%](../Models/Manager/Full.png)
+
+### Manager overview (cont'd)
+
+Internally, the managers **maintain their instances** using both a `List` and a `Dictionary` data structure.
+
+The `List` data structure simply stores all instances in a **flat sequence**, which can be iterated easily.
+
+The `Dictionary` data structure instead supports quick access by **instance identifier**.
+
+---
+
+![bg right h:90%](../Models/Manager/User.png)
+
+### The `UsersManager` singleton
+
+The `UsersManager` is responsible for managing the **users** of the sample application.
+
+User **find, create, read, and update operations** are managed completely *internally*.
+
+User **delete operations** are forwarded to the `IssuesManager` and the `CommentsManager` recursively.
+
+---
+
+![bg right h:90%](../Models/Manager/Issue.png)
+
+### The `IssuesManager` singleton
+
+The `IssuesManager` is responsible for managing the **issues** of the sample application.
+
+Issue **find, create, read, and update operations** again are managed completely *internally*.
+
+And issue **delete operations** are forwarded to the `CommentsManager` recursively.
+
+---
+
+![bg right h:90%](../Models/Manager/Comment.png)
+
+### The `CommentsManager` singleton
+
+The `CommentsManager` is responsible for managing the **comments** of the sample application.
+
+Comment **find, create, read, and update operations** again are managed completely *internally*.
+
+Also comment **delete operations** *must not be forwarded* recursively and can be managed internally.
 
 ---
 
@@ -565,6 +599,26 @@ For each **resource** (i.e. user, issue, comment), the same set of functions is 
 ### Handler overview
 
 *Coming soon*
+
+---
+
+<!-- _class: center -->
+
+### Swagger UI
+
+*Coming soon*
+
+---
+
+![bg right h:90%](../Screenshots/CustomApi.png)
+
+### Swagger UI overview
+
+The data itself is managed by an **ASP.NET backend** service with standard REST API.
+
+The screenshot on the right provides an **overview** of the API services exposed.
+
+For each **resource** (i.e. user, issue, comment), the same set of functions is defined.
 
 ---
 

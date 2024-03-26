@@ -1,0 +1,54 @@
+classDiagram
+
+    namespace CustomLib {
+        class UsersInterface {
+            <<Interface>>
+            ...(...)
+        }
+        class IssuesInterface {
+            <<Interface>>
+            ...(...)
+        }
+        class CommentsInterface {
+            <<Interface>>
+            ...(...)
+        }
+    }
+
+    namespace CustomApi {
+        class UsersManager {
+            <<Singleton>>
+            +UsersManager Instance$
+            -List~UserGet~ _list
+            -Dictionary~string, UserGet~ _dict
+            ...()
+        }
+        class IssuesManager {
+            <<Singleton>>
+            +IssuesManager Instance$
+            -List~IssueGet~ _list
+            -Dictionary~string, IssueGet~ _dict
+            ...(...)
+            +DeleteByUserId(string userId)
+        }
+        class CommentsManager {
+            <<Singleton>>
+            +CommentsManager Instance$
+            -List~CommentGet~ _list
+            -Dictionary~string, CommentGet~ _dict
+            ...(...)
+            +DeleteByUserId(string userId)
+            +DeleteByIssueId(string issueId)
+        }
+    }
+
+    UsersInterface <|-- UsersManager
+    IssuesInterface <|-- IssuesManager
+    CommentsInterface <|-- CommentsManager
+
+    UsersManager ..> IssuesManager : Delete(userId) -> DeleteByUserId(userId)
+    UsersManager ..> CommentsManager : Delete(userId) -> DeleteByUserId(userId)
+
+    IssuesManager ..> CommentsManager : Delete(issueId) -> DeleteByIssueId(issueId)
+
+    style IssuesManager fill:yellow
