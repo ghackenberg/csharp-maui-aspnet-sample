@@ -50,3 +50,7 @@ classDiagram
     UsersManager ..> CommentsManager : Delete(userId) -> DeleteByUserId(userId)
 
     IssuesManager ..> CommentsManager : Delete(issueId) -> DeleteByIssueId(issueId)
+
+    style UsersManager fill:yellow
+    style IssuesManager fill:yellow
+    style CommentsManager fill:yellow

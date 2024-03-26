@@ -301,7 +301,9 @@ namespace CustomCli
             data.FirstName = firstName;
             data.LastName = lastName;
 
-            await UsersClient.Instance.Create(data);
+            var user = await UsersClient.Instance.Create(data);
+
+            await PrintUser(user);
         }
 
         private static async Task CreateIssue(string userId, string label)
@@ -311,7 +313,9 @@ namespace CustomCli
             data.UserId = userId;
             data.Label = label;
 
-            await IssuesClient.Instance.Create(data);
+            var issue = await IssuesClient.Instance.Create(data);
+
+            await PrintIssue(issue);
         }
 
         private static async Task CreateComment(string userId, string issueId, string text)
@@ -322,7 +326,9 @@ namespace CustomCli
             data.IssueId = issueId;
             data.Text = text;
 
-            await CommentsClient.Instance.Create(data);
+            var comment = await CommentsClient.Instance.Create(data);
+
+            await PrintComment(comment);
         }
 
         private static async Task ReadUser(string userId)
@@ -353,7 +359,9 @@ namespace CustomCli
             data.FirstName = firstName;
             data.LastName = lastName;
 
-            await UsersClient.Instance.Update(userId, data);
+            var user = await UsersClient.Instance.Update(userId, data);
+
+            await PrintUser(user);
         }
 
         private static async Task UpdateIssue(string issueId, string label)
@@ -362,7 +370,9 @@ namespace CustomCli
 
             data.Label = label;
 
-            await IssuesClient.Instance.Update(issueId, data);
+            var issue = await IssuesClient.Instance.Update(issueId, data);
+
+            await PrintIssue(issue);
         }
 
         private static async Task UpdateComment(string commentId, string text)
@@ -371,34 +381,47 @@ namespace CustomCli
 
             data.Text = text;
 
-            await CommentsClient.Instance.Update(commentId, data);
+            var comment = await CommentsClient.Instance.Update(commentId, data);
+
+            await PrintComment(comment);
         }
 
         private static async Task DeleteUser(string userId)
         {
-            await UsersClient.Instance.Delete(userId);
+            var user = await UsersClient.Instance.Delete(userId);
+
+            await PrintUser(user);
         }
 
         private static async Task DeleteIssue(string issueId)
         {
-            await IssuesClient.Instance.Delete(issueId);
+            var issue = await IssuesClient.Instance.Delete(issueId);
+
+            await PrintIssue(issue);
         }
 
         private static async Task DeleteComment(string commentId)
         {
-            await CommentsClient.Instance.Delete(commentId);
+            var comment = await CommentsClient.Instance.Delete(commentId);
+
+            await PrintComment(comment);
         }
 
         private static async Task PrintUser(UserRead user)
         {
-            await Task.Run(() => Console.WriteLine($"[{user.UserId}] {user.FirstName} {user.LastName}"));
+            await Task.Run(() => { });
+
+            Console.WriteLine($"[{user.UserId}] {user.FirstName} {user.LastName}");
+            Console.WriteLine($" - (Created: {user.CreatedAt}, Updated: {user.UpdatedAt}, Deleted: {user.DeletedAt})");
         }
 
         private static async Task PrintIssue(IssueRead issue)
         {
             var user = await UsersClient.Instance.Read(issue.UserId);
 
-            Console.WriteLine($"[{issue.IssueId}] {user.FirstName} {user.LastName}: {issue.Label}");
+            Console.WriteLine($"[{issue.IssueId}] {issue.Label}");
+            Console.WriteLine($" - (User: {user.FirstName} {user.LastName}");
+            Console.WriteLine($" - (Created: {issue.CreatedAt}, Updated: {issue.UpdatedAt}, Deleted: {issue.DeletedAt})");
         }
 
         private static async Task PrintComment(CommentRead comment)
@@ -406,7 +429,10 @@ namespace CustomCli
             var user = await UsersClient.Instance.Read(comment.UserId);
             var issue = await IssuesClient.Instance.Read(comment.IssueId);
 
-            Console.WriteLine($"[{comment.CommentId}] {user.FirstName} {user.LastName}: {issue.Label} -> {comment.Text}");
+            Console.WriteLine($"[{comment.CommentId}] {comment.Text}");
+            Console.WriteLine($" - (User: {user.FirstName} {user.LastName}");
+            Console.WriteLine($" - (Issue: {issue.Label})");
+            Console.WriteLine($" - (Created: {comment.CreatedAt}, Updated: {comment.UpdatedAt}, Deleted: {comment.DeletedAt})");
         }
 
         private static void PrintUnknownCommand()

@@ -190,7 +190,7 @@ The implementation is based in the **Microsoft MAUI.NET** cross-platform applica
 
 ## Section 2 - The `CustomLib` component
 
-**Models**, **interfaces**, and **exceptions**
+**Models**, **interfaces**, and **exception handler**
 
 ---
 
@@ -687,7 +687,7 @@ The Swagger UI can be used for **documentation** as well as for **testing** of H
 
 <!-- _class: center -->
 
-### Exceptions
+### Exception handler
 
 **Binding** *exceptions* to *HTTP response status codes*
 
@@ -745,11 +745,117 @@ We need to add **lines 8 and 9** as well as **line 18** for the custom exception
 
 ## Section 4 - The `CustomSdk` component
 
+**Abstract client class** and **concrete client classes**
+
+---
+
+<!-- _class: center -->
+
+### Abstract client class
+
+Common HTTP request and response **message pattern**
+
+---
+
+![bg right w:90%](../Models/Client/Abstract.png)
+
+### Abstract client class
+
 *Coming soon*
 
 ---
 
-### Software development kit (SDK)
+![bg right w:90%](../Screenshots/Clients/Constructor.png)
+
+### The public constructor
+
+*Coming soon*
+
+---
+
+![bg right w:90%](../Screenshots/Clients/Find.png)
+
+### The public `Find` method
+
+*Coming soon*
+
+---
+
+![bg right w:90%](../Screenshots/Clients/Create.png)
+
+### The public `Create` method
+
+*Coming soon*
+
+---
+
+![bg right w:90%](../Screenshots/Clients/Read.png)
+
+### The public `Read` method
+
+*Coming soon*
+
+---
+
+![bg right w:90%](../Screenshots/Clients/Update.png)
+
+### The public `Update` method
+
+*Coming soon*
+
+---
+
+![bg right w:90%](../Screenshots/Clients/Delete.png)
+
+### The public `Delete` method
+
+*Coming soon*
+
+---
+
+![bg right w:90%](../Screenshots/Clients/Parse.png)
+
+### The private `Parse` method
+
+*Coming soon*
+
+---
+
+<!-- _class: center -->
+
+### Concrete client classes
+
+Concrete **resource type** and **prefix definition**
+
+---
+
+![bg right w:90%](../Models/Client/Full.png)
+
+### Concrete client classes
+
+*Coming soon*
+
+---
+
+![bg right w:90%](../Screenshots/Clients/User.png)
+
+### The `UsersClient` class
+
+*Coming soon*
+
+---
+
+![bg right w:90%](../Screenshots/Clients/Issue.png)
+
+### The `IssuesClient` class
+
+*Coming soon*
+
+---
+
+![bg right w:90%](../Screenshots/Clients/Comment.png)
+
+### The `CommentsClient` class
 
 *Coming soon*
 
@@ -759,11 +865,45 @@ We need to add **lines 8 and 9** as well as **line 18** for the custom exception
 
 ## Section 5 - The `CustomCli` component
 
+**Commands**
+
+---
+
+![bg right w:90%](../Screenshots/CustomCli-Help.png)
+
+### The `help` command
+
 *Coming soon*
 
 ---
 
-### Command line interface (CLI)
+![bg right w:90%](../Screenshots/CustomCli-FindUsers.png)
+
+### The `find users` command
+
+*Coming soon*
+
+---
+
+![bg right w:90%](../Screenshots/CustomCli-CreateUser.png)
+
+### The `create user` command
+
+*Coming soon*
+
+---
+
+![bg right w:90%](../Screenshots/CustomCli-UpdateUser.png)
+
+### The `update user` command
+
+*Coming soon*
+
+---
+
+![bg right w:90%](../Screenshots/CustomCli-DeleteUser.png)
+
+### The `delete user` command
 
 *Coming soon*
 

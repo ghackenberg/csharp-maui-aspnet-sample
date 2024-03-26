@@ -1,0 +1,118 @@
+classDiagram
+
+    direction RL
+
+    namespace CustomApi {
+        class UsersController {
+            <<AspNetController>>
+            +... List(...)
+            +... Create(...)
+            +... Read(...)
+            +... Update(...)
+            +... Delete(...)
+        }
+        class IssuesController {
+            <<AspNetController>>
+            +... List(...)
+            +... Create(...)
+            +... Read(...)
+            +... Update(...)
+            +... Delete(...)
+        }
+        class CommentsController {
+            <<AspNetController>>
+            +... List(...)
+            +... Create(...)
+            +... Read(...)
+            +... Update(...)
+            +... Delete(...)
+        }
+    }
+
+    namespace CustomLib {
+        class UsersInterface {
+            <<Interface>>
+            +... List(...)
+            +... Create(...)
+            +... Read(...)
+            +... Update(...)
+            +... Delete(...)
+        }
+        class IssuesInterface {
+            <<Interface>>
+            +... List(...)
+            +... Create(...)
+            +... Read(...)
+            +... Update(...)
+            +... Delete(...)
+        }
+        class CommentsInterface {
+            <<Interface>>
+            +... List(...)
+            +... Create(...)
+            +... Read(...)
+            +... Update(...)
+            +... Delete(...)
+        }
+    }
+
+    namespace CustomSdk {
+        class UsersClient {
+            <<Singleton>>
+            +UsersClient Instance$
+            -string _prefix
+            -HttpClient _client
+            +... List(...)
+            +... Create(...)
+            +... Read(...)
+            +... Update(...)
+            +... Delete(...)
+            -... Parse(...)
+        }
+        class IssuesClient {
+            <<Singleton>>
+            +IssuesClient Instance$
+            -string _prefix
+            -HttpClient _client
+            +... List(...)
+            +... Create(...)
+            +... Read(...)
+            +... Update(...)
+            +... Delete(...)
+            -... Parse(...)
+        }
+        class CommentsClient {
+            <<Singleton>>
+            +CommentsClient Instance$
+            -string _prefix
+            -HttpClient _client
+            +... List(...)
+            +... Create(...)
+            +... Read(...)
+            +... Update(...)
+            +... Delete(...)
+            -... Parse(...)
+        }
+    }
+
+    UsersController <-- UsersClient : Request message
+    UsersController .. UsersClient : HTTP connection
+    UsersController --> UsersClient : Response message
+
+    UsersClient --|> UsersInterface
+
+    IssuesController <-- IssuesClient : Request message
+    IssuesController .. IssuesClient : HTTP connection
+    IssuesController --> IssuesClient : Response message
+
+    IssuesClient --|> IssuesInterface
+
+    CommentsController <-- CommentsClient : Request message
+    CommentsController .. CommentsClient : HTTP connection
+    CommentsController --> CommentsClient : Response message
+
+    CommentsClient --|> CommentsInterface
+
+    style UsersClient fill:yellow
+    style IssuesClient fill:yellow
+    style CommentsClient fill:yellow

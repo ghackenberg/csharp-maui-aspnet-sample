@@ -8,7 +8,11 @@ namespace CustomApi.Handlers
     /// </summary>
     public class HttpExceptionHandler : IExceptionHandler
     {
-        public async ValueTask<bool> TryHandleAsync(HttpContext httpContext, Exception exception, CancellationToken cancellationToken)
+        public async ValueTask<bool> TryHandleAsync(
+            HttpContext httpContext,
+            Exception exception,
+            CancellationToken cancellationToken
+        )
         {
             // Step 1: Filter HTTP exceptions
 

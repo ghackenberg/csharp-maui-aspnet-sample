@@ -1,0 +1,39 @@
+classDiagram
+
+    namespace CustomLib {
+        class AbstractInterface~ResourceRead, ResourceQuery, ResourceCreate, ResourceUpdate~ {
+            <<Interface>>
+            +List~ResourceRead~ Find(ResourceQuery query)
+            +ResourceRead Create(ResourceCreate data)
+            +ResourceRead Read(string identifier)
+            +ResourceRead Update(string identifier, ResourceUpdate data)
+            +ResourceRead Delete(string identifier)
+        }
+    }
+
+    namespace CustomSdk {
+        class AbstractClient~ResourceRead, ResourceQuery, ResourceCreate, ResourceUpdate~ {
+            <<Abstract>>
+            -string _prefix
+            -HttpClient _client
+            +List~ResourceRead~ Find(ResourceQuery query)
+            +ResourceRead Create(ResourceCreate data)
+            +ResourceRead Read(string identifier)
+            +ResourceRead Update(string identifier, ResourceUpdate data)
+            +ResourceRead Delete(string identifier)
+            -T Parse~T~(HttpResponseMessage response)
+        }
+
+        class UsersClient
+        class IssuesClient
+        class CommentsClient
+    }
+
+    AbstractInterface <|-- AbstractClient
+
+    AbstractClient <|-- UsersClient
+    AbstractClient <|-- IssuesClient
+    AbstractClient <|-- CommentsClient
+
+    style AbstractClient fill:yellow
+
