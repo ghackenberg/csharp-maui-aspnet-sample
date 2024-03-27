@@ -15,11 +15,11 @@ The following diagram explains the **package structure** of the sample applicati
 
 Each package in this structure serves a different **purpose**:
 
-- The `CustomLib` provides **common classes and interfaces** to the other packages and, hence, forms a contract between them.
-- The `CustomApi` package implements a **Cloud-based backend service** with standard HTTP REST API and in-memory data storage.
-- The `CustomSdk` provides reusable **HTTP REST API client implementations** for the two frontend applications and others.
-- The `CustomCli` provides a **command line interfaces (CLI)** for interacting with the Cloud-based backend services.
-- The `CustomApp` provides a **cross-platform graphical user interface (GUI)** based on the Microsoft MAUI.NET framework.
+- The `CustomLib` package provides **common classes and interfaces** to the other packages and, hence, forms a contract between them.
+- The `CustomApi` package provides a **HTTP REST API server implementation** with in-memory data store based on the Microsoft ASP.NET framework.
+- The `CustomSdk` package provides a **HTTP REST API client implementation** for the two frontend applications as well as third party software.
+- The `CustomCli` package provides a **Command Line Interfaces (CLI)** for sending requests to the HTTP REST API and printing responses.
+- The `CustomApp` package provides a **Graphical User Interface (GUI)** based on the cross-platform Microsoft MAUI.NET framework.
 
 Note that we have used similar package structures for production-grade applications in the past. Hence, this package structure also represents a *best practice recommendation* that you are free to reuse at your own risk!
 
