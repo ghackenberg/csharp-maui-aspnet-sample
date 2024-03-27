@@ -950,7 +950,7 @@ The `CustomCli` component contains the `Program` class with a **static main meth
 
 The `Program` can read **commands** either from the *program arguments* or in **loop mode** from *standard input*.
 
-The static method `Loop` **realizes** the loop mode, the static method `Process` **processes** commands.
+The static method `Loop` **realizes** the loop mode, the static method `Process` **processes** the commands.
 
 ----
 
@@ -1004,7 +1004,7 @@ When executed, the program **requests the list of users** from the backend and p
 
 Then, the `CustomCli` component offers the `create user` command for **creating new user objects**.
 
-The command takes **two string arguments**, the `<firstName>` and the `<lastName>` of the new user.
+The command takes **two string arguments**: the `<firstName>` and the `<lastName>` of the new user.
 
 When executed, the program **requests user creation** from the backend and prints the result.
 
@@ -1014,7 +1014,11 @@ When executed, the program **requests user creation** from the backend and print
 
 #### The `update user` command
 
-*Coming soon*
+Additionally, the `CustomCli` component offers the `update user` command for **changing user data**.
+
+The command **takes as arguments** the `<userId>` as well as the new `<firstName>` and `<lastName>`.
+
+Upon execution the program **requests a user update** and prints the results of the operation.
 
 ---
 
@@ -1022,7 +1026,43 @@ When executed, the program **requests user creation** from the backend and print
 
 #### The `delete user` command
 
-*Coming soon*
+Finally, the `CustomCli` component also offers a `delete user` command for **deleting user objects**.
+
+The command takes only a **single string argument**, namely the `<userId>` of the user object.
+
+When executed, the program **request user deletion** from the backend and prints the result of the operation.
+
+---
+
+#### `Issue` resource commands
+
+- `find issues` requests the list of issues created (and not deleted) and prints the result of the operation
+- `create issue <userId> <label>` requests the creation of a new issue with a given label and associated to an existing user
+- `read issue <issueId>` simply requests the data of an existing issue and prints it to standard output
+- `update issue <issueId> <label>` requests the update of an existing issue with a given identifier and a new label
+- `delete issue <issueId>` requests the deletion of an existing issue and prints the result to standard output
+
+---
+
+#### `Comment` resource commands
+
+- `find comments <issueId>` requests the list of comments for a given issue identifier and prints the result
+- `create comment <userId> <issueId> <text>` requests the creation of a new comment with a given text and associated with an existing user and issue
+- `read comment <commentId>` simply requests the data of an existing comment and prints it to standard output
+- `update comment <commentId> <text>` request the update of an existing comment with a given identifier and a new text
+- `delete comment <commentId>` requests the deletion of an existing comment with a given identifier and prints the result
+
+---
+
+![bg right w:90%](../Screenshots/CustomCli-Quit.png)
+
+#### The `quit` command
+
+When running in **loop mode**, the CLI will ask for new commands until the user send the command `quit`.
+
+When sending this command, the CLI will **print the message** `Good bye!` and terminate the program.
+
+Note that when **not running** in loop mode, this command also prints the message before terminating.
 
 ---
 
