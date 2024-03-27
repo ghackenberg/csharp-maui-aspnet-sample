@@ -2,6 +2,7 @@
 using CustomLib.Models.Issues;
 using CustomLib.Models.Users;
 using CustomSdk.Clients;
+using System.CommandLine.Parsing;
 
 namespace CustomCli
 {
@@ -52,7 +53,14 @@ namespace CustomCli
                     }
                     else
                     {
-                        if (await Process(command.Split(" ")))
+                        // Split the command like it was command line arguments
+                        var enumerable = CommandLineStringSplitter.Instance.Split(command);
+                        // Turn the splitted values into an array data structure
+                        var array = enumerable.ToArray();
+                        // Call the process method with the splitted arguments
+                        var result = await Process(array);
+                        // Check whether to finish or to continue the loop
+                        if (result)
                         {
                             // Read next command
                             continue;
