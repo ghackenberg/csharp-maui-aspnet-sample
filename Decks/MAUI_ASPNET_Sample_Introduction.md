@@ -877,7 +877,11 @@ Concrete **resource type** and **prefix definition**
 
 #### Concrete client classes
 
-*Coming soon*
+The diagram on the right shows the **contrete classes** derived from the `AbstractClient` class.
+
+Note that these clients implement the **resource-specific interfaces** with their *body and query models*.
+
+Also note that the client classes make use of the **well-known singleton** design pattern.
 
 ---
 
@@ -885,23 +889,32 @@ Concrete **resource type** and **prefix definition**
 
 #### The `UsersClient` class
 
+The screenshot on the right shows the **definition** of the `UsersClient` class.
+
+As **type parameters** we choose the `UserRead`, `UserCreate`, `UserUpdate`, and `UserQuery` classes in *line 9*.
+
+Consequently, the client **serializes** user `Create`, `Update`, and `Query` and **deserializes** user `Read` models.
+
+---
+
+![bg right w:90%](../Screenshots/Clients/User.png)
+
+#### The path prefix
+
 *Coming soon*
 
 ---
 
-![bg right w:90%](../Screenshots/Clients/Issue.png)
+![bg right w:90%](../Screenshots/Clients/User.png)
 
-#### The `IssuesClient` class
+#### The singleton instance
 
 *Coming soon*
 
 ---
 
-![bg right w:90%](../Screenshots/Clients/Comment.png)
-
-#### The `CommentsClient` class
-
-*Coming soon*
+![bg w:90%](../Screenshots/Clients/Issue.png)
+![bg w:90%](../Screenshots/Clients/Comment.png)
 
 ---
 
