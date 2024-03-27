@@ -31,19 +31,34 @@ Also check out https://mentawise.com and https://caddrive.org 😎
 ## Deck overview
 
 
-- **Section 1 - The software architecture**
-- **Section 2 - The `CustomLib` component**
-- **Section 3 - The `CustomApi` component**
-- **Section 4 - The `CustomSdk` component**
-- **Section 5 - The `CustomCli` component**
-- **Section 6 - The `CustomApp` component**
-- **Section 7 - The follow-up resources**
+- **Section 1 - Intended readers**
+- **Section 2 - The software architecture**
+- **Section 3 - The `CustomLib` component**
+- **Section 4 - The `CustomApi` component**
+- **Section 5 - The `CustomSdk` component**
+- **Section 6 - The `CustomCli` component**
+- **Section 7 - The `CustomApp` component**
+- **Section 8 - Advanced topics**
 
 ---
 
 <!-- _class: center dark -->
 
-## Section 1 - The software architecture
+## Section 1 - Intended readers
+
+Who should read this document and who should not read it.
+
+---
+
+### Intended reader overview
+
+*Coming soon*
+
+---
+
+<!-- _class: center dark -->
+
+## Section 2 - The software architecture
 
 **Domain model** and **component model**
 
@@ -188,7 +203,7 @@ The implementation is based in the **Microsoft MAUI.NET** cross-platform applica
 
 <!-- _class: center dark -->
 
-## Section 2 - The `CustomLib` component
+## Section 3 - The `CustomLib` component
 
 **Models**, **interfaces**, and **exception handler**
 
@@ -500,7 +515,7 @@ If the JSON parser **fails to decode** a message, a parse exception will be thro
 
 <!-- _class: center dark -->
 
-## Section 3 - The `CustomApi` component
+## Section 4 - The `CustomApi` component
 
 **Managers**,  **controllers**, and **handlers**
 
@@ -743,7 +758,7 @@ We need to add **lines 8 and 9** as well as **line 18** for the custom exception
 
 <!-- _class: center dark -->
 
-## Section 4 - The `CustomSdk` component
+## Section 5 - The `CustomSdk` component
 
 **Abstract client class** and **concrete client classes**
 
@@ -928,7 +943,7 @@ Furthermore, a single instance must be provided through a **static field or meth
 
 <!-- _class: center dark -->
 
-## Section 5 - The `CustomCli` component
+## Section 6 - The `CustomCli` component
 
 **Program class** and **commands**
 
@@ -1080,7 +1095,7 @@ Note that when **not running** in loop mode, this command also prints the messag
 
 <!-- _class: center dark -->
 
-## Section 6 - The `CustomApp` component
+## Section 7 - The `CustomApp` component
 
 **Pages**, **page models**, and **page controllers**
 
@@ -1379,9 +1394,9 @@ You can change the **first and last name**, the other fields are set automatical
 
 <!-- _class: center dark -->
 
-## Section 7 - Advanced topics
+## Section 8 - Advanced topics
 
-*Coming soon*
+What else you could learn that we did not cover here.
 
 ---
 
