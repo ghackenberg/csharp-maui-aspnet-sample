@@ -1,0 +1,52 @@
+classDiagram
+
+    direction BT
+
+    namespace System_CommandLine_Parsing {
+        class CommandLineStringParser {
+            <<Singleton>>
+            +CommandLineStringParser Instance$
+            +IEnumerate~string~ Split(string commandLine)
+        }
+    }
+
+    namespace CustomSdk {
+        class UsersClient {
+            <<Singleton>>
+            +UsersClient Instance$
+            -string _resourceName
+            -HttpClient _client
+            ... (...)
+        }
+        class IssuesClient {
+            <<Singleton>>
+            +IssuesClient Instance$
+            -string _resourceName
+            -HttpClient _client
+            +... (...)
+        }
+        class CommentsClient {
+            <<Singleton>>
+            +CommentsClient Instance$
+            -string _resourceName
+            -HttpClient _client
+            +... (...)
+        }
+    }
+
+    namespace CustomCli {
+        class Program {
+            +void main(string[] args)$
+            -void Loop()$
+            -bool Process(string[] command)$
+        }
+    }
+
+    Program ..> UsersClient : uses
+    Program ..> IssuesClient : uses
+    Program ..> CommentsClient : uses
+
+    CommandLineStringParser <.. Program : uses <b>in loop mode</b> for<br/>parsing commands from<br/>standard input
+
+    style CommandLineStringParser fill:white
+    style Program fill:yellow

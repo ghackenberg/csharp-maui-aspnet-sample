@@ -966,6 +966,18 @@ Note that the `CustomCli` component **must not need to know** the details of the
 
 ---
 
+![bg right w:90%](../Models/Cli/Parser.png)
+
+#### The `CommandLine` dependnecy
+
+**Program arguments** are parsed automatically into corresponding string arrays.
+
+When reading command lines from **standard input**, you need to do this conversion *manually*.
+
+Microsoft provides the **NuGet package** `System.CommandLine` to handle this task reliably for you.
+
+---
+
 <!-- _class: center -->
 
 ### Commands
