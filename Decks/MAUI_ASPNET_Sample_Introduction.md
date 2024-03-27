@@ -88,7 +88,7 @@ Furthermore, each user has a unique **identifier** as well as create, update, an
 
 The `Issue` entity represents problems with some machine reported by the users.
 
-Each issue carries the identifier of the corresponding user as well as a **label** explaning the issue.
+Each issue carries the identifier of the corresponding user as well as a **label** explaining the issue.
 
 Also, each issue has a unique **identifier** as well as a create, update, and delete timestamp.
 
@@ -180,7 +180,7 @@ The implementation uses the clients of the `CustomSdk` to **access** the backend
 
 The `CustomApp` component provides a **graphical user interface (GUI)** for the sample application.
 
-GUIs typically are shipped to the end **users of an application** and excell over CLIs in terms of usability.
+GUIs typically are shipped to the end **users of an application** and excel over CLIs in terms of usability.
 
 The implementation is based in the **Microsoft MAUI.NET** cross-platform application framework.
 
@@ -358,7 +358,7 @@ Finally, the `Delete` method **deletes and returns** an existing instance with a
 
 The **single input parameter** represents the identifier of the instance that shall be deleted.
 
-The **return type** again corresponds to the `Read` model of the correspnding resource type.
+The **return type** again corresponds to the `Read` model of the corresponding resource type.
 
 ---
 
@@ -701,7 +701,7 @@ Under certain circumstances, the managers **might throw** one of the exceptions 
 
 These exceptions must be **translated** into corresponding **HTTP response messages and status codes**.
 
-To achieve such translation, we must define a **custom exeception handler** as shown on the right.
+To achieve such translation, we must define a **custom exception handler** as shown on the right.
 
 ---
 
@@ -725,7 +725,7 @@ Instances of the `HttpException` class carry a **status code** (between `400` an
 
 Both the status code and the message values of the exception are **transferred** to the HTTP response.
 
-Note that this implementation also works if we **introduce additional** `HttpException` subclasses.
+Note that this implementation also works if we **introduce additional** `HttpException` sub-classes.
 
 ---
 
