@@ -749,75 +749,119 @@ We need to add **lines 8 and 9** as well as **line 18** for the custom exception
 
 ---
 
+![bg right h:90%](../Models/Client/Overview.png)
+
+#### Backend service clients
+
+So-called clients are used to **access the backend services** through HTTP message exchange.
+
+**For our resources** we provide the `UsersClient`, the `IssuesClient`, and the `CommentsClient` classes.
+
+Their implementation, however, can be **generalized** almost entirely in the `AbstractClient` class.
+
+---
+
 <!-- _class: center -->
 
 ### Abstract client class
 
-Common HTTP request and response **message pattern**
+Common HTTP request and response **message patterns**
 
 ---
 
-![bg right w:90%](../Models/Client/Abstract.png)
+![bg right h:90%](../Models/Client/Abstract.png)
 
-### Abstract client class
+#### The `AbstractClient` class
 
-*Coming soon*
+The `AbstractClient` class **implements** the `AbstractInterface` from the `CustomLib` component.
+
+Note that also the **controllers** of the `CustomApi` component implement this interface.
+
+Hence, the interface serves as the **contract** between the backend services and the clients.
 
 ---
 
 ![bg right w:90%](../Screenshots/Clients/Constructor.png)
 
-### The public constructor
+#### The public constructor
 
-*Coming soon*
+The `AbstractClient` class provides a constructor, which accepts a **resource-dependent path prefix**.
+
+The path prefix is used to build the URLs for **calling the user, issue, and comment backend services**.
+
+The constructor also **creates** a `System.Net.HttpClient` instance and defines JSON serialization options.
 
 ---
 
 ![bg right w:90%](../Screenshots/Clients/Find.png)
 
-### The public `Find` method
+#### The public `Find` method
 
-*Coming soon*
+The screenshot on the right shows the **generic implementation** of the `Find` method.
+
+First, the `Query` model is **converted** into a *URL-encoded* query string before **sending** an `HTTP GET` request.
+
+Finally, the HTTP response is **received and parsed** into a list structure of `ResourceRead` objects.
 
 ---
 
 ![bg right w:90%](../Screenshots/Clients/Create.png)
 
-### The public `Create` method
+#### The public `Create` method
 
-*Coming soon*
+The next screenshot shows the **generic implementation** of the `Create` method.
+
+First, the `Create` model is **serialized to JSON** before sending the respective `HTTP POST` request.
+
+Then, again the HTTP response is **received and parsed** into a single `ResourceRead` object.
 
 ---
 
 ![bg right w:90%](../Screenshots/Clients/Read.png)
 
-### The public `Read` method
+#### The public `Read` method
 
-*Coming soon*
+Now we come to the **generic implementation** of the `Read` method.
+
+The implementation **must not do** any preparatory work, but can send the `HTTP GET` request directly.
+
+As before, the HTTP response is **received and parsed** into a single `ResourceRead` instance.
 
 ---
 
 ![bg right w:90%](../Screenshots/Clients/Update.png)
 
-### The public `Update` method
+#### The public `Update` method
 
-*Coming soon*
+Next, the screenshot on the right shows the **generic implementation** of the `Update` method.
+
+Here the `Update` model is first **serialized to JSON** before sending an `HTTP PUT` request to the backend.
+
+As expected, the HTTP response is **received and parsed** into a single `ResourceRead` object.
 
 ---
 
 ![bg right w:90%](../Screenshots/Clients/Delete.png)
 
-### The public `Delete` method
+#### The public `Delete` method
 
-*Coming soon*
+Finally, the screenshot on the right shows the **generic implementation** of the `Delete` method.
+
+The implemenation also **does not require** any preparation before sending an `HTTP DELETE` request.
+
+As before, the HTTP response is **received and parsed** again into a single `ResourceRead` instance.
 
 ---
 
 ![bg right w:90%](../Screenshots/Clients/Parse.png)
 
-### The private `Parse` method
+#### The private `Parse` method
 
-*Coming soon*
+The last screenshot shows the **generic implemenation** of the `Parse` method.
+
+The method first **checks the HTTP response status code** and throws an `HttpException` if necessary.
+
+Then, the **HTTP response body** is JSON-deserialized into the target type with optional `ParseException`.
 
 ---
 
@@ -831,7 +875,7 @@ Concrete **resource type** and **prefix definition**
 
 ![bg right w:90%](../Models/Client/Full.png)
 
-### Concrete client classes
+#### Concrete client classes
 
 *Coming soon*
 
@@ -839,7 +883,7 @@ Concrete **resource type** and **prefix definition**
 
 ![bg right w:90%](../Screenshots/Clients/User.png)
 
-### The `UsersClient` class
+#### The `UsersClient` class
 
 *Coming soon*
 
@@ -847,7 +891,7 @@ Concrete **resource type** and **prefix definition**
 
 ![bg right w:90%](../Screenshots/Clients/Issue.png)
 
-### The `IssuesClient` class
+#### The `IssuesClient` class
 
 *Coming soon*
 
@@ -855,7 +899,7 @@ Concrete **resource type** and **prefix definition**
 
 ![bg right w:90%](../Screenshots/Clients/Comment.png)
 
-### The `CommentsClient` class
+#### The `CommentsClient` class
 
 *Coming soon*
 
