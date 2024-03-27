@@ -1,0 +1,118 @@
+classDiagram
+
+    direction BT
+
+    namespace MAUI {
+        class ContentPage {
+
+        }
+    }
+
+    namespace CustomApp {
+        
+        class UsersPage {
+            <<XAML + CodeBehind>>
+            + OnReloadClicked() void
+            + OnCreateClicked() void
+        }
+        class IssuesPage {
+            <<XAML + CodeBehind>>
+            + OnReloadClicked() void
+            + OnCreateClicked() void
+        }
+        class UserPage {
+            <<XAML + CodeBehind>>
+            + OnSaveClicked() void
+        }
+        class IssuePage {
+            <<XAML + CodeBehind>>
+
+        }
+
+        class UsersPageModel {
+            <<Singleton>>
+            + UsersPageModel Instance $
+            - UsersPageModel()
+            # ReloadInternal() List~UserGet~
+        }
+        class IssuesPageModel {
+            <<Singleton>>
+            + IssuesPageModel Instance $
+            - IssuesPageModel()
+            # ReloadInternal() List~IssueGet~
+        }
+
+        class UserPageModel {
+            <<Singleton>>
+            + UserPageModel Instance $
+            - UserPageModel()
+        }
+        class IssuePageModel {
+            <<Singleton>>
+            + UserPageModel Instance $
+            - IssuePageModel()
+        }
+
+        class AbstractItemsPageModel~T~ {
+            <<Abstract>>
+            + bool IsReloadEnabled
+            + bool IsCreateEnabled
+            + bool IsLoadVisible
+            + bool IsErrorVisible
+            + bool IsItemListVisible
+            + string ErrorMessage
+            + List~T~ ItemList
+            + Reload() void
+            # ReloadInternal() List~T~ *
+        }
+        class AbstractItemPageModel~T~ {
+            <<Abstract>>
+            + bool IsSaveEnabled
+            + bool IsLoadVisible
+            + bool IsErrorVisible
+            + string ErrorMessage
+            + T Item
+        }
+
+        class AbstractModel {
+            <<Abstract>>
+            + PropertyChangedEventHandler PropertyChanged
+            # bool SetProperty~T~(ref T storage, T value)
+            + OnPropertyChanged(string name) void
+        }
+
+    }
+
+    namespace System {
+        
+        class INotifyPropertyChanged {
+            <<Interface>>
+        }
+
+    }
+
+    ContentPage <|-- UsersPage
+    ContentPage <|-- UserPage
+    ContentPage <|-- IssuesPage
+    ContentPage <|-- IssuePage
+
+    UsersPage ..> UsersPageModel
+    IssuesPage ..> IssuesPageModel
+
+    UserPage ..> UserPageModel 
+    IssuePage ..> IssuePageModel
+
+    UsersPageModel --|> AbstractItemsPageModel : T = UserGet
+    IssuesPageModel --|> AbstractItemsPageModel : T = IssueGet
+
+    UserPageModel --|> AbstractItemPageModel : T = UserGet
+    IssuePageModel --|> AbstractItemPageModel : T = IssueGet
+
+    AbstractItemsPageModel --|> AbstractModel
+    AbstractItemPageModel --|> AbstractModel
+
+    AbstractModel --|> INotifyPropertyChanged
+
+    style ContentPage fill:white
+    style IssuesPage fill:yellow
+    style INotifyPropertyChanged fill:white

@@ -89,4 +89,4 @@ The following diagram explains the interface structure of the sample application
 
 The following diagram explains the page structure and the underlying view models of the MAUI.NET sample application. At the base you find an abstract view model, which implements the ``INotifyPropertyChanged`` interface. On top of the abstract view model, you find an abstract collection view model as well as an abstract item view model. The collecton view model forms the basis of the user and issue overview pages. The item view model instead forms the basis of the user and item detail pages.
 
-![MAUI.NET / ASP.NET Sample Page Structure](./Models/Pages.svg)
+![MAUI.NET / ASP.NET Sample Page Structure](./Models/Page/Full.svg)

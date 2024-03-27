@@ -1,0 +1,84 @@
+classDiagram
+
+    direction BT
+
+    namespace CustomApp {
+
+        class UsersPageModel {
+            <<Singleton>>
+            + UsersPageModel Instance $
+            - UsersPageModel()
+            # List~UserGet~ ReloadInternal()
+        }
+        class IssuesPageModel {
+            <<Singleton>>
+            + IssuesPageModel Instance $
+            - IssuesPageModel()
+            # List~IssueGet~ ReloadInternal()
+        }
+
+        class UserPageModel {
+            <<Singleton>>
+            + UserPageModel Instance $
+            - UserPageModel()
+        }
+        class IssuePageModel {
+            <<Singleton>>
+            + UserPageModel Instance $
+            - IssuePageModel()
+        }
+
+        class AbstractItemsPageModel~T~ {
+            <<Abstract>>
+            + bool IsReloadEnabled
+            + bool IsCreateEnabled
+            + bool IsLoadVisible
+            + bool IsErrorVisible
+            + bool IsItemListVisible
+            + string ErrorMessage
+            + List~T~ ItemList
+            + void Reload()
+            # List~T~ ReloadInternal() *
+        }
+        class AbstractItemPageModel~T~ {
+            <<Abstract>>
+            + bool IsSaveEnabled
+            + bool IsLoadVisible
+            + bool IsErrorVisible
+            + string ErrorMessage
+            + T Item
+        }
+
+        class AbstractModel {
+            <<Abstract>>
+            + PropertyChangedEventHandler PropertyChanged
+            # bool SetProperty~T~(ref T storage, T value)
+            + void OnPropertyChanged(string name)
+        }
+
+    }
+
+    namespace System {
+
+        class INotifyPropertyChanged {
+            <<Interface>>
+        }
+        
+    }
+
+    UsersPageModel --|> AbstractItemsPageModel : T = UserGet
+    IssuesPageModel --|> AbstractItemsPageModel : T = IssueGet
+
+    UserPageModel --|> AbstractItemPageModel : T = UserGet
+    IssuePageModel --|> AbstractItemPageModel : T = IssueGet
+
+    AbstractItemsPageModel --|> AbstractModel
+    AbstractItemPageModel --|> AbstractModel
+
+    AbstractModel --|> INotifyPropertyChanged
+
+    style ContentPage fill:white
+    style INotifyPropertyChanged fill:white
+
+    style UserPageModel fill:yellow
+    style IssuePageModel fill:yellow

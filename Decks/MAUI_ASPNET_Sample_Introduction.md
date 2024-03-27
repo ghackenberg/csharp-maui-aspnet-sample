@@ -1082,47 +1082,7 @@ Note that when **not running** in loop mode, this command also prints the messag
 
 ## Section 6 - The `CustomApp` component
 
-**MAUI.NET frontend**, **view models**, and **pages**
-
----
-
-![bg right w:90%](../Screenshots/CustomApp-Users.png)
-
-### MAUI.NET frontend
-
-The C# MAUI.NET / ASP.NET Sample Application features a **basic** graphical user interface (GUI).
-
-With the GUI you can manage the **users** and the **issues** stored in the underlying database.
-
-The screenshot on the right shows the **users page** listing all created user entities.
-
----
-
-![bg right w:90%](../Screenshots/CustomApp-User.png)
-
-### MAUI.NET frontend (cont'd)
-
-When clicking an existing user or creating a new user, you enter the **user detail** page.
-
-The user detail page shows all the **data associated** with a user entity in the database.
-
-You can change the **first and last name**, the other fields are set automatically.
-
----
-
-<!-- _class: center -->
-
-### View models
-
-*Coming soon*
-
----
-
-![bg right w:90%](../Models/Pages.png)
-
-### View model overview
-
-*Coming soon*
+**Pages**, **page models**, and **page controllers**
 
 ---
 
@@ -1134,9 +1094,141 @@ You can change the **first and last name**, the other fields are set automatical
 
 ---
 
-![bg right w:90%](../Models/Pages.png)
+![bg right w:90%](../Screenshots/CustomApp-Users.png)
 
-### Page overview
+#### The users page
+
+The C# MAUI.NET / ASP.NET Sample Application features a **basic** graphical user interface (GUI).
+
+With the GUI you can manage the **users** and the **issues** stored in the underlying database.
+
+The screenshot on the right shows the **users page** listing all created user entities.
+
+---
+
+![bg right w:90%](../Screenshots/CustomApp-User.png)
+
+#### The user page
+
+When clicking an existing user or creating a new user, you enter the **user detail** page.
+
+The user detail page shows all the **data associated** with a user entity in the database.
+
+You can change the **first and last name**, the other fields are set automatically.
+
+---
+
+#### The issues page
+
+*Coming soon*
+
+---
+
+#### The issue page
+
+*Coming soon*
+
+---
+
+<!-- _class: center -->
+
+### Page models
+
+*Coming soon*
+
+---
+
+![bg right w:90%](../Models/Model/Full.png)
+
+### View model overview
+
+*Coming soon*
+
+---
+
+![bg right w:90%](../Models/Model/Abstract.png)
+
+### The `AbstractModel` class
+
+*Coming soon*
+
+---
+
+![bg right w:90%](../Models/Model/Items.png)
+
+### `AbstractItemsPageModel` class
+
+*Coming soon*
+
+---
+
+![bg right w:90%](../Models/Model/UsersIssues.png)
+
+### `Users-` and `IssuesPageModel`
+
+*Coming soon*
+
+---
+
+![bg right w:90%](../Models/Model/Item.png)
+
+### `AbstractItemPageModel` class
+
+*Coming soon*
+
+---
+
+![bg right w:90%](../Models/Model/UserIssue.png)
+
+### `User-` and `IssuePageModel`
+
+*Coming soon*
+
+---
+
+<!-- _class: center -->
+
+### Page controllers
+
+*Coming soon*
+
+---
+
+![bg right w:90%](../Models/Page/Full.png)
+
+### Page controller overview
+
+*Coming soon*
+
+---
+
+![bg right w:90%](../Models/Page/Users.png)
+
+### The users page controller
+
+*Coming soon*
+
+---
+
+![bg right w:90%](../Models/Page/User.png)
+
+### The user page controller
+
+*Coming soon*
+
+---
+
+![bg right w:90%](../Models/Page/Issues.png)
+
+### The issues page controller
+
+*Coming soon*
+
+---
+
+![bg right w:90%](../Models/Page/Issue.png)
+
+### The issue page controller
 
 *Coming soon*
 
