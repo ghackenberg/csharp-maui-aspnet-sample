@@ -1098,11 +1098,25 @@ Note that when **not running** in loop mode, this command also prints the messag
 
 #### The users page
 
-The C# MAUI.NET / ASP.NET Sample Application features a **basic** graphical user interface (GUI).
-
-With the GUI you can manage the **users** and the **issues** stored in the underlying database.
-
 The screenshot on the right shows the **users page** listing all created user entities.
+
+*Coming soon*
+
+---
+
+![bg right w:90%](../Screenshots/CustomApp-UsersLoad.png)
+
+#### The users page in *load state*
+
+*Coming soon**
+
+---
+
+![bg right w:90%](../Screenshots/CustomApp-UsersError.png)
+
+#### The users page in *error state*
+
+*Coming soon**
 
 ---
 
@@ -1118,11 +1132,31 @@ You can change the **first and last name**, the other fields are set automatical
 
 ---
 
+![bg right w:90%](../Screenshots/CustomApp-UserLoad.png)
+
+#### The user page in *load state*
+
+*Coming soon**
+
+---
+
+![bg right w:90%](../Screenshots/CustomApp-UserError.png)
+
+#### The user page in *error state*
+
+*Coming soon**
+
+---
+
+![bg right w:90%](../Screenshots/CustomApp-Issues.png)
+
 #### The issues page
 
 *Coming soon*
 
 ---
+
+![bg right w:90%](../Screenshots/CustomApp-Issue.png)
 
 #### The issue page
 
@@ -1140,7 +1174,7 @@ You can change the **first and last name**, the other fields are set automatical
 
 ![bg right w:90%](../Models/Model/Full.png)
 
-### View model overview
+#### Page model overview
 
 *Coming soon*
 
@@ -1148,7 +1182,7 @@ You can change the **first and last name**, the other fields are set automatical
 
 ![bg right w:90%](../Models/Model/Abstract.png)
 
-### The `AbstractModel` class
+#### The `AbstractModel` class
 
 *Coming soon*
 
@@ -1156,7 +1190,15 @@ You can change the **first and last name**, the other fields are set automatical
 
 ![bg right w:90%](../Models/Model/Items.png)
 
-### `AbstractItemsPageModel` class
+#### `AbstractItemsPageModel` class
+
+*Coming soon*
+
+---
+
+![bg right h:90%](../Screenshots/Models/Reload.png)
+
+### The `Reload` method
 
 *Coming soon*
 
@@ -1164,15 +1206,28 @@ You can change the **first and last name**, the other fields are set automatical
 
 ![bg right w:90%](../Models/Model/UsersIssues.png)
 
-### `Users-` and `IssuesPageModel`
+#### `Users-` and `IssuesPageModel`
 
 *Coming soon*
 
 ---
 
+![bg w:90%](../Screenshots/Models/ReloadUsers.png)
+![bg w:90%](../Screenshots/Models/ReloadIssues.png)
+
+---
+
 ![bg right w:90%](../Models/Model/Item.png)
 
-### `AbstractItemPageModel` class
+#### `AbstractItemPageModel` class
+
+*Coming soon*
+
+---
+
+![bg right w:90%](../Screenshots/Models/Query.png)
+
+#### The `[QueryProperty]` annotation
 
 *Coming soon*
 
@@ -1180,7 +1235,7 @@ You can change the **first and last name**, the other fields are set automatical
 
 ![bg right w:90%](../Models/Model/UserIssue.png)
 
-### `User-` and `IssuePageModel`
+#### `User-` and `IssuePageModel`
 
 *Coming soon*
 
@@ -1196,7 +1251,7 @@ You can change the **first and last name**, the other fields are set automatical
 
 ![bg right w:90%](../Models/Page/Full.png)
 
-### Page controller overview
+#### Page controller overview
 
 *Coming soon*
 
@@ -1204,7 +1259,31 @@ You can change the **first and last name**, the other fields are set automatical
 
 ![bg right w:90%](../Models/Page/Users.png)
 
-### The users page controller
+#### The users page controller
+
+*Coming soon*
+
+---
+
+![bg right w:90%](../Screenshots/Controls/UsersReload.png)
+
+#### The `OnReloadClicked` method
+
+*Coming soon*
+
+---
+
+![bg right w:90%](../Screenshots/Controls/UsersClicked.png)
+
+#### The `OnUserClicked` method
+
+*Coming soon*
+
+---
+
+![bg right w:90%](../Screenshots/Controls/UsersCreate.png)
+
+#### The `OnCreateClicked` method
 
 *Coming soon*
 
@@ -1212,7 +1291,23 @@ You can change the **first and last name**, the other fields are set automatical
 
 ![bg right w:90%](../Models/Page/User.png)
 
-### The user page controller
+#### The user page controller
+
+*Coming soon*
+
+---
+
+![bg right w:90%](../Screenshots/Models/Query.png)
+
+#### Automatic parameter binding
+
+*Coming soon*
+
+---
+
+![bg right h:90%](../Screenshots/Controls/UsersSave.png)
+
+#### The `OnSaveClicked` method
 
 *Coming soon*
 
@@ -1220,7 +1315,7 @@ You can change the **first and last name**, the other fields are set automatical
 
 ![bg right w:90%](../Models/Page/Issues.png)
 
-### The issues page controller
+#### The issues page controller
 
 *Coming soon*
 
@@ -1228,7 +1323,7 @@ You can change the **first and last name**, the other fields are set automatical
 
 ![bg right w:90%](../Models/Page/Issue.png)
 
-### The issue page controller
+#### The issue page controller
 
 *Coming soon*
 

@@ -28,8 +28,6 @@
                                      Orientation="Horizontal">
                             <Label Text="{Binding Path=FirstName}"/>
                             <Label Text="{Binding Path=LastName}"/>
-                            <Label Text="{Binding Path=CreatedAt}"/>
-                            <Label Text="{Binding Path=UpdatedAt}"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

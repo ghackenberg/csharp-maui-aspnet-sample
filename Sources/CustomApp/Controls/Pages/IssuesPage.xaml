@@ -26,8 +26,6 @@
                     <ViewCell>
                         <StackLayout Margin="20" Spacing="20"
                                      Orientation="Horizontal">
-                            <Label Text="{Binding Path=UserId}"/>
-                            <Label Text="{Binding Path=IssueId}"/>
                             <Label Text="{Binding Path=Label}"/>
                         </StackLayout>
                     </ViewCell>

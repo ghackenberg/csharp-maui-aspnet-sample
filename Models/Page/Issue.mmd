@@ -12,34 +12,35 @@ classDiagram
         
         class UsersPage {
             <<XAML + CodeBehind>>
-            + OnReloadClicked() void
-            + OnCreateClicked() void
+            + void OnReloadClicked()
+            + void OnUserClicked()
+            + void OnCreateClicked()
         }
         class IssuesPage {
             <<XAML + CodeBehind>>
-            + OnReloadClicked() void
-            + OnCreateClicked() void
+            + void OnReloadClicked()
+            + void OnIssueClicked()
+            + void OnCreateClicked()
         }
         class UserPage {
             <<XAML + CodeBehind>>
-            + OnSaveClicked() void
+            + void OnSaveClicked()
         }
         class IssuePage {
             <<XAML + CodeBehind>>
-
         }
 
         class UsersPageModel {
             <<Singleton>>
             + UsersPageModel Instance $
             - UsersPageModel()
-            # ReloadInternal() List~UserGet~
+            # List~UserGet~ ReloadInternal()
         }
         class IssuesPageModel {
             <<Singleton>>
             + IssuesPageModel Instance $
             - IssuesPageModel()
-            # ReloadInternal() List~IssueGet~
+            # List~IssueGet~ ReloadInternal()
         }
 
         class UserPageModel {
@@ -62,8 +63,8 @@ classDiagram
             + bool IsItemListVisible
             + string ErrorMessage
             + List~T~ ItemList
-            + Reload() void
-            # ReloadInternal() List~T~ *
+            + void Reload()
+            # List~T~ ReloadInternal() *
         }
         class AbstractItemPageModel~T~ {
             <<Abstract>>
@@ -78,7 +79,7 @@ classDiagram
             <<Abstract>>
             + PropertyChangedEventHandler PropertyChanged
             # bool SetProperty~T~(ref T storage, T value)
-            + OnPropertyChanged(string name) void
+            + void OnPropertyChanged(string name
         }
 
     }
