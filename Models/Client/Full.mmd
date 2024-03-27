@@ -60,7 +60,7 @@ classDiagram
         class UsersClient {
             <<Singleton>>
             +UsersClient Instance$
-            -string _prefix
+            -string _resourceName
             -HttpClient _client
             +... List(...)
             +... Create(...)
@@ -72,7 +72,7 @@ classDiagram
         class IssuesClient {
             <<Singleton>>
             +IssuesClient Instance$
-            -string _prefix
+            -string _resourceName
             -HttpClient _client
             +... List(...)
             +... Create(...)
@@ -84,7 +84,7 @@ classDiagram
         class CommentsClient {
             <<Singleton>>
             +CommentsClient Instance$
-            -string _prefix
+            -string _resourceName
             -HttpClient _client
             +... List(...)
             +... Create(...)

@@ -45,7 +45,7 @@ Also check out https://mentawise.com and https://caddrive.org 😎
 
 ## Section 1 - The software architecture
 
-**Domain** and **component model**
+**Domain model** and **component model**
 
 ---
 
@@ -930,37 +930,89 @@ Furthermore, a single instance must be provided through a **static field or meth
 
 ## Section 5 - The `CustomCli` component
 
-**Commands**
+**Program class** and **commands**
+
+---
+
+<!-- _class: center -->
+
+### Program class
+
+The entry point for **CLI execution**
+
+----
+
+![bg right w:90%](../Models/Cli/Program.png)
+
+#### The `Program` class
+
+The `CustomCli` component contains the `Program` class with a **static main method** as execution entrypoint.
+
+The `Program` can read **commands** either from the *program arguments* or in **loop mode** from *standard input*.
+
+The static method `Loop` **realizes** the loop mode, the static method `Process` **processes** commands.
+
+----
+
+![bg right w:90%](../Models/Cli/Clients.png)
+
+#### The `CustomSdk` dependency
+
+The implementation of the `Program` class **depends** on the *client classes* in the `CustomSdk` component.
+
+The `Program` uses the clients to **send requests** to the backend services and **receive responses**.
+
+Note that the `CustomCli` component **must not need to know** the details of the required service communication.
+
+---
+
+<!-- _class: center -->
+
+### Commands
+
+**Functionalities** provided to the end users
 
 ---
 
 ![bg right w:90%](../Screenshots/CustomCli-Help.png)
 
-### The `help` command
+#### The `help` command
 
-*Coming soon*
+The **first command** offered by the `CustomCli` component to end users is the `help` command.
+
+When executed, the `help` command **prints an overview** of all the supported commands.
+
+For each command also the **list of parameters** is printed out, e.g., `delete comment <commentId>`.
 
 ---
 
 ![bg right w:90%](../Screenshots/CustomCli-FindUsers.png)
 
-### The `find users` command
+#### The `find users` command
 
-*Coming soon*
+The **next command** of the `CustomCli` discussed here is the `find users` command.
+
+The `find users` command is also the first command **using the clients** of the `CustomSdk`.
+
+When executed, the program **requests the list of users** from the backend and prints the result.
 
 ---
 
 ![bg right w:90%](../Screenshots/CustomCli-CreateUser.png)
 
-### The `create user` command
+#### The `create user` command
 
-*Coming soon*
+Then, the `CustomCli` component offers the `create user` command for **creating new user objects**.
+
+The command takes **two string arguments**, the `<firstName>` and the `<lastName>` of the new user.
+
+When executed, the program **requests user creation** from the backend and prints the result.
 
 ---
 
 ![bg right w:90%](../Screenshots/CustomCli-UpdateUser.png)
 
-### The `update user` command
+#### The `update user` command
 
 *Coming soon*
 
@@ -968,7 +1020,7 @@ Furthermore, a single instance must be provided through a **static field or meth
 
 ![bg right w:90%](../Screenshots/CustomCli-DeleteUser.png)
 
-### The `delete user` command
+#### The `delete user` command
 
 *Coming soon*
 
@@ -1040,15 +1092,23 @@ You can change the **first and last name**, the other fields are set automatical
 
 <!-- _class: center dark -->
 
-## Section 7 - The follow-up resources
+## Section 7 - Advanced topics
 
 *Coming soon*
 
 ---
 
-### Follow-up resource overview
+### Advanced topic overview
 
-*Coming soon*
+There is much more you can learn about **mobile and cloud computing**. Here are some interesting topics you could study:
+
+- **File transfer** is required to share regular files via HTTP REST APIs
+- **User authentication** is required to personalize the user experience
+- **Request authorization** is required to enforce user-specific permissions
+- **Database integration** is required to benefit from database technologies
+- **Live synchronization** is required to enable real-time user collaboration
+- **Offline caching** is required to provide the functionalities while offline
+- **Application scaling** is required to support large user communities
 
 ---
 

@@ -1,0 +1,95 @@
+classDiagram
+
+    direction LR
+
+    namespace CustomApi {
+        class UsersController {
+            <<AspNetController>>
+            +... Find(...)
+            +... Create(...)
+            +... Read(...)
+            +... Update(...)
+            +... Delete(...)
+        }
+        class IssuesController {
+            <<AspNetController>>
+            +... Find(...)
+            +... Create(...)
+            +... Read(...)
+            +... Update(...)
+            +... Delete(...)
+        }
+        class CommentsController {
+            <<AspNetController>>
+            +... Find(...)
+            +... Create(...)
+            +... Read(...)
+            +... Update(...)
+            +... Delete(...)
+        }
+    }
+
+    namespace CustomSdk {
+        class UsersClient {
+            <<Singleton>>
+            +UsersClient Instance$
+            -HttpClient _client
+            +... Find(...)
+            +... Create(...)
+            +... Read(...)
+            +... Update(...)
+            +... Delete(...)
+            -... Parse~T~(...)
+        }
+        class IssuesClient {
+            <<Singleton>>
+            +IssuesClient Instance$
+            -HttpClient _client
+            +... Find(...)
+            +... Create(...)
+            +... Read(...)
+            +... Update(...)
+            +... Delete(...)
+            -... Parse~T~(...)
+        }
+        class CommentsClient {
+            <<Singleton>>
+            +CommentsClient Instance$
+            -HttpClient _client
+            +... Find(...)
+            +... Create(...)
+            +... Read(...)
+            +... Update(...)
+            +... Delete(...)
+            -... Parse~T~(...)
+        }
+    }
+
+    namespace CustomCli {
+        class Program {
+            +void main(string[] args)$
+            -void Loop()$
+            -bool Process(string[] command)$
+        }
+    }
+
+    Program ..> UsersClient : uses
+    Program ..> IssuesClient : uses
+    Program ..> CommentsClient : uses
+
+    UsersClient --> UsersController : Request
+    UsersClient .. UsersController : HTTP connection
+    UsersClient <-- UsersController : Response
+
+    IssuesClient --> IssuesController : Request
+    IssuesClient .. IssuesController : HTTP connection
+    IssuesClient <-- IssuesController : Response
+
+    CommentsClient --> CommentsController : Request
+    CommentsClient .. CommentsController : HTTP connection
+    CommentsClient <-- CommentsController : Response
+
+    style Program fill:yellow
+    style UsersClient fill:yellow
+    style IssuesClient fill:yellow
+    style CommentsClient fill:yellow
