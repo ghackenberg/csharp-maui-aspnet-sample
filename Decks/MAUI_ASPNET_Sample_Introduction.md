@@ -899,9 +899,13 @@ Consequently, the client **serializes** user `Create`, `Update`, and `Query` and
 
 ![bg right w:90%](../Screenshots/Clients/User.png)
 
-#### The path prefix
+#### The resource name string
 
-*Coming soon*
+Then, the `UsersClient` class needs to tell the `AbstractClient` constructor the **name of the requested resource**.
+
+The `AbstractClient` uses the passed resource name `"users"` (see *line 19*) to **build URLs** for HTTP requests.
+
+For the `UsersClient` class, the `AbstractClient` **derives** this URL: `http://localhost:5252/api/users`.
 
 ---
 
@@ -909,7 +913,11 @@ Consequently, the client **serializes** user `Create`, `Update`, and `Query` and
 
 #### The singleton instance
 
-*Coming soon*
+Finally, to **provide quick access** to client instances, we use the singleton design pattern here.
+
+The singleton design pattern requires the **constructors** of the class to be **private** only (see *line 19*).
+
+Furthermore, a single instance must be provided through a **static field or method** (see *line 14*).
 
 ---
 

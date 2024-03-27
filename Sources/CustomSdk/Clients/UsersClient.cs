@@ -16,6 +16,6 @@ namespace CustomSdk.Clients
         /// <summary>
         /// The private constructor preventing other singleton instances.
         /// </summary>
-        public UsersClient() : base("users") { }
+        private UsersClient() : base("users") { }
     }
 }
