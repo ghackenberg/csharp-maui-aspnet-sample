@@ -1086,11 +1086,59 @@ Note that when **not running** in loop mode, this command also prints the messag
 
 ---
 
+![bg right w:90%](../Models/MAUI/Full.png)
+
+### High-level technical overview
+
+The diagram on the right provides a **high-level technical overview** of the `CustomApp` component.
+
+At its top you find **three core classes**, namely the `MauiProgram`, the `App`, and the `AppShell`.
+
+Below you find the **page and page controller classes** as well as the **page model classes**.
+
+---
+
+![bg right w:90%](../Models/MAUI/Core.png)
+
+### Core classes
+
+The `MauiProgram` class is responsible, e.g., for **configuring fonts** and **starting the application**.
+
+The `App` class is responsible for **loading resource files** (e.g. for *colors* and *styles*) and **starting the shell**.
+
+Finally, the `AppShell` class is responsible for **showing the window** and **handling page navigation**.
+
+---
+
+![bg right w:90%](../Models/MAUI/Page.png)
+
+### Page and page controller classes
+
+The page and page controller classes are split into a **XAML file** and a **code-behind C# file**.
+
+The XAML file defines the **structure** of the view and **layout properties** of view elements (also called *controls*).
+
+The code-behind C# file provides **callback functions for events** such as *button click*, *list select*, etc.
+
+---
+
+![bg right w:90%](../Models/MAUI/Model.png)
+
+### Page model classes
+
+The data of pages is managed in **underlying page models** with property change notifications.
+
+Upon data changes, the page models fire **property change events**, which trigger page re-rendering.
+
+Pages and page controllers **refer to their page models** by means of the `BindingContext` property.
+
+---
+
 <!-- _class: center -->
 
 ### Pages
 
-*Coming soon*
+The main **structural element** for building GUIs.
 
 ---
 

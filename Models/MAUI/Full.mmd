@@ -1,0 +1,84 @@
+classDiagram
+        
+    namespace CustomApp {
+        class MauiProgram {
+            +MauiApp CreateMauiApp()$
+        }
+        class App {
+            <<XAML + CodeBehind>>
+            App()
+        }
+        class AppShell {
+            <<XAML + CodeBehind>>
+            AppShell()
+        }
+
+        class UsersPage {
+            <<XAML + CodeBehind>>
+            +object BindingContext
+        }
+        class UserPage {
+            <<XAML + CodeBehind>>
+            +object BindingContext
+        }
+        class IssuesPage {
+            <<XAML + CodeBehind>>
+            +object BindingContext
+        }
+        class IssuePage {
+            <<XAML + CodeBehind>>
+            +object BindingContext
+        }
+
+        class UsersPageModel {
+            <<Singleton>>
+            +UsersPageModel Instance$
+            +...
+            -UsersPageModel()
+        }
+        class UserPageModel {
+            <<Singleton>>
+            +UserPageModel Instance$
+            +...
+            -UserPageModel()
+        }
+        class IssuesPageModel {
+            <<Singleton>>
+            +IssuesPageModel Instance$
+            +...
+            -IssuesPageModel()
+        }
+        class IssuePageModel {
+            <<Singleton>>
+            +IssuePageModel Instance$
+            +...
+            -IssuePageModel()
+        }
+    }
+
+    namespace System {
+        class INotifyPropertyChanged {
+            <<Interface>>
+        }
+    }
+
+    MauiProgram ..> App : instantiates
+
+    App *-- AppShell : MainPage
+
+    AppShell *-- UsersPage : route <b>users</b> + flyout
+    AppShell *-- UserPage : route <b>users/user</b>
+    AppShell *-- IssuesPage : route <b>issues</b> + flyout
+    AppShell *-- IssuePage : route <b>issues/issue</b>
+
+    UsersPage ..> UsersPageModel : BindingContext
+    UserPage ..> UserPageModel : BindingContext
+    IssuesPage ..> IssuesPageModel : BindingContext
+    IssuePage ..> IssuePageModel : BindingContext
+
+    UsersPageModel --|> INotifyPropertyChanged
+    UserPageModel --|> INotifyPropertyChanged
+    IssuesPageModel --|> INotifyPropertyChanged
+    IssuePageModel --|> INotifyPropertyChanged
+
+    style INotifyPropertyChanged fill:white
