@@ -7,6 +7,12 @@ We use this sample project at the [School of Engineering](https://www.fh-ooe.at/
 - [MAUI.NET](https://dotnet.microsoft.com/en-us/apps/maui) supports building **cross-platfrom graphical user interfaces (GUIs)**.
 - [ASP.NET](https://dotnet.microsoft.com/en-us/apps/aspnet) supports building **Cloud services with state-of-the-art REST APIs**.
 
+## 📦 Packages
+
+The following diagram explains the software architecture of the C# MAUI.NET / ASP.NET Sample Application. The `CustomLib` forms the core of the application and provides common classes and interfaces to the other packages. The `CustomApi` package implements a Cloud-based backend service with standard HTTP REST API and in-memory data storage. The `CustomSdk` provides reusable HTTP REST API client implementations for the two frontend applications. The `CustomCli` provides a simple command line interfaces (CLI) for interacting with the backend services. And the `CustomApp` provides a basic cross-platform graphical user interface (GUI) based on the Microsoft MAUI.NET framework.
+
+![C# MAUI.NET / ASP.NET Packages](./Models/Package/Full.svg)
+
 ## 📝 Guides
 
 The following set of guides helps you **getting started with MAUI.NET and ASP.NET development on your local machine**. Note that the guides have been prepared for Windows machines only. In principle, MAUI.NET and ASP.NET development should be possible also on OS X and Linux machines. However, we did not test that!
@@ -17,14 +23,6 @@ The following set of guides helps you **getting started with MAUI.NET and ASP.NE
 - [**Guide 4 - Clone the sources** of the sample application](./Guides/3_Clone/README.md)
 - [**Guide 5 - Build and run** the sample application](./Guides/4_Run/README.md)
 - [**Guide 6 - Make changes** to the sample application](./Guides/5_Change/README.md)
-
-## 📜 Documents
-
-As for every open source project, we provide **three standard documents**: The license agreement for using the source code, rules for contributing to the source code of the project, and a change log summarizing relevant changes to the source code:
-
-- [License](./LICENSE.md)
-- [Contributing](./CONTRIBUTING.md)
-- [Changelog](./CHANGELOG.md)
 
 ## 📸 Screenshots
 
@@ -65,3 +63,11 @@ The **MAUI.NET Issue Page** provides means for editing the information of existi
 The **ASP.NET Swagger UI** provides a documentation of the Cloud-based backend services, which are exposed via HTTP REST API. For each endpoint, the expected inputs and provided outputs are shown including examples.
 
 ![MAUI.NET / ASP.NET Sample User Screenshot](./Screenshots/CustomApi.png)
+
+## 📜 Documents
+
+As for every open source project, we provide **three standard documents**: The license agreement for using the source code, rules for contributing to the source code of the project, and a change log summarizing relevant changes to the source code:
+
+- [License](./LICENSE.md)
+- [Contributing](./CONTRIBUTING.md)
+- [Changelog](./CHANGELOG.md)
