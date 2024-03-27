@@ -1,4 +1,4 @@
-# C# MAUI.NET / ASP.NET Sample
+# C# MAUI.NET / ASP.NET Sample Application
 
 ![Logo](./Images/MAUI_ASPNET_Sample_Social_Preview_Image.png)
 
