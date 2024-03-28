@@ -28,10 +28,30 @@ Also check out https://mentawise.com and https://caddrive.org 😎
 
 ![bg right:40% w:150%](../Images/MAUI_ASPNET_Sample_Deck_Preview_Image.png)
 
+## Deck purpose
+
+This deck is meant to
+
+**help you understand the software architecture**
+
+of the
+
+**C# MAUI.NET / ASP.NET Sample Application**
+
+so that
+
+**you can start building on it and create your very own awesome mobile and cloud computing application!**
+
+---
+
+<!-- _class: hide-page-number -->
+
+![bg right:40% w:150%](../Images/MAUI_ASPNET_Sample_Deck_Preview_Image.png)
+
 ## Deck overview
 
 
-- **Section 1 - Intended readers**
+- **Section 1 - Knowledge requirements**
 - **Section 2 - The software architecture**
 - **Section 3 - The `CustomLib` component**
 - **Section 4 - The `CustomApi` component**
@@ -44,15 +64,20 @@ Also check out https://mentawise.com and https://caddrive.org 😎
 
 <!-- _class: center dark -->
 
-## Section 1 - Intended readers
+## Section 1 - Knowledge requirements
 
-Who should read this document and who should not read it.
+What you should not before reading this deck
 
 ---
 
-### Intended reader overview
+### Knowledge prerequisites
 
-*Coming soon*
+Here is what you should already **know before reading this deck**:
+
+- **Distributed systems** with protocols such as the Hypertext Transfer Protocol (HTTP) and Representation State Transfer (REST).
+- **Object-oriented programming** with C# or any other object-oriented programming language like Python or Java.
+- **Model-based software engineering** with package and class diagrams of the Unified Modeling Language (UML).
+- **Software design patterns** such as Model View Controller (MVC), Singleton, and Proxy for solving recurring problems.
 
 ---
 
@@ -1546,7 +1571,7 @@ What else you could learn that we did not cover here.
 
 ---
 
-### Advanced topic overview
+### Advanced topics
 
 There is much more you can learn about **mobile and cloud computing**. Here are some interesting topics you could study:
 
