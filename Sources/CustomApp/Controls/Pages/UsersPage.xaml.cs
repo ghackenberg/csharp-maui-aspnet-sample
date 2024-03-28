@@ -1,5 +1,4 @@
 using CustomApp.Models.Pages;
-using CustomLib.Models.Users;
 
 namespace CustomApp.Controls.Pages;
 

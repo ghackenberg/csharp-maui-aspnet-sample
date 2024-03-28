@@ -12,22 +12,30 @@ classDiagram
         
         class UsersPage {
             <<XAML + CodeBehind>>
+            + object BindingContext
+            + UsersPage()
             + void OnReloadClicked()
             + void OnUserClicked()
             + void OnCreateClicked()
         }
         class IssuesPage {
             <<XAML + CodeBehind>>
+            + IssuesPage()
+            + object BindingContext
             + void OnReloadClicked()
             + void OnIssueClicked()
             + void OnCreateClicked()
         }
         class UserPage {
             <<XAML + CodeBehind>>
+            + UserPage()
+            + object BindingContext
             + void OnSaveClicked()
         }
         class IssuePage {
             <<XAML + CodeBehind>>
+            + IssuePage()
+            + object BindingContext
         }
 
         class UsersPageModel {
@@ -97,11 +105,11 @@ classDiagram
     ContentPage <|-- IssuesPage
     ContentPage <|-- IssuePage
 
-    UsersPage ..> UsersPageModel
-    IssuesPage ..> IssuesPageModel
+    UsersPage ..> UsersPageModel : BindingContext
+    IssuesPage ..> IssuesPageModel : BindingContext
 
-    UserPage ..> UserPageModel 
-    IssuePage ..> IssuePageModel
+    UserPage ..> UserPageModel  : BindingContext
+    IssuePage ..> IssuePageModel : BindingContext
 
     UsersPageModel --|> AbstractItemsPageModel : T = UserGet
     IssuesPageModel --|> AbstractItemsPageModel : T = IssueGet

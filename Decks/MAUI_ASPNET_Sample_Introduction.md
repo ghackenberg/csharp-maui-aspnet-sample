@@ -1390,7 +1390,7 @@ Both concrete item page models again implement the **singleton design pattern**.
 
 ### Page controllers
 
-*Coming soon*
+Handling **user interaction** events.
 
 ---
 
@@ -1398,7 +1398,11 @@ Both concrete item page models again implement the **singleton design pattern**.
 
 #### Page controller overview
 
-*Coming soon*
+The diagram on the right shows the **page (controller) classes** and their relation to the page model classes.
+
+This time, for each page controller class the diagram also includes the **event handler method signatures**.
+
+In the following, we explain each page controller class in greater detail including **constructors and methods**.
 
 ---
 
@@ -1406,7 +1410,23 @@ Both concrete item page models again implement the **singleton design pattern**.
 
 #### The users page controller
 
-*Coming soon*
+The users page controller class provides a **constructor**, as well as button and list **event handlers**.
+
+The constructor is responsible for initializing the **UI elements** and setting up the **binding context**.
+
+The event handlers are responsible for **reacting** to button click and list item select events.
+
+---
+
+![bg right w:90%](../Screenshots/Controls/UsersConstructor.png)
+
+#### The constructor
+
+The screenshot on the right shows the implemenetation of the `UsersPage` **constructor**.
+
+First the constructor calls the `InitializeComponent` method, which is **generated** from the *XAML file*.
+
+Then, the constructor sets the `BindingContext` **property** to the `UsersPageModel` singleton.
 
 ---
 
@@ -1414,7 +1434,11 @@ Both concrete item page models again implement the **singleton design pattern**.
 
 #### The `OnReloadClicked` method
 
-*Coming soon*
+The next screenshots shows the `OnReloadClicked` **event hanlder** implementation.
+
+The event event handler is executed when the **reload button** on top of the page is clicked.
+
+The handler **calls** the `Reload` method on the `UsersPageModel`, which has been explained before.
 
 ---
 
@@ -1422,7 +1446,11 @@ Both concrete item page models again implement the **singleton design pattern**.
 
 #### The `OnUserClicked` method
 
-*Coming soon*
+The `OnUserClicked` event handler is called when the user **changes the selected item** in the user list.
+
+The event handler first **obtains and casts** the selected item before creating a **new copy**.
+
+Then, the handler **navigates** to the **user page** and passes the copied item as a **parameter**.
 
 ---
 
@@ -1430,7 +1458,11 @@ Both concrete item page models again implement the **singleton design pattern**.
 
 #### The `OnCreateClicked` method
 
-*Coming soon*
+Finally, the `OnCreateClicked` event handler is called when the user clicks the **create butto**n on the bottom.
+
+In contrast to the previous handler, this handler first creates an empty `UserGet` object.
+
+Then, the handler issues the **same navigation request**, but passing the empty object as parameter.
 
 ---
 
@@ -1438,7 +1470,23 @@ Both concrete item page models again implement the **singleton design pattern**.
 
 #### The user page controller
 
-*Coming soon*
+Upon the previous navigation requests, the `AppShell` switches from users page to **user page**.
+
+The user page controller also includes a constructor for initializing **UI elements and bindings**.
+
+Furthermore, the controller implements an **event handler** for when the **save button** is clicked
+
+---
+
+![bg right w:90%](../Screenshots/Controls/UserConstructor.png)
+
+#### The constructor
+
+The constructor is **very similar** to the constructor of the `UsersPage` page controller class.
+
+Again, first the **auto-generated** `InitializeComponent` **method** is called to initialize the UI elements.
+
+Then, the `BindingContext` **property** is set to the `UserPageModel` singleton instance.
 
 ---
 
@@ -1446,7 +1494,11 @@ Both concrete item page models again implement the **singleton design pattern**.
 
 #### Automatic parameter binding
 
-*Coming soon*
+Remember that the **underlying page model** has an `Item` property holding - here - a `UserGet` object.
+
+Also remember that the `UserGet` object is **passed as a parameter** in the navigation request.
+
+The class-level `[QueryProperty]` annotation **ensures** that the `Item` property **is bound to** the parameter.
 
 ---
 
@@ -1454,7 +1506,11 @@ Both concrete item page models again implement the **singleton design pattern**.
 
 #### The `OnSaveClicked` method
 
-*Coming soon*
+The screenshot on the right shows in the **implementation** of the event handler `OnSaveClicked`.
+
+Note that the event handler **works similar** than the `Reload` method of the `AbstractItemsPageModel` class.
+
+Also note **how the handler decides** whether to call `Create` or `Update` on the *HTTP REST API client*.
 
 ---
 
@@ -1462,7 +1518,11 @@ Both concrete item page models again implement the **singleton design pattern**.
 
 #### The issues page controller
 
-*Coming soon*
+The issues page controller class is **almost identical** to the users page controller class.
+
+Again, the constructor initializes the **UI elements** and **binding context** property.
+
+And the event handlers handle the reload and create **button clicks** as well as **list selection changes**.
 
 ---
 
@@ -1470,7 +1530,11 @@ Both concrete item page models again implement the **singleton design pattern**.
 
 #### The issue page controller
 
-*Coming soon*
+Finally, the sample application **includes a stub** of the issue page controller class.
+
+Note that at the time of writing this deck **we were missing** a proper implementation of the issue page.
+
+However, this page is interesting because it shows a **mixture of issue item and comment items**.
 
 ---
 
