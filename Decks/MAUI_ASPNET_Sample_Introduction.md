@@ -1257,7 +1257,7 @@ However, the implementation of the page **was not finished** at the time of writ
 
 ### Page models
 
-*Coming soon*
+The **data containers** for the previous pages.
 
 ---
 
@@ -1265,7 +1265,11 @@ However, the implementation of the page **was not finished** at the time of writ
 
 #### Page model overview
 
-*Coming soon*
+The diagram on the right shows the data models (or **page models**) underlying the previous pages.
+
+At the top you find the **abstract page models** defining common fields, methods, and interfaces.
+
+At the bottom you find the **concrete page models** inheriting from these abstract page models.
 
 ---
 
@@ -1273,7 +1277,23 @@ However, the implementation of the page **was not finished** at the time of writ
 
 #### The `AbstractModel` class
 
-*Coming soon*
+The `AbstractModel` class froms the **root** of the page model inheritance hierarchy.
+
+The class mainly provides a **generic implemenetation** of the interface `INotifyPropertyChanged`.
+
+This interface must be implemented so that pages can **react to**  property changes automatically.
+
+---
+
+![bg right w:90%](../Models/Model/ItemItems.png)
+
+#### The generic item page models
+
+From the abstract model we **derive** an `AbstractItemsPageModel` and an `AbstractItemPageModel` class.
+
+The `AbstractItemsPageModel` class can be used for pages **loading and displaying item lists**.
+
+The `AbstractItemPageModel` class can be used for pages **displaying and modifying single items**.
 
 ---
 
@@ -1281,7 +1301,11 @@ However, the implementation of the page **was not finished** at the time of writ
 
 #### `AbstractItemsPageModel` class
 
-*Coming soon*
+The `AbstractItemsPageModel` class contains **boolean properties**  for hiding and disabling UI elements.
+
+Then, the page model contains an **error string** property as well as an **items list** property.
+
+Finally, the page model also contains a *public* `Reload` and a *protected abstract* `ReloadInternal` **method**.
 
 ---
 
@@ -1289,7 +1313,11 @@ However, the implementation of the page **was not finished** at the time of writ
 
 ### The `Reload` method
 
-*Coming soon*
+The `Reload` method first **disables** buttons, **hides** list and the error, and **shows** the activity indicator.
+
+Then, the **items** are loaded using the `ReloadInternal` or the **error message** is taken from an exception.
+
+Finally, the buttons are **enabled**, the activity indicator is **hidden**, and the list or the error is **shown**.
 
 ---
 
@@ -1297,11 +1325,27 @@ However, the implementation of the page **was not finished** at the time of writ
 
 #### `Users-` and `IssuesPageModel`
 
-*Coming soon*
+Two **concrete items page models** exist, namely the `UsersPageModel` and the `IssuesPageModel` class.
+
+The `UsersPageModel` class **manages** `UserGet` items, the `IssuesPageModel` **manages** `IssueGet` items instead.
+
+Note that both models **implement** the singleton design pattern as well as the `ReloadInternal` method.
+
 
 ---
 
-![bg w:90%](../Screenshots/Models/ReloadUsers.png)
+![bg right w:90%](../Screenshots/Models/ReloadUsers.png)
+
+#### The `ReloadInternal` method
+
+The screenshot on the right shows one **implemenation** of the method `ReloadInternal`.
+
+Here, the `UsersPageModel` class uses the `UsersClient` **singleton instance** from the `CustomSdk` component.
+
+Consequently, a reload causes an **HTTP message exchange** between GUI and backend services.
+
+---
+
 ![bg w:90%](../Screenshots/Models/ReloadIssues.png)
 
 ---
@@ -1310,7 +1354,11 @@ However, the implementation of the page **was not finished** at the time of writ
 
 #### `AbstractItemPageModel` class
 
-*Coming soon*
+Similary, the `AbstractItemPageModel` class contains **boolean properties** for disabling and hiding UI elements.
+
+Furthermore, the class contains an **error message** property as well as an **item** property.
+
+For now, the class **does not contain** any methods, neither concrete nor abstract (*but might in the future*).
 
 ---
 
@@ -1318,7 +1366,11 @@ However, the implementation of the page **was not finished** at the time of writ
 
 #### The `[QueryProperty]` annotation
 
-*Coming soon*
+Consequently, we assume that the item is **not loaded** from the backend via HTTP REST API call.
+
+Instead the item **is passed** from the corresponding items page as *navigation parameter* (more later).
+
+The navigation parameter is **bound to the item property** using the class-level `[QueryProperty]` annotation.
 
 ---
 
@@ -1326,7 +1378,11 @@ However, the implementation of the page **was not finished** at the time of writ
 
 #### `User-` and `IssuePageModel`
 
-*Coming soon*
+Two **concrete item page models** exist, namely the `UserPageModel` and the `IssuePageModel` classes.
+
+The `UserPageModel` class **manages** `UserGet` items, the `IssuePageModel` **manages** `IssueGet` items instead.
+
+Both concrete item page models again implement the **singleton design pattern**.
 
 ---
 
