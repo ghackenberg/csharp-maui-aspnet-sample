@@ -1161,9 +1161,11 @@ The main **structural element** for building GUIs.
 
 #### The users page
 
-The screenshot on the right shows the **users page** listing all created user entities.
+The users page is responsible for requesting the **user list** from the backend and showing it on screen.
 
-*Coming soon*
+On the top the page provides a **button** for reloading the list and on the bottom for creating a new user.
+
+In the center, the page shows the **actual list** of users including their first and last names.
 
 ---
 
@@ -1171,7 +1173,11 @@ The screenshot on the right shows the **users page** listing all created user en
 
 #### The users page in *load state*
 
-*Coming soon**
+When entering the page for the **first time** or clicking the **reload button**, the page turns into load state.
+
+In load state the two buttons are **disabled**, which turns their background color into gray.
+
+Furthermore, the list is hidden and instead an **activity indicator** is shown in the center of the page.
 
 ---
 
@@ -1179,7 +1185,11 @@ The screenshot on the right shows the **users page** listing all created user en
 
 #### The users page in *error state*
 
-*Coming soon**
+During reload an error might occur for **several reasons** (e.g. the backend being down).
+
+In such cases the page turns into **error state** as shown in the right screenshot.
+
+In this state the buttons are enabled again and an **error message** is displayed in the center of the page.
 
 ---
 
@@ -1187,9 +1197,9 @@ The screenshot on the right shows the **users page** listing all created user en
 
 #### The user page
 
-When clicking an existing user or creating a new user, you enter the **user detail** page.
+When clicking an existing user or creating a new user, you enter the so-called **user page**.
 
-The user detail page shows all the **data associated** with a user entity in the database.
+The user page shows all the **data associated** with the existing or new user entity.
 
 You can change the **first and last name**, the other fields are set automatically.
 
@@ -1199,7 +1209,11 @@ You can change the **first and last name**, the other fields are set automatical
 
 #### The user page in *load state*
 
-*Coming soon**
+When clicking the **save button** on the bottom of the page, the page turns into load state again.
+
+In load state the name entry fields and the save button are **disabled** to prevent changes and re-clicking.
+
+Furthermore, in load state an **activity indicator** is displayed between the data fields and the save button.
 
 ---
 
@@ -1207,7 +1221,11 @@ You can change the **first and last name**, the other fields are set automatical
 
 #### The user page in *error state*
 
-*Coming soon**
+Finally, the save action might fail again due to several reasons such as **backend connection errors**.
+
+Consequently, the page turns into **error state** re-enabling the name entry fields and save button.
+
+As before, also a **red-colored error message** is shown instead of the previous load indiciator.
 
 ---
 
@@ -1215,7 +1233,11 @@ You can change the **first and last name**, the other fields are set automatical
 
 #### The issues page
 
-*Coming soon*
+The issues page is almost equivalent to the **users page**, which has been explained previously.
+
+The page consists of a reload button, an **issue list showing issue labels**, and a create button.
+
+Finally, the page also distinguishes the **load and error states** with activity indicator and *optional* error message.
 
 ---
 
@@ -1223,7 +1245,11 @@ You can change the **first and last name**, the other fields are set automatical
 
 #### The issue page
 
-*Coming soon*
+When clicking an issue from the issues list or creating a new issue, you enter the so-called **issue page**.
+
+The issue page is **intended to look like** a chat page from an instant messaging application.
+
+However, the implementation of the page **was not finished** at the time of writing this deck.
 
 ---
 
